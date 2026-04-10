@@ -2,71 +2,106 @@
 
 ## How to Use This Workflow
 
-Invoke this workflow by providing:
-1. **Product name** — what you're analyzing (e.g., "Adobe Acrobat", "Notion", "Figma")
-2. **Audience** — who the output is for (e.g., "acquisition team", "PM org", "board")
-3. **Lens** — what angle matters most (e.g., "pricing + packaging", "features + positioning", "go-to-market")
-4. **Competitors** — list them, or ask Claude to identify them
-5. **Cost guardrail** — max API cost per report (default: $0.50)
+**Just provide the product name. That's it.**
 
-**Example prompt**:
-> "Run a competitive analysis for Figma vs Sketch, Framer, Canva, and Adobe XD. Audience is the product leadership team. Focus on pricing and feature differentiation. Keep cost under $0.50."
+> "Competitive analysis for Notion"
+> "Run comp analysis on Figma"
+> "Analyze Stripe's competitors"
 
-Claude will research each competitor using web search and Reddit, then produce a report following the output template below.
+Claude will automatically identify the top 6–8 competitors, determine the right audience and lens based on the product category, research everything, and produce the full report. No other input needed.
 
 ---
 
 ## Agent Instructions
 
-When this workflow is invoked, follow these steps in order:
+When this workflow is invoked, follow these steps in order. Do NOT ask the user for clarifying inputs — infer everything from the product name.
 
-### Step 1 — Clarify Inputs
+### Step 1 — Auto-Configure from Product Name
 
-Before researching, confirm:
-- `[PRODUCT_NAME]` — the product being analyzed
-- `[AUDIENCE]` — who will read the output and what decisions they need to make
-- `[LENS]` — pricing / features / marketing / GTM / all
-- `[COMPETITORS]` — if not provided, identify 5–8 based on the market
-- `[COST_GUARDRAIL]` — default $0.50; web search only stays at $0.00
+Given only `[PRODUCT_NAME]`, determine all of the following autonomously:
 
-### Step 2 — Research Each Competitor
+**Identify the market category**
+Search: `"[PRODUCT_NAME] competitors"` and `"[PRODUCT_NAME] alternatives"` — use results to understand what category the product competes in.
 
-For each competitor, collect:
+**Identify 6–8 competitors**
+Select competitors using this priority:
+1. Direct competitors (same category, same buyer, same job-to-be-done)
+2. Adjacent competitors (different approach, same outcome)
+3. The "do nothing / status quo" option if it's a common reason deals are lost
 
-| Data Point | Where to Find It |
+Do not ask the user to confirm the competitor list. Research all of them.
+
+**Default audience**: Product Managers defining competitive strategy — always. Every report is written for the PM who needs to understand the market, identify gaps, and make decisions about what to build, how to position, and where to compete. Sections, framing, and recommendations all default to this lens.
+
+**Default lens**: pricing + features + marketing + positioning (all four, always) — with emphasis on:
+- Where [PRODUCT_NAME] is losing market share and why
+- Feature gaps competitors are exploiting that the roadmap should address
+- Positioning moves competitors are making that require a response
+- Strategic threats to monitor and concrete actions the PM team can take this quarter
+- Battlecards and ICP guidance the PM team can hand off to acquisition and sales
+
+**Default cost guardrail**: $0.00 (web search only — no paid API calls unless user specifies otherwise)
+
+### Step 2 — Research the Product and Its Market
+
+Run these searches first to understand the product and identify competitors:
+
+```
+"[PRODUCT_NAME] competitors 2025"
+"[PRODUCT_NAME] alternatives"
+"[PRODUCT_NAME] vs [likely competitor]"
+"[PRODUCT_NAME] pricing"
+"[PRODUCT_NAME] review reddit"
+```
+
+From these results:
+- Confirm what the product does
+- Extract the 6–8 most frequently mentioned competitors
+- Note any recent news (price changes, product launches, acquisitions)
+- Note the most common customer complaints
+
+### Step 3 — Research Each Competitor
+
+For each competitor identified, collect:
+
+| Data Point | Search Query |
 |---|---|
-| Current pricing (all tiers) | Competitor pricing page via WebSearch |
-| Free tier / trial terms | Competitor website |
-| Perpetual vs subscription | Pricing page |
-| Key feature claims | Homepage, features page |
-| Positioning language | Hero copy on homepage |
-| What users complain about | Reddit: `r/[tool]`, `r/[category]` — search "alternatives", "cancel", "pricing" |
-| What users love | Reddit — search "switched to", "recommend", "best" |
-| Recent moves | Google News last 90 days |
-| Active conquest campaigns | Search "[Competitor] vs [Product]" and "[Competitor] alternative" |
+| Current pricing (all tiers) | `"[competitor] pricing [current year]"` → visit pricing page |
+| Free tier / trial terms | `"[competitor] free tier"` or `"[competitor] free trial"` |
+| Perpetual vs subscription | Pricing page — look for "one-time", "lifetime", "perpetual" |
+| Key feature claims | `"[competitor] features"` → homepage |
+| Positioning language | Homepage hero copy — what's their tagline? |
+| What users complain about | `"[competitor] reddit"` → filter for "cancel", "pricing", "switched", "alternatives" |
+| What users love | `"[competitor] reddit"` → filter for "recommend", "best", "love" |
+| Recent moves | `"[competitor] news 2025"` → last 90 days |
+| Conquest campaigns | `"[competitor] vs [PRODUCT_NAME]"` → look for landing pages targeting [PRODUCT_NAME] customers |
 
-**Cost note**: WebSearch-only research costs $0.00. Claude Haiku synthesis adds ~$0.003. Always confirm before using paid API calls.
+**Minimum research per competitor**: pricing page + one Reddit thread + one "vs" comparison page. Never leave a competitor with only a table row — every competitor gets a deep dive section.
 
-### Step 3 — Identify the Strategic Frame
+**Cost note**: WebSearch-only research costs $0.00. Do all research this way unless user has specified a budget for API calls.
 
-Before writing, answer:
+### Step 4 — Identify the Strategic Frame
+
+Before writing, answer these internally from your research:
 1. What is the #1 reason customers leave `[PRODUCT_NAME]` for competitors?
 2. What is the #1 reason customers choose `[PRODUCT_NAME]` over competitors?
 3. What competitive move is most urgent to respond to in the next 90 days?
 4. Which competitor segment is most vulnerable to conquest right now?
 
-Use these answers to sharpen the TL;DR and recommendations.
+Use these answers to write the TL;DR and Recommended Actions. These should feel like insights, not a list of obvious points.
 
-### Step 4 — Produce the Output Document
+### Step 5 — Produce the Output Document
 
 Save the completed report as `docs/[product-name]-competitor-analysis.md`.
 
-Then generate the PDF:
+Then generate the PDF automatically — no user prompt needed:
 ```bash
 npx tsx scripts/md-to-pdf.ts docs/[product-name]-competitor-analysis.md
 ```
 
 PDF saves to `~/Desktop/Adobe-[product-name]-competitor-analysis-YYYY-MM.pdf`.
+
+Tell the user: "Your report is on the Desktop: `Adobe-[product-name]-competitor-analysis-YYYY-MM.pdf`"
 
 ---
 
@@ -78,19 +113,20 @@ Copy everything below this line into the output file. Replace every `[PLACEHOLDE
 
 ```markdown
 # Competitive Analysis: [PRODUCT_NAME]
-**Audience**: [AUDIENCE]
+**Audience**: Product Management — Competitive Strategy
 **Date**: [MONTH YEAR]
-**Scope**: [LENS — e.g., Pricing · Features · Marketing · Packaging]
+**Scope**: Pricing · Features · Marketing · Positioning · Win/Loss · Roadmap Implications
 **Analyzed**: [N] competitors ([comma-separated list])
-**Report cost**: $[X.XX] ([method — e.g., web research only, within $0.50 guardrail])
+**Report cost**: $[X.XX] (web research only — within $0.50 guardrail)
 
 ---
 
-## TL;DR for [AUDIENCE]
+## TL;DR for Product Strategy
 
-> [2–3 sentence executive summary. Lead with: (1) the biggest competitive threat right now,
-> (2) the biggest acquisition opportunity, (3) the strongest win story for [PRODUCT_NAME].
-> Write this last — after all research is done.]
+> [2–3 sentence executive summary written for PMs. Lead with: (1) the biggest competitive threat
+> the roadmap needs to respond to, (2) the most important feature or positioning gap to close,
+> (3) the clearest strategic advantage [PRODUCT_NAME] should double down on.
+> Write this last — after all research is done. Be specific, not generic.]
 
 ---
 
@@ -303,21 +339,21 @@ Based on public review data and competitor conquest campaigns:
 
 ---
 
-## 12. [AUDIENCE] Recommended Actions
+## 12. PM Strategy — Recommended Actions
 
-### Immediate (This Month)
-1. **[Action 1]** — [What exactly to do and why it matters now]
+### Respond Now (This Sprint / Month)
+1. **[Action 1]** — [Specific thing the PM team should do or decide immediately. Name the output: a brief, a decision, a competitive counter-message, a sales enablement doc.]
 2. **[Action 2]** — [Same]
 3. **[Action 3]** — [Same]
 
-### Near-term (Next Quarter)
-4. **[Action 4]** — [Same]
-5. **[Action 5]** — [Same]
-6. **[Action 6]** — [Same]
+### Roadmap (Next Quarter)
+4. **[Feature or initiative to add/prioritize]** — [Why this closes a competitive gap. Name the competitor it neutralizes.]
+5. **[Positioning or packaging change]** — [What to change and what it defends against]
+6. **[Go-to-market or pricing move]** — [What to test and what signal to watch]
 
-### Strategic (6 months+)
-7. **[Action 7]** — [Same]
-8. **[Action 8]** — [Same]
+### Strategic Bets (6 months+)
+7. **[Longer-term initiative]** — [What market position it secures and why it compounds over time]
+8. **[Capability or partnership to build]** — [What structural advantage it creates that competitors can't quickly copy]
 
 ---
 
@@ -344,11 +380,12 @@ Before saving the final output, verify:
 
 ## Customization Notes
 
-**To change the audience lens**:
-- Acquisition team → emphasize churn triggers, win/loss signals, battlecards, ICP tiers
-- PM org → emphasize feature gaps, positioning opportunities, roadmap threats
-- Board / leadership → emphasize market share signals, structural threats, strategic bets
-- Sales enablement → expand battlecard section to cover top 5 competitive situations
+**Default audience is always Product Managers doing competitive strategy.** Every report is pre-configured for PMs: it covers feature gaps, positioning, roadmap implications, win/loss signals, and battlecards they can hand off to sales.
+
+**To shift the lens for a different audience (optional)**:
+- Acquisition / sales team → emphasize Sections 6 (Churn Triggers), 8 (ICP), 9 (Battlecards); add objection handling scripts
+- Board / leadership → collapse Sections 3–9 into a 2-page summary; expand Section 11 (Threats) with market share impact estimates
+- Engineering → add a "Build vs. Buy vs. Partner" section after Section 10; link each feature gap to a technical decision
 
 **To add a new competitor later**:
 - Add a row to Section 2 (Competitive Landscape)
