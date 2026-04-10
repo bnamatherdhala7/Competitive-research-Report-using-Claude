@@ -42,6 +42,25 @@ Do not ask the user to confirm the competitor list. Research all of them.
 
 **Default cost guardrail**: $0.00 (web search only — no paid API calls unless user specifies otherwise)
 
+**Cost and time rules — follow every time**:
+| Step | Rule |
+|---|---|
+| Research | WebSearch only — costs $0.00. Max 10 searches per report. |
+| Synthesis | Use Claude Haiku when writing from structured data. Use Sonnet only when reasoning across ambiguous or conflicting sources. |
+| Searches | Fire all searches in parallel (`Promise.all`) — never sequentially. Cuts research time from ~8 min to ~45 sec. |
+| Competitor cache | Before searching a competitor, check if it was researched in the last 7 days in a prior report. Reuse pricing and feature data. Only re-search for sentiment and recent news. |
+| Output cap | Do not exceed 500 lines of markdown per report. Trim where redundant. |
+| PDF | Always generate after saving the markdown: `npx tsx scripts/md-to-pdf.ts docs/[name]-competitor-analysis.md` |
+
+**Per-report cost targets**:
+- WebSearch only (current manual method): **$0.00 research + ~$0.17 Sonnet writing = ~$0.17 total**
+- WebSearch + Haiku writing: **$0.00 research + ~$0.04 Haiku writing = ~$0.04 total**
+- Fully automated pipeline (Trigger.dev + Haiku): **~$0.007–0.012 total**
+
+**Per-report time targets**:
+- Manual with parallel searches: **< 12 minutes**
+- Automated pipeline: **< 60 seconds**
+
 ### Step 2 — Research the Product and Its Market
 
 Run these searches first to understand the product and identify competitors:

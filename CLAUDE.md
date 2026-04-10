@@ -70,30 +70,36 @@ Every failure is a chance to make the system stronger:
 ## File Structure
 
 ```
-workflows/                     # Markdown SOPs — what to do and how
-  competitor-analysis.md       # Adobe Firefly competitor research workflow
+workflows/                          # Markdown SOPs — what to do and how
+  competitor-analysis.md            # Adobe Firefly competitor research workflow (automated)
+  competitive-analysis-template.md  # Universal template for any product — use this for all new reports
 
-src/trigger/                   # Trigger.dev tasks (cloud execution)
+src/trigger/                        # Trigger.dev tasks (cloud execution)
   competitor-analysis/
-    orchestrator.ts            # Main task: scrape → analyze → return report
-    reddit.ts                  # Reddit JSON API scraper
-    youtube.ts                 # YouTube Data API v3 scraper
-    web-search.ts              # Brave Search API
-    analyzer.ts                # Claude Haiku — structured analysis
-    report-template.ts         # Adobe-branded HTML template
-    types.ts                   # Shared TypeScript interfaces
+    orchestrator.ts                 # Main task: scrape → analyze → return report
+    reddit.ts                       # Reddit JSON API scraper
+    youtube.ts                      # YouTube Data API v3 scraper
+    web-search.ts                   # Brave Search API
+    analyzer.ts                     # Claude Haiku — structured analysis
+    report-template.ts              # Adobe-branded HTML template
+    types.ts                        # Shared TypeScript interfaces
 
-scripts/                       # Local one-shot tools
-  save-report.ts               # Fetch latest run output → puppeteer → Desktop PDF
-  test-run.ts                  # Run full pipeline locally without Trigger.dev
+scripts/                            # Local one-shot tools
+  save-report.ts                    # Fetch latest run output → puppeteer → Desktop PDF
+  test-run.ts                       # Run full pipeline locally without Trigger.dev
+  md-to-pdf.ts                      # Convert any markdown doc → Adobe-branded PDF on Desktop
 
-.env                           # API keys (NEVER commit, NEVER hardcode)
-.gitignore                     # Must include .env
-trigger.config.ts              # Trigger.dev project config
+docs/                               # Generated reports — checked into git
+  acrobat-competitor-analysis.md    # Adobe Acrobat — acquisition team focus
+  adobe-express-competitor-analysis.md  # Adobe Express — PM strategy focus
+
+.env                                # API keys (NEVER commit, NEVER hardcode)
+.gitignore                          # Must include .env
+trigger.config.ts                   # Trigger.dev project config
 ```
 
 **What goes where:**
-- **Deliverables**: Final PDF saved to `~/Desktop/`
+- **Deliverables**: Final PDF saved to `~/Desktop/`; markdown source saved to `docs/`
 - **Intermediates**: Run output stored in Trigger.dev dashboard (accessible via Management API)
 - **Secrets**: `.env` only — never in code, never in comments, never in logs
 
@@ -175,8 +181,65 @@ The following `/pm-*` skills are installed and should be used when relevant:
 
 ---
 
+## Competitive Analysis — Requirements for Every Report
+
+When the user asks for a competitive analysis on any product, follow `workflows/competitive-analysis-template.md` exactly. Key rules:
+
+**Input**: Product name only. Do not ask for competitors, audience, or lens — infer everything.
+
+**Output**: 13-section markdown report saved to `docs/[product]-competitor-analysis.md` + PDF on `~/Desktop/`.
+
+**13 required sections** (never skip any):
+1. TL;DR — written last, 2–3 sentences, specific not generic
+2. Market Overview — bifurcation, current moment, urgent context
+3. Competitive Landscape — table of all 6–8 competitors
+4. Competitor Deep Dives — every competitor gets a full profile, never just a table row
+5. Pricing Comparison — real figures from live pricing pages, never estimated
+6. Feature Comparison — 12–15 capabilities, ✅/⚠️/❌ per competitor
+7. Churn Triggers — why customers leave, ranked, segment-specific
+8. Win Signals — why customers choose this product, ranked
+9. ICP — Tier 1 (high win rate), Tier 2 (good with right positioning), Tier 3 (don't chase — be honest)
+10. Battlecards — Win move + Lose scenario for each top competitive situation
+11. Differentiation Opportunities — 5 specific, defensible, named opportunities
+12. Threats to Monitor — next 90 days, probability + impact + specific response
+13. **PLG Acquisition Strategy** — Now / 3 months / 6 months (see below)
+
+**Section 13 — PLG Acquisition Strategy requirements**:
+- **Now (0–30 days)**: 3 immediate PLG moves. Each must name a specific competitor motion being countered, the exact product/GTM change to make, and the metric to track.
+- **3 months**: 4 self-sustaining acquisition loops to build. Each loop must explain the mechanic (how users bring more users), which competitor it counters or leapfrogs, and what to build.
+- **6 months**: 3 compounding moats. Each must explain why it's hard for competitors to copy and how it gets stronger as more users join.
+- **PLG Metrics Dashboard**: Table with product-specific current estimates and 6-month targets for: TTFV, free-to-paid conversion, share link → signup, invite-to-activation, day-7 retention, CAC from PLG vs. paid.
+
+**Cost and time targets**:
+| Method | Target cost | Target time |
+|---|---|---|
+| Automated (Trigger.dev + Haiku) | < $0.012/report | < 60 seconds |
+| Manual (WebSearch + Sonnet) | < $0.20/report | < 15 minutes |
+| Manual with Haiku writing | < $0.05/report | < 12 minutes |
+
+**Cost rules**:
+- Always use WebSearch for research — costs $0.00
+- Use Claude Haiku for synthesis when possible — 73% cheaper than Sonnet
+- Never fetch more than 10 web searches per report
+- Hard cap: $0.50/report maximum
+
+**PDF generation**: Always run after saving the markdown:
+```bash
+npx tsx scripts/md-to-pdf.ts docs/[product]-competitor-analysis.md
+```
+
+---
+
 ## Current Automations
 
 | Automation | Workflow | Status |
 |---|---|---|
 | Adobe Firefly Competitor Analysis | `workflows/competitor-analysis.md` | Active — run `npm run test-run` |
+| Any product competitive analysis | `workflows/competitive-analysis-template.md` | Active — just provide product name |
+
+**Completed reports** (in `docs/`):
+
+| Report | File | Audience | PLG Section |
+|---|---|---|---|
+| Adobe Acrobat PDF | `docs/acrobat-competitor-analysis.md` | Acquisition team | ✅ |
+| Adobe Express | `docs/adobe-express-competitor-analysis.md` | PM strategy | ✅ |
