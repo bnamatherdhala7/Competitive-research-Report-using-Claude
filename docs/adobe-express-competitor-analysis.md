@@ -395,4 +395,106 @@ Figma is not a direct Adobe Express competitor day-to-day — but they represent
 
 ---
 
+## 13. PLG Acquisition Strategy — Against Competitors
+
+> Adobe Express's biggest PLG deficit is simple: Canva's product is the funnel. Every Canva design shared publicly is an ad for Canva. Every team member invited to collaborate is a new Canva user. Every template discovered on Google brings someone into Canva for free. Adobe Express has none of these loops firing at scale. The strategy below builds them in three stages.
+
+---
+
+### Now (0–30 days) — Stop losing users before they evaluate
+
+**Fix the free tier template signal — counter: Canva's 1.6M free templates**
+- What Canva does: Free users access 1.6 million templates instantly, no credit card, no friction. Users find what they need in seconds and form a habit before they ever consider paying.
+- What to do now: Audit Express's free tier template discovery. The problem is not just volume — it's findability. Add AI-powered intent search to the free tier today: a user types "Q2 product launch, LinkedIn banner, clean tech brand" and gets the 5 most relevant Express templates ranked by relevance. This compresses the perceived gap without building 1.4M more templates.
+- Target metric: Free tier template-to-first-export rate (if a user finds a usable template, they stay; if they don't, they leave within 90 seconds)
+
+**Activate dormant CC subscribers — counter: Microsoft Designer's zero-friction discovery**
+- What Microsoft does: Designer appears inside Teams, Outlook, and PowerPoint. M365 users discover it without downloading anything or opening a new tab. It's embedded in the workflow.
+- What to do now: Ship a "Publish to Adobe Express" button in the Photoshop export menu and an "Open in Express" option in Illustrator's Share panel. This is not a marketing campaign — it's an in-product trigger that fires at the exact moment a CC subscriber would otherwise open Canva. Target: the 30M+ CC All Apps subscribers who have never opened Express.
+- Target metric: New Express activations attributed to PS/AI in-product entry points (track with UTM parameter `source=photoshop_export`)
+
+**Remove the forgettable first session — counter: Canva's 3-minute time-to-first-value**
+- What Canva does: A new user can go from signup → template → exported design in under 3 minutes. The first session creates something shareable.
+- What to do now: Audit Express's new user onboarding. Map the current time-to-first-completed-export. Identify the single biggest drop-off point (typically: account creation friction, template discovery confusion, or export format confusion). Fix only that one step this sprint.
+- Target metric: Time to first export for new users (current vs. post-fix). Canva's benchmark is ~3 minutes.
+
+---
+
+### 3 Months — Build the loops that make users bring users
+
+**Loop 1: Output sharing → new user acquisition (counter: Canva's sharing virality)**
+
+Canva's most powerful PLG loop: when a user shares a Canva design publicly (a poster, a social post, a presentation), every viewer sees "Made in Canva" and a link. Canva estimates 30%+ of new signups come from shared design views. Adobe Express has no equivalent.
+
+- Build: Every Express design shared via public link gets a viewer page with a persistent "Create yours free with Adobe Express" CTA in the bottom right. The CTA includes a one-click "start from this template" flow — viewer sees the output, likes it, clicks once, lands in Express with the same template pre-loaded. No signup friction until they try to export.
+- Why this works against Canva: Express's Firefly-generated design quality is often higher than Canva's default outputs. Once a viewer sees an Express design, the quality speaks. The "start from this template" flow makes Adobe Express the easier choice at the moment of highest intent.
+- Target metric: Share-link viewer → Express signup rate (target: 5%+ in 90 days; industry benchmark for best-in-class is 7–10%)
+
+**Loop 2: Collaboration invite → team expansion (counter: Canva Teams' invite loop)**
+
+Canva grows inside companies because one user invites a teammate → teammate creates an account → team discovers Teams plan → company upgrades. Adobe Express has a collaboration feature but the invite flow is buried and under-promoted.
+
+- Build: After a user shares an Express project for review, show a prominent in-product prompt: "Your reviewer will need a free Adobe account to comment. Invite them now." Surface this at the moment of share, not buried in settings. Track invited teammate activation rate. Build a "your team is already using Express" notification that fires when 3+ users from the same company email domain activate accounts — this triggers the Teams plan upgrade conversation without a sales call.
+- Target metric: Invite-to-activation rate (target: 30%+); same-domain multi-user → Teams upgrade conversion
+
+**Loop 3: Firefly safety as a viral B2B signal (counter: Canva's enterprise brand compliance)**
+
+Canva's Q1 2026 AI brand compliance launch is a direct attack on Express's enterprise positioning. Counter with a loop: make Firefly safety visible and shareable inside the product.
+
+- Build: Add a "Firefly Safe" badge to any design that uses only Firefly-generated content — visible on the public share page. When a marketing director shares an Express campaign brief with legal for approval, legal sees the badge and the Firefly IP indemnification statement. This turns a compliance feature into a viral enterprise signal: legal teams start requesting Express specifically. One legal approval creates a departmental mandate.
+- Target metric: Number of enterprise accounts where Express adoption started with a legal/compliance stakeholder referral (track via account creation domain analysis)
+
+**Loop 4: ChatGPT integration → new user discovery at scale**
+
+Adobe Express launched inside ChatGPT in December 2025 — 800M ChatGPT users can now access Express. This is the single largest PLG distribution advantage Adobe Express has that no competitor can match today.
+
+- Build: Optimize the ChatGPT → Express conversion flow. When a ChatGPT user generates an Express design, the experience must deliver a completed, shareable output in one session — not a half-finished template that requires Express expertise. Measure the prompt-to-completed-export rate inside ChatGPT. Make it higher than the direct Express onboarding rate (the bar is lower because ChatGPT users already know what they want).
+- Target metric: ChatGPT plugin activations → Express account creation rate; prompt-to-export completion rate within the ChatGPT plugin
+
+---
+
+### 6 Months — Build the moats competitors can't copy
+
+**Moat 1: Creative Cloud template ecosystem — the community flywheel Canva fears most**
+
+Canva's template moat is user-generated. Adobe has 30M+ Creative Cloud subscribers who are professional designers. If 1% of CC subscribers publish one Express template per month, that's 300,000 professional-quality templates added monthly — templates that are better designed than Canva's community contributions because they come from professional designers, not novices.
+
+- Build: Express Template Marketplace — CC subscribers can publish templates, get credit on their Adobe profile, and optionally earn from template downloads (rev-share model). Non-CC users can use the templates but are prompted to upgrade to Express Premium to unlock all of them.
+- Why it compounds: Each new CC publisher adds value for all Express users. The marketplace creates a reason for CC subscribers to open Express (to publish and build their Adobe portfolio) and a reason for non-CC users to try Express (to access high-quality templates). Unlike Canva's community templates, Adobe's come from verified professional designers — a quality signal Canva cannot replicate.
+- Competitive defense: Canva's template community is 8 years old. Adobe has the professional designer base to close this gap in 18–24 months if the program launches now.
+- Target metric: Templates published/month; organic search traffic from template discovery pages; Express signups attributed to template search
+
+**Moat 2: Acrobat Studio as the enterprise PLG entry point**
+
+Adobe Express's biggest untapped PLG lever is the Acrobat install base. Acrobat has 500M+ users globally. Acrobat Studio (launched August 2025) combines Acrobat + Express in one platform. Every time an Acrobat user converts a Word doc to PDF, edits a scanned contract, or sends a document for e-signature, there is now an opportunity to surface Express.
+
+- Build: When an Acrobat user exports a PDF to share externally (e.g., a proposal, a report cover), show an in-product prompt: "Make this look better before you send. Open in Adobe Express." One click — the PDF cover page opens in Express with pre-applied brand colors. The user redesigns it in 2 minutes and exports. They've now used Express for the first time without ever deciding to try a new tool.
+- Why this compounds: Acrobat is in every enterprise. Express rides Acrobat's install base at zero additional acquisition cost. This is a distribution advantage Canva, Figma, and Microsoft Designer cannot replicate — none of them have a PDF workflow at Acrobat's scale.
+- Target metric: Express activations attributed to Acrobat Studio in-product prompts; Acrobat-to-Express cross-usage rate per account
+
+**Moat 3: Firefly AI flywheel — quality improves as Adobe Express usage grows**
+
+Every design created in Adobe Express with Firefly is a training signal. The more Express is used, the better Firefly's outputs become for specific design contexts (social banners, marketing emails, presentation covers). Competitors using the same base model (DALL-E, Stable Diffusion) without this usage signal produce measurably lower-quality outputs for these specific use cases over time.
+
+- Build: Structured feedback loop inside Express — when a user regenerates a Firefly output (a signal they didn't like the first result), capture that as negative training signal. When a user exports a Firefly-generated design without modification (a signal the first result was good), capture that as positive. Fine-tune Firefly's Express-specific models quarterly on this signal.
+- Why it compounds: AI model quality from usage data is invisible to competitors and takes years to replicate. By the time a competitor has the same volume of structured design feedback, Adobe's model is two years ahead. This is the flywheel that makes the Express + Firefly combination increasingly unbeatable for commercial design quality.
+- Target metric: First-generation acceptance rate (% of Firefly outputs used without regeneration) — track quarterly; target improvement of 5% per quarter
+
+---
+
+### PLG Metrics Dashboard — Adobe Express Targets
+
+| Metric | What it measures | Current (estimated) | 6-Month Target |
+|---|---|---|---|
+| Time to first export (new user) | Minutes from signup to first completed design | ~8–12 min | < 4 min |
+| Free-to-paid conversion (30-day) | % of free users who upgrade within a month | ~2–3% | 5%+ |
+| Share link → new signup rate | % of share-page viewers who create an account | ~0% (no loop) | 5%+ |
+| CC subscriber activation rate | % of CC All Apps users who have opened Express | ~15% (estimated) | 40%+ |
+| Invite-to-activation rate | % of collaboration invitees who create an account | Unknown | 30%+ |
+| ChatGPT → Express conversion | % of ChatGPT plugin users who create an Express account | Unknown (new) | 8%+ |
+| Day-7 retention | % of new users still active 7 days after signup | ~20% (estimated) | 40%+ |
+| Acrobat → Express cross-usage | % of Acrobat Studio users who use Express at least once | ~5% (estimated) | 25%+ |
+
+---
+
 *Sources: [Adobe Express Pricing](https://www.adobe.com/express/pricing) · [Canva Pricing 2026](https://www.stylefactoryproductions.com/blog/canva-pricing) · [Canva Statistics 2026](https://www.demandsage.com/canva-statistics/) · [Microsoft Designer Pricing](https://aisotools.com/pricing/microsoft-designer) · [VistaCreate Pricing](https://create.vista.com/plans/) · [Picsart Pricing](https://picsart.com/pricing/) · [Figma Pricing](https://www.figma.com/pricing/) · [Adobe Express vs Canva 2026](https://www.stylefactoryproductions.com/blog/adobe-express-vs-canva) · [Adobe MAX 2025 — AI Assistant Launch](https://news.adobe.com/news/2025/10/adobe-max-2025-news) · [Adobe Express in ChatGPT](https://news.adobe.com/news/2025/12/adobe-photoshop-express-acrobat-chatgpt) · [Adobe Express complaints](https://community.adobe.com/t5/adobe-express-bugs/extremely-frustrated-with-adobe-express-losing-time-and-money-as-a-premium-user/idi-p/15301332)*

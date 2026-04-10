@@ -357,6 +357,108 @@ Based on public review data and competitor conquest campaigns:
 
 ---
 
+## 13. PLG Acquisition Strategy — Against Competitors
+
+> PLG (Product-Led Growth) means the product itself is the primary acquisition, expansion, and retention engine — users discover it, try it, invite others, and upgrade without a sales conversation. This section maps the PLG motions [PRODUCT_NAME] must execute to take share from competitors who already have strong PLG flywheels.
+
+### How to write this section
+
+For each time horizon, answer:
+1. **Which competitor's PLG motion is most dangerous right now?** — Name the specific mechanism (e.g., Canva's free tier template volume, Figma's multiplayer invite loop, Slack's channel-based expansion).
+2. **What is [PRODUCT_NAME]'s counter-move?** — A specific product or GTM change that disrupts that motion or builds a stronger one.
+3. **What is the measurable signal that it's working?** — Name the metric: new user signups from share links, invite-to-activation rate, free-to-paid conversion rate, time-to-first-value, etc.
+
+---
+
+### Now (0–30 days) — Neutralize the biggest PLG disadvantage
+
+> Focus: fix the #1 PLG gap that is losing users to a competitor today. These are quick wins — no new features required, just activation, friction removal, and onboarding changes.
+
+**[PLG gap #1 — e.g., "Free tier too restrictive vs [Competitor]"]**
+- What competitors are doing: [Specific free tier or trial mechanic that makes them easier to try]
+- What to do now: [Specific change — e.g., expand free tier limit, remove email-gate on first use, add a shareable preview link to free outputs]
+- Target metric: [e.g., Free tier activation rate, day-1 retention, share link click-through]
+
+**[PLG gap #2 — e.g., "No viral loop on shared outputs"]**
+- What competitors are doing: [e.g., Canva's "Made in Canva" branding on shared designs drives 30%+ of new signups]
+- What to do now: [e.g., Add "Made with [PRODUCT_NAME] — try free" to all public share links; make it opt-out, not opt-in]
+- Target metric: [Share-link to signup conversion rate]
+
+**[PLG gap #3 — e.g., "Dormant users in existing install base"]**
+- What competitors are doing: [e.g., Competitor X is running conquest campaigns targeting your dormant user base]
+- What to do now: [e.g., In-product re-engagement nudge at the moment a user opens a competitor's file type; automated "you haven't used X feature yet" email at day 7]
+- Target metric: [Dormant user reactivation rate]
+
+---
+
+### 3 Months — Build the acquisition loop
+
+> Focus: build self-sustaining loops where existing users bring in new users, reducing CAC over time. Each loop should be tied to a specific competitor motion you are matching or leapfrogging.
+
+**Loop 1: Collaboration invite loop (counter: [Competitor])**
+- The mechanic: [When user A invites user B to collaborate on a [PRODUCT_NAME] project, user B must create an account → natural top-of-funnel]
+- Build: [What the invite flow needs to look like to maximize conversion: landing page, immediate value moment, no credit-card friction]
+- Counter to: [Which competitor's collaboration loop this neutralizes]
+- Target metric: Invite-to-activation rate (benchmark: Figma's was ~40% at peak growth)
+
+**Loop 2: Output sharing loop (counter: [Competitor])**
+- The mechanic: [When a user shares their output (design, doc, report) publicly, the viewer sees [PRODUCT_NAME] branding and a "create yours free" CTA]
+- Build: [Shareable link infrastructure, public viewer page with CTA, attribution tracking]
+- Counter to: [Competitor whose content sharing drives the most referral traffic in your category]
+- Target metric: Viewer-to-signup rate from share links
+
+**Loop 3: Template / content marketplace (counter: [Competitor])**
+- The mechanic: [Users publish templates; other users discover them via search → creator gets profile/credit, platform gets SEO and retention]
+- Build: [Template publishing flow, discovery page, creator attribution]
+- Counter to: [Competitor whose template volume is the biggest acquisition moat — Canva's 4.5M templates, Notion's template gallery, etc.]
+- Target metric: Templates published/month, organic search traffic from template pages
+
+**Loop 4: Integration-led discovery (counter: [Competitor])**
+- The mechanic: [[PRODUCT_NAME] appears inside tools users already use — Slack, Notion, Google Workspace, Microsoft 365 — creating distribution without advertising spend]
+- Build: [Which integration to prioritize based on where your ICP already spends time]
+- Counter to: [Microsoft Designer's M365 embedding, or whichever competitor has the strongest native integration]
+- Target metric: New signups attributed to integration referrals
+
+---
+
+### 6 Months — Build the compounding moat
+
+> Focus: establish a network effect or platform position that competitors cannot replicate quickly — something that gets stronger as more users join.
+
+**Moat 1: [Community / marketplace network effect]**
+- What it is: [User-generated content, templates, or workflows that accumulate on the platform and make it more valuable with every new user — Canva's community templates, Figma's component marketplace, Notion's template gallery]
+- Why it compounds: [Each new creator adds value for all existing users; the moat widens automatically]
+- Build: [What [PRODUCT_NAME] needs to launch: creator profiles, publish flow, discovery algorithm, quality curation]
+- Competitive defense: [Once your template/content library exceeds a critical mass, a new entrant can't match it without years of community building — this is the hardest moat to copy]
+
+**Moat 2: [Ecosystem / API growth]**
+- What it is: [[PRODUCT_NAME] as a platform other products are built on — an embed SDK, an API, a plugin marketplace — so that distribution happens through partners, not just direct acquisition]
+- Why it compounds: [Every partner integration is a new acquisition channel that runs at zero marginal cost]
+- Build: [Public API, embed SDK, partner program with rev-share or free tier for qualifying integrations]
+- Competitive defense: [First to establish the developer ecosystem in your category owns a distribution channel competitors must build from scratch or license]
+
+**Moat 3: [Data / AI flywheel]**
+- What it is: [[PRODUCT_NAME]'s AI models improve with usage data — more users → better AI outputs → more users — creating a widening quality gap vs. competitors who don't have the same usage signal]
+- Why it compounds: [AI quality improvements from usage data are invisible to competitors and take years to replicate]
+- Build: [Usage signal collection, model fine-tuning pipeline, quality benchmarks that prove the improvement over time]
+- Competitive defense: [A model trained on your specific user outputs is proprietary — the same base model (Firefly, DALL-E) produces measurably better results when fine-tuned on your usage patterns]
+
+---
+
+### PLG Metrics Dashboard — What to Track
+
+| Metric | What it measures | Target benchmark |
+|---|---|---|
+| Time to first value (TTFV) | Minutes from signup to first completed output | < 5 minutes (Canva: ~3 min) |
+| Free-to-paid conversion rate | % of free users who upgrade within 30 days | 3–8% (best-in-class PLG) |
+| Invite-to-activation rate | % of invited users who activate an account | > 30% |
+| Share link → new signup rate | % of share link viewers who create an account | > 5% |
+| Day-7 retention | % of new users still active 7 days after signup | > 40% |
+| Expansion revenue rate | % of revenue from existing account expansion | > 30% (healthy PLG) |
+| CAC from PLG vs. paid | Cost to acquire a user through product vs. ads | PLG CAC should be < 20% of paid CAC |
+
+---
+
 *Sources: [list all URLs used for pricing and data]*
 ```
 
@@ -372,6 +474,8 @@ Before saving the final output, verify:
 - [ ] Each battlecard has a specific "Win move" and "Lose scenario" — not generic advice
 - [ ] ICP Tier 3 is honest — includes segments where [PRODUCT_NAME] consistently loses
 - [ ] Actions are specific (name what to build, say, or do) — not "improve positioning"
+- [ ] PLG section names a specific competitor motion for each time horizon (Now / 3M / 6M)
+- [ ] PLG metrics table is filled with product-specific benchmarks, not generic placeholders
 - [ ] All [PLACEHOLDERS] replaced — no brackets remaining in the output
 - [ ] PDF generated and saved to `~/Desktop/`
 - [ ] Report cost is within the specified guardrail
