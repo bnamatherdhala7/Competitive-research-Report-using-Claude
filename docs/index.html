@@ -531,12 +531,17 @@
     /* ════════════════════════════════
        OUTPUTS SECTION — Two cards
     ════════════════════════════════ */
+    .out-tag-bg   { background:rgba(45,157,120,.12); color:#2D9D78; }
+    .out-card-bg:hover  { border-color:rgba(45,157,120,.3); }
+    .out-card-bg .out-action { color:#2D9D78; }
+
     .outputs {
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:1fr 1fr 1fr;
       gap:16px;
     }
-    @media(max-width:680px){ .outputs{grid-template-columns:1fr;} }
+    @media(max-width:900px){ .outputs{grid-template-columns:1fr 1fr;} }
+    @media(max-width:600px){ .outputs{grid-template-columns:1fr;} }
 
     .out-card {
       background:var(--s2);
@@ -695,7 +700,8 @@
     <span class="nav-logo-text">Adobe <strong>Firefly</strong> — Intelligence</span>
   </a>
   <div class="nav-actions">
-    <a href="firefly-report.pdf" class="nav-pill" download>Download PDF</a>
+    <a href="firefly-report.pdf" class="nav-pill" download>PDF Report</a>
+    <a href="remove-background-acquisition-playbook.html" class="nav-pill">Remove BG Playbook</a>
     <a href="firefly-comparison-page.html" class="nav-cta">View comparison →</a>
   </div>
 </nav>
@@ -707,8 +713,8 @@
     <div class="eyebrow reveal">Competitive Intelligence Pipeline</div>
     <h1 class="hero-h1 reveal d1">
       Type a product name.<br>
-      <span class="line-amber">Get a PDF report.</span><br>
-      <span class="line-red">Get a comparison website.</span>
+      <span class="line-amber">Get PDF reports.</span><br>
+      <span class="line-red">Get comparison websites.</span>
     </h1>
     <p class="hero-sub reveal d2">
       One input. Two outputs. Fully automated with AI research, structured analysis, and live deployment.
@@ -912,9 +918,9 @@
 <!-- OUTPUTS -->
 <section class="section" style="background:var(--s1)" id="outputs">
   <div class="container">
-    <p class="sec-eye reveal">The two deliverables</p>
-    <h2 class="sec-h2 reveal d1">PDF report. Comparison website.</h2>
-    <p class="sec-sub reveal d2">The report is the deep research. The website is the public-facing comparison.</p>
+    <p class="sec-eye reveal">The deliverables</p>
+    <h2 class="sec-h2 reveal d1">Reports. Playbooks. Comparison websites.</h2>
+    <p class="sec-sub reveal d2">Each analysis produces downloadable PDF reports and a live comparison website — deployed to Vercel automatically.</p>
 
     <div class="outputs">
 
@@ -991,8 +997,30 @@
         <div class="out-body">
           <span class="out-tag out-tag-site">Comparison Website</span>
           <p class="out-title">Product Comparison Page</p>
-          <p class="out-desc">Firefly vs. Midjourney, DALL-E 3 &amp; Canva AI — 13 features, pricing grid, animated scores, demo gallery. Built from the top competitors in the PDF report.</p>
+          <p class="out-desc">Firefly vs. Midjourney, DALL-E 3 &amp; Canva AI — 14 features, pricing grid, animated scores. Live on Vercel at <strong style="color:var(--amber-lt)">competitive-research-report-using-c.vercel.app/compare</strong></p>
           <span class="out-action">Open website →</span>
+        </div>
+      </a>
+
+      <!-- Remove Background Playbook card -->
+      <a href="remove-background-acquisition-playbook.html" class="out-card out-card-bg reveal d3">
+        <div class="out-preview" style="background:var(--s3);display:flex;flex-direction:column;justify-content:flex-end;padding:16px;gap:6px;">
+          <div style="height:4px;border-radius:2px;background:rgba(45,157,120,.5);width:100%"></div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <div style="height:6px;border-radius:2px;background:rgba(255,255,255,.07);width:90%"></div>
+            <div style="height:6px;border-radius:2px;background:rgba(255,255,255,.07);width:75%"></div>
+            <div style="height:6px;border-radius:2px;background:rgba(45,157,120,.25);width:85%"></div>
+            <div style="height:6px;border-radius:2px;background:rgba(255,255,255,.07);width:60%"></div>
+            <div style="height:6px;border-radius:2px;background:rgba(255,138,0,.2);width:70%"></div>
+            <div style="height:6px;border-radius:2px;background:rgba(255,255,255,.07);width:80%"></div>
+          </div>
+          <div style="margin-top:6px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(45,157,120,.7);font-weight:700">Acquisition Playbook</div>
+        </div>
+        <div class="out-body">
+          <span class="out-tag out-tag-bg">Keyword Playbook</span>
+          <p class="out-title">Remove Background — Acquisition Playbook</p>
+          <p class="out-desc">Who owns "remove background," why Adobe is invisible at #6 despite having the best free product, and a 90-day move-by-move acquisition plan. Live at <strong style="color:#2D9D78">…/remove-background</strong></p>
+          <span class="out-action">Open playbook →</span>
         </div>
       </a>
 
