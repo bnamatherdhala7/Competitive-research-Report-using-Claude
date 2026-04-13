@@ -9,6 +9,10 @@
       "dest": "/firefly-comparison-page.html"
     },
     {
+      "src": "/report",
+      "dest": "/firefly-report.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
