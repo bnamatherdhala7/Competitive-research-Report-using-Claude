@@ -9,10 +9,6 @@
       "dest": "/index.html"
     },
     {
-      "src": "/report",
-      "dest": "/firefly-report.html"
-    },
-    {
       "src": "/compare",
       "dest": "/firefly-comparison-page.html"
     },
