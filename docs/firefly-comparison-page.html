@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adobe Firefly — AI Image Generator Comparison 2026</title>
+
+  <!-- Preconnect for Google Fonts as Adobe Clean fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ════════════════════════════════════════
+       Adobe Spectrum Design Tokens
+    ════════════════════════════════════════ */
+    :root {
+      /* Brand */
+      --adobe-red:         #FF0000;
+      --adobe-red-dark:    #D7373F;
+      --firefly-amber:     #FF8A00;
+      --firefly-amber-lt:  #FFC244;
+      --firefly-glow:      rgba(255, 138, 0, 0.18);
+      --firefly-glow-soft: rgba(255, 194, 68, 0.06);
+
+      /* Spectrum Grays */
+      --gray-50:   #FFFFFF;
+      --gray-75:   #FAFAFA;
+      --gray-100:  #F5F5F5;
+      --gray-200:  #EAEAEA;
+      --gray-300:  #E1E1E1;
+      --gray-400:  #CACACA;
+      --gray-600:  #8D8D8D;
+      --gray-700:  #6E6E6E;
+      --gray-800:  #4B4B4B;
+      --gray-900:  #2C2C2C;
+
+      /* Spectrum Semantic */
+      --green:   #2D9D78;
+      --red:     #E34850;
+      --orange:  #E68619;
+
+      /* Dark surfaces */
+      --canvas:    #0E0E0E;
+      --surface-1: #1A1A1A;
+      --surface-2: #242424;
+      --surface-3: #2E2E2E;
+      --border-dk: rgba(255,255,255,0.08);
+
+      /* Layout */
+      --radius:  4px;
+      --radius-lg: 8px;
+      --shadow: 0 2px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+    }
+
+    /* ════════════════════════════════════════
+       Reset & Base
+    ════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "adobe-clean", "Source Sans 3", ui-sans-serif,
+                   system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ════════════════════════════════════════
+       Scroll-Reveal Animation System
+    ════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    .reveal-delay-5 { transition-delay: 0.50s; }
+    .reveal-delay-6 { transition-delay: 0.60s; }
+
+    /* ════════════════════════════════════════
+       Navigation
+    ════════════════════════════════════════ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dk);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      justify-content: space-between;
+      transition: background 0.3s;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .adobe-logo {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark {
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-wordmark strong {
+      color: white;
+      font-weight: 700;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: white; }
+
+    .nav-btn {
+      background: var(--adobe-red);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .nav-btn:hover {
+      background: var(--adobe-red-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ════════════════════════════════════════
+       Hero
+    ════════════════════════════════════════ */
+    .hero {
+      background: var(--canvas);
+      color: white;
+      padding: 110px 32px 96px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    /* Layered Firefly glow — signature aurora effect */
+    .hero-glow-1 {
+      position: absolute;
+      width: 800px;
+      height: 600px;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at 50% 40%,
+        rgba(255,138,0,0.22) 0%,
+        rgba(255,194,68,0.08) 40%,
+        transparent 68%);
+      pointer-events: none;
+      animation: glowPulse 6s ease-in-out infinite alternate;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 500px;
+      height: 400px;
+      bottom: -80px;
+      left: 30%;
+      background: radial-gradient(ellipse at center,
+        rgba(255,0,0,0.07) 0%, transparent 65%);
+      pointer-events: none;
+      animation: glowPulse 8s ease-in-out 2s infinite alternate;
+    }
+
+    .hero-glow-3 {
+      position: absolute;
+      width: 400px;
+      height: 300px;
+      top: 20%;
+      right: 5%;
+      background: radial-gradient(ellipse at center,
+        rgba(255,194,68,0.06) 0%, transparent 65%);
+      pointer-events: none;
+      animation: glowPulse 7s ease-in-out 1s infinite alternate-reverse;
+    }
+
+    @keyframes glowPulse {
+      from { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      to   { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+    }
+
+    /* Particle dots */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--firefly-amber);
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-20px) scale(1); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--firefly-amber);
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    .hero-h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .hero-h1 .amber {
+      color: var(--firefly-amber);
+    }
+
+    .hero-body {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-red {
+      background: var(--adobe-red);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 30px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.2s var(--ease-out), box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-red:hover {
+      background: var(--adobe-red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,0,0,0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 30px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s var(--ease-out);
+      letter-spacing: 0.01em;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.7);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Hero stat strip */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--firefly-amber);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+    }
+
+    /* ════════════════════════════════════════
+       Fact Banner
+    ════════════════════════════════════════ */
+    .fact-banner {
+      background: var(--surface-1);
+      border-top: 1px solid rgba(255,138,0,0.25);
+      border-bottom: 1px solid rgba(255,138,0,0.25);
+      padding: 18px 32px;
+    }
+
+    .fact-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .fact-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--firefly-amber);
+      flex-shrink: 0;
+      animation: dotPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,138,0,0.6); }
+      50%       { box-shadow: 0 0 0 5px rgba(255,138,0,0); }
+    }
+
+    .fact-text {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+    }
+
+    .fact-text strong { color: white; }
+
+    /* ════════════════════════════════════════
+       Layout Utilities
+    ════════════════════════════════════════ */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section        { padding: 88px 0; }
+    .section-alt    { background: var(--gray-100); }
+    .section-dark   { background: var(--surface-1); }
+    .section-canvas { background: var(--canvas); }
+
+    .section-eye {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--adobe-red);
+      margin-bottom: 10px;
+    }
+
+    .section-dark  .section-eye,
+    .section-canvas .section-eye { color: var(--firefly-amber); }
+
+    .section-h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .section-dark .section-h2,
+    .section-canvas .section-h2 { color: white; }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--gray-700);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 52px;
+    }
+
+    .section-dark .section-sub,
+    .section-canvas .section-sub { color: rgba(255,255,255,0.45); }
+
+    /* ════════════════════════════════════════
+       Comparison Table
+    ════════════════════════════════════════ */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      background: white;
+    }
+
+    thead tr { background: var(--surface-1); }
+
+    thead th {
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      border-right: 1px solid var(--border-dk);
+      white-space: nowrap;
+    }
+
+    thead th:first-child {
+      text-align: left;
+      font-weight: 400;
+      color: rgba(255,255,255,0.3);
+      min-width: 220px;
+    }
+
+    thead th.ff {
+      background: #1B1100;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      border-top: 3px solid var(--firefly-amber);
+      min-width: 180px;
+    }
+
+    .th-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .th-badge {
+      display: inline-block;
+      background: var(--adobe-red);
+      color: white;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--gray-200);
+      transition: background 0.12s;
+    }
+
+    tbody tr:hover { background: #FDFDF9; }
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover td.ff { background: #FFF9ED; }
+
+    td {
+      padding: 15px 16px;
+      font-size: 13.5px;
+      text-align: center;
+      border-right: 1px solid var(--gray-200);
+      vertical-align: middle;
+      color: var(--gray-800);
+    }
+
+    td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-900);
+      font-size: 13px;
+    }
+
+    td.ff {
+      background: #FFFCF3;
+      border-left: 2.5px solid var(--firefly-amber);
+      border-right: 2.5px solid var(--firefly-amber);
+      font-weight: 600;
+      transition: background 0.12s;
+    }
+
+    /* Status icons */
+    .ic-yes  { color: var(--green);  font-size: 17px; font-weight: 700; }
+    .ic-no   { color: var(--red);    font-size: 17px; }
+    .ic-part { color: var(--orange); font-size: 13px; font-weight: 700; }
+
+    /* Tags */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .tag-green  { background: #E8F7F2; color: #146A50; }
+    .tag-amber  { background: #FFF4DC; color: #875200; }
+    .tag-red    { background: #FEEAEB; color: #BE0B0B; }
+    .tag-gray   { background: var(--gray-200); color: var(--gray-700); }
+
+    /* ════════════════════════════════════════
+       Score Cards
+    ════════════════════════════════════════ */
+    .scores {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .score-card {
+      background: white;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+    }
+
+    .score-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .score-card.winner {
+      border-color: var(--firefly-amber);
+      border-width: 1.5px;
+      background: linear-gradient(135deg, #FFFDF5 0%, #FFFAF0 100%);
+    }
+
+    .score-card.winner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%,
+        rgba(255,138,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .winner-ribbon {
+      position: absolute;
+      top: 14px;
+      right: -22px;
+      background: var(--adobe-red);
+      color: white;
+      font-size: 8.5px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 28px;
+      transform: rotate(45deg);
+      transform-origin: center;
+    }
+
+    .sc-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 10px;
+    }
+
+    .sc-score {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gray-900);
+      letter-spacing: -0.03em;
+      transition: color 0.3s;
+    }
+
+    .score-card.winner .sc-score { color: var(--adobe-red); }
+
+    .sc-track {
+      height: 4px;
+      background: var(--gray-200);
+      border-radius: 2px;
+      margin: 16px 0 12px;
+      overflow: hidden;
+    }
+
+    .sc-fill {
+      height: 100%;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 1.2s var(--ease-out);
+    }
+
+    .sc-fill.red    { background: var(--adobe-red); }
+    .sc-fill.gray   { background: var(--gray-400); }
+
+    .sc-desc {
+      font-size: 12.5px;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════
+       Capability Cards
+    ════════════════════════════════════════ */
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .cap-grid { grid-template-columns: 1fr; } }
+
+    .cap-card {
+      background: white;
+      padding: 32px 26px;
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .cap-card:hover { background: #FFFDF5; }
+
+    .cap-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #FFF5E0, #FFEBC7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+    }
+
+    .cap-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .cap-body {
+      font-size: 13.5px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════
+       Pricing Cards
+    ════════════════════════════════════════ */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .p-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-dk);
+      border-radius: var(--radius-lg);
+      padding: 32px 22px 26px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.25s var(--ease-out), border-color 0.2s;
+    }
+
+    .p-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); }
+
+    .p-card.featured {
+      border-color: var(--firefly-amber);
+      background: #180F00;
+    }
+
+    .p-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--adobe-red);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 3px 14px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .p-name  { font-size: 16px; font-weight: 700; color: white; margin-bottom: 20px; }
+    .p-price { font-size: 46px; font-weight: 900; color: white; line-height: 1; letter-spacing: -0.03em; }
+    .p-card.featured .p-price { color: var(--firefly-amber-lt); }
+    .p-per   { font-size: 13px; color: rgba(255,255,255,0.35); margin: 5px 0 0; }
+    .p-note  {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      line-height: 1.65;
+    }
+
+    .p-card.featured .p-note { color: rgba(255,194,68,0.5); border-top-color: rgba(255,138,0,0.15); }
+
+    /* ════════════════════════════════════════
+       Pull Quote
+    ════════════════════════════════════════ */
+    .pq-section {
+      background: var(--canvas);
+      padding: 96px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pq-glow {
+      position: absolute;
+      width: 560px;
+      height: 320px;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at center,
+        rgba(255,138,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pq-mark {
+      font-size: 96px;
+      line-height: 0.6;
+      color: var(--firefly-amber);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+      margin-bottom: 20px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .pq-text {
+      font-size: clamp(18px, 2.6vw, 26px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      max-width: 700px;
+      margin: 0 auto 22px;
+      line-height: 1.55;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pq-text strong {
+      font-weight: 700;
+      color: var(--firefly-amber-lt);
+    }
+
+    .pq-cite {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ════════════════════════════════════════
+       Final CTA
+    ════════════════════════════════════════ */
+    .cta-section {
+      background: var(--gray-100);
+      border-top: 1px solid var(--gray-200);
+      text-align: center;
+      padding: 96px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 400px;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at center,
+        rgba(255,0,0,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: var(--gray-700);
+      max-width: 420px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-cta-primary {
+      background: var(--adobe-red);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.2s var(--ease-out), box-shadow 0.2s;
+    }
+
+    .btn-cta-primary:hover {
+      background: var(--adobe-red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,0,0,0.25);
+    }
+
+    .btn-cta-secondary {
+      background: transparent;
+      color: var(--gray-900);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1.5px solid var(--gray-800);
+      transition: background 0.15s, color 0.15s, transform 0.2s var(--ease-out);
+    }
+
+    .btn-cta-secondary:hover {
+      background: var(--gray-900);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ════════════════════════════════════════
+       Footer
+    ════════════════════════════════════════ */
+    footer {
+      background: var(--canvas);
+      border-top: 1px solid var(--border-dk);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo svg { width: 26px; height: 26px; opacity: 0.5; }
+
+    footer p {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.65;
+      max-width: 680px;
+    }
+
+    /* ════════════════════════════════════════
+       Responsive
+    ════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-link { display: none; }
+      .hero { padding: 72px 16px 64px; }
+      .hero-stats { gap: 32px; }
+      .container { padding: 0 16px; }
+      .section { padding: 64px 0; }
+      .pq-section { padding: 64px 16px; }
+      .cta-section { padding: 64px 16px; }
+      footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+      .fact-banner { padding: 14px 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .scores { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════════════
+       Demo Gallery
+    ════════════════════════════════════════ */
+    .gallery-section {
+      background: var(--surface-1);
+      padding: 88px 0 72px;
+    }
+
+    .gallery-section .section-eye { color: var(--firefly-amber); }
+    .gallery-section .section-h2  { color: white; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-card-featured { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 520px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    .gallery-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border-dk);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    .gallery-card-featured {
+      border-color: rgba(255,138,0,0.4);
+    }
+
+    .gallery-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--surface-3);
+    }
+
+    .gallery-card-featured .gallery-img-wrap {
+      aspect-ratio: 16/9;
+    }
+
+    .gallery-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    .gallery-card:hover .gallery-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 35%,
+        rgba(0,0,0,0.85) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .gallery-card:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-tool-badge {
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .gallery-tool-firefly { background: var(--adobe-red); color: white; }
+    .gallery-tool-mj      { background: #2D2D2D; color: white; border: 1px solid rgba(255,255,255,0.2); }
+    .gallery-tool-dalle   { background: #10A37F; color: white; }
+
+    .gallery-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .gallery-meta-item {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .gallery-caption {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .gallery-caption strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .gallery-caption span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .gallery-label-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .gallery-footnote {
+      text-align: center;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.2);
+      margin-top: 28px;
+      font-style: italic;
+    }
+
+    /* ════════════════════════════════════════
+       Tool Logos in Table Header
+    ════════════════════════════════════════ */
+    .th-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .th-logo-ff  { background: var(--adobe-red); color: white; }
+    .th-logo-mj  { background: #1a1a1a; color: white; border: 1px solid rgba(255,255,255,0.15); }
+    .th-logo-de  { background: #10A37F; color: white; }
+    .th-logo-cv  { background: #00C4CC; color: white; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="https://adobe.com" class="nav-left" aria-label="Adobe">
+    <svg class="adobe-logo" viewBox="0 0 240 234" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M144.174 0H240L143.617 234H52.2363L144.174 0Z" fill="#FF0000"/>
+      <path d="M94.6875 0H0L96.3835 234H187.765L94.6875 0Z" fill="#FF0000"/>
+    </svg>
+    <span class="nav-wordmark">Adobe&nbsp;<strong>Firefly</strong></span>
+  </a>
+  <div class="nav-right">
+    <a href="#comparison" class="nav-link">Compare</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="https://firefly.adobe.com" class="nav-btn">Get started free</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <!-- Layered ambient glow -->
+  <div class="hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow-2" aria-hidden="true"></div>
+  <div class="hero-glow-3" aria-hidden="true"></div>
+
+  <!-- Floating particles -->
+  <div class="hero-particles" aria-hidden="true">
+    <div class="particle" style="left:8%;  width:3px; height:3px; animation-duration:9s;  animation-delay:0s;"></div>
+    <div class="particle" style="left:22%; width:2px; height:2px; animation-duration:12s; animation-delay:2s;"></div>
+    <div class="particle" style="left:38%; width:4px; height:4px; animation-duration:8s;  animation-delay:1s;"></div>
+    <div class="particle" style="left:55%; width:2px; height:2px; animation-duration:14s; animation-delay:3s;"></div>
+    <div class="particle" style="left:70%; width:3px; height:3px; animation-duration:10s; animation-delay:0.5s;"></div>
+    <div class="particle" style="left:84%; width:2px; height:2px; animation-duration:11s; animation-delay:1.5s;"></div>
+    <div class="particle" style="left:15%; width:2px; height:2px; animation-duration:13s; animation-delay:4s;"></div>
+    <div class="particle" style="left:60%; width:3px; height:3px; animation-duration:7s;  animation-delay:2.5s;"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">AI Image Generators, Compared — 2026</div>
+
+    <h1 class="hero-h1 reveal reveal-delay-1">
+      The only AI image tool<br>
+      <span class="amber">built for commercial work.</span>
+    </h1>
+
+    <p class="hero-body reveal reveal-delay-2">
+      Adobe Firefly vs. Midjourney, DALL-E&nbsp;3, and Canva AI — every feature, every price, every trade-off.
+    </p>
+
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="https://firefly.adobe.com" class="btn-red">Get started free</a>
+      <a href="#comparison" class="btn-ghost">See the comparison</a>
+    </div>
+
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="hero-stat">
+        <div class="hero-stat-value">100%</div>
+        <div class="hero-stat-label">Licensed training data</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">$0</div>
+        <div class="hero-stat-label">To get started</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">20+</div>
+        <div class="hero-stat-label">CC app integrations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">Only</div>
+        <div class="hero-stat-label">AI with IP indemnification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEMO GALLERY ── -->
+<section class="gallery-section">
+  <div class="container">
+    <p class="section-eye reveal" style="text-align:center">See the difference</p>
+    <h2 class="section-h2 reveal reveal-delay-1" style="text-align:center;color:white">Same prompt. Different tools.</h2>
+    <p class="section-sub reveal reveal-delay-2" style="text-align:center;margin:0 auto 48px;color:rgba(255,255,255,0.45)">Firefly delivers commercial-ready output — with provenance built in.</p>
+
+    <div class="gallery-grid">
+
+      <!-- Firefly card -->
+      <div class="gallery-card gallery-card-featured reveal reveal-delay-1">
+        <div class="gallery-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1686002359940-6a51b0d64c68?w=600&q=80&fit=crop"
+            alt="Adobe Firefly AI-generated image — futuristic cityscape at golden hour"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-tool-badge gallery-tool-firefly">Adobe Firefly</span>
+            <div class="gallery-meta">
+              <span class="gallery-meta-item ic-yes" style="font-size:12px">&#10003; Commercially licensed</span>
+              <span class="gallery-meta-item ic-yes" style="font-size:12px">&#10003; Content credentials</span>
+              <span class="gallery-meta-item ic-yes" style="font-size:12px">&#10003; Vector export available</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          <strong>Futuristic cityscape at golden hour</strong>
+          <span>Prompt: "a glowing amber city at dusk, cinematic, wide angle"</span>
+          <div class="gallery-label-row">
+            <span class="tag tag-green">Safe to use commercially</span>
+            <span class="tag tag-green">CAI certified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Midjourney card -->
+      <div class="gallery-card reveal reveal-delay-2">
+        <div class="gallery-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1731706880734-bc20cbb7a59f?w=600&q=80&fit=crop"
+            alt="Midjourney-style AI image — abstract neon architecture"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-tool-badge gallery-tool-mj">Midjourney</span>
+            <div class="gallery-meta">
+              <span class="gallery-meta-item ic-no" style="font-size:12px">&#10007; No IP indemnification</span>
+              <span class="gallery-meta-item ic-no" style="font-size:12px">&#10007; Scraped training data</span>
+              <span class="gallery-meta-item ic-no" style="font-size:12px">&#10007; No CC integration</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          <strong>High artistic quality</strong>
+          <span>Visually striking — but not safe for paid client work</span>
+          <div class="gallery-label-row">
+            <span class="tag tag-red">IP risk unresolved</span>
+            <span class="tag tag-gray">No free tier</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DALL-E card -->
+      <div class="gallery-card reveal reveal-delay-3">
+        <div class="gallery-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1686178258568-5b8e8e9f9b3e?w=600&q=80&fit=crop&auto=format"
+            alt="DALL-E 3 style image — surreal abstract scene"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&q=80&fit=crop'"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-tool-badge gallery-tool-dalle">DALL-E 3</span>
+            <div class="gallery-meta">
+              <span class="gallery-meta-item ic-part" style="font-size:12px">&#9651; Partial commercial safety</span>
+              <span class="gallery-meta-item ic-no" style="font-size:12px">&#10007; Requires $20/mo ChatGPT</span>
+              <span class="gallery-meta-item ic-no" style="font-size:12px">&#10007; No CC integration</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-caption">
+          <strong>Good prompt accuracy</strong>
+          <span>Strong text-in-image, but expensive and siloed from design tools</span>
+          <div class="gallery-label-row">
+            <span class="tag tag-amber">$20/mo to access</span>
+            <span class="tag tag-gray">Standalone only</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="gallery-footnote reveal">
+      Images above are illustrative Unsplash photos. Real Firefly outputs are generated from your prompts, with full commercial clearance.
+    </p>
+  </div>
+</section>
+
+<!-- ── FACT BANNER ── -->
+<div class="fact-banner">
+  <div class="fact-inner">
+    <div class="fact-dot"></div>
+    <p class="fact-text">
+      <strong>Firefly is the only tool on this list</strong> trained exclusively on licensed content —
+      the only safe choice for commercial client work.
+    </p>
+  </div>
+</div>
+
+<!-- ── COMPARISON TABLE ── -->
+<section class="section" id="comparison">
+  <div class="container">
+    <p class="section-eye reveal">Side by side</p>
+    <h2 class="section-h2 reveal reveal-delay-1">Feature comparison</h2>
+    <p class="section-sub reveal reveal-delay-2">Every capability that matters for professional use, compared honestly.</p>
+
+    <div class="table-wrap reveal reveal-delay-3">
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="ff">
+              <div class="th-inner">
+                <span class="th-logo th-logo-ff">A</span>
+                Adobe Firefly
+                <span class="th-badge">Recommended</span>
+              </div>
+            </th>
+            <th>
+              <div class="th-inner">
+                <span class="th-logo th-logo-mj">M</span>
+                Midjourney
+              </div>
+            </th>
+            <th>
+              <div class="th-inner">
+                <span class="th-logo th-logo-de">D</span>
+                DALL-E&nbsp;3
+              </div>
+            </th>
+            <th>
+              <div class="th-inner">
+                <span class="th-logo th-logo-cv">C</span>
+                Canva AI
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Commercially safe training data</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Licensed only</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;Scraped web</td>
+            <td><span class="ic-part">&#9651;&nbsp;Partial</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Partial</span></td>
+          </tr>
+          <tr>
+            <td>IP indemnification</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Enterprise plan</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;None</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;None</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;None</td>
+          </tr>
+          <tr>
+            <td>Works inside Creative Cloud</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Ps, Ai, Pr &amp; more</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;Standalone only</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;Standalone only</td>
+            <td><span class="ic-part">&#9651;&nbsp;Canva only</span></td>
+          </tr>
+          <tr>
+            <td>Vector output (SVG)</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Generative Fill in Photoshop</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Native</td>
+            <td><span class="ic-part">&#9651;&nbsp;Limited</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Via ChatGPT</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Basic</span></td>
+          </tr>
+          <tr>
+            <td>Text effects generation</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Limited</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Basic</span></td>
+          </tr>
+          <tr>
+            <td>Content credentials (CAI)</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Automatic</td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Custom brand models</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Enterprise</td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Free tier</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;25 credits/mo</td>
+            <td><span class="ic-no">&#10007;</span>&nbsp;None</td>
+            <td><span class="ic-part">&#9651;&nbsp;Via ChatGPT Free</span></td>
+            <td><span class="ic-yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Starting price (paid)</td>
+            <td class="ff"><span class="tag tag-green">$9.99&thinsp;/&thinsp;mo</span></td>
+            <td><span class="tag tag-amber">$10&thinsp;/&thinsp;mo</span></td>
+            <td><span class="tag tag-red">$20&thinsp;/&thinsp;mo</span></td>
+            <td><span class="tag tag-amber">$12.99&thinsp;/&thinsp;mo</span></td>
+          </tr>
+          <tr>
+            <td>Enterprise &amp; SSO</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;Full suite</td>
+            <td><span class="ic-part">&#9651;&nbsp;Team plan</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-part">&#9651;&nbsp;Teams plan</span></td>
+          </tr>
+          <tr>
+            <td>Included in Creative Cloud</td>
+            <td class="ff"><span class="ic-yes">&#10003;</span>&nbsp;At no extra cost</td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+            <td><span class="ic-no">&#10007;</span></td>
+          </tr>
+          <tr>
+            <td>Image quality</td>
+            <td class="ff"><span class="tag tag-green">Excellent</span></td>
+            <td><span class="tag tag-green">Best artistic</span></td>
+            <td><span class="tag tag-amber">Very good</span></td>
+            <td><span class="tag tag-gray">Good</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCORES ── -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="section-eye reveal">Overall rating</p>
+    <h2 class="section-h2 reveal reveal-delay-1">How each tool scores</h2>
+    <p class="section-sub reveal reveal-delay-2">Rated across commercial safety, output quality, workflow integration, and value for professional use.</p>
+
+    <div class="scores">
+      <div class="score-card winner reveal reveal-delay-1">
+        <div class="winner-ribbon">Top Pick</div>
+        <p class="sc-label">Adobe Firefly</p>
+        <p class="sc-score" data-score="94">0</p>
+        <div class="sc-track"><div class="sc-fill red" data-width="94"></div></div>
+        <p class="sc-desc">Best for commercial and professional work. IP indemnification, CC integration, and vector output in one tool.</p>
+      </div>
+      <div class="score-card reveal reveal-delay-2">
+        <p class="sc-label">Midjourney</p>
+        <p class="sc-score" data-score="81">0</p>
+        <div class="sc-track"><div class="sc-fill gray" data-width="81"></div></div>
+        <p class="sc-desc">Highest artistic quality on the market. No free tier, no workflow integration, no commercial safety guarantee.</p>
+      </div>
+      <div class="score-card reveal reveal-delay-3">
+        <p class="sc-label">DALL-E&nbsp;3</p>
+        <p class="sc-score" data-score="75">0</p>
+        <div class="sc-track"><div class="sc-fill gray" data-width="75"></div></div>
+        <p class="sc-desc">Strong prompt accuracy and text-in-image. Requires a $20/mo ChatGPT subscription to access.</p>
+      </div>
+      <div class="score-card reveal reveal-delay-4">
+        <p class="sc-label">Canva AI</p>
+        <p class="sc-score" data-score="68">0</p>
+        <div class="sc-track"><div class="sc-fill gray" data-width="68"></div></div>
+        <p class="sc-desc">Easy for non-designers. Significantly limited for professional and client-facing creative workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CAPABILITIES ── -->
+<section class="section">
+  <div class="container">
+    <p class="section-eye reveal">What sets it apart</p>
+    <h2 class="section-h2 reveal reveal-delay-1">Why designers and teams choose Firefly</h2>
+    <p class="section-sub reveal reveal-delay-2">Six capabilities no other tool on this list offers in the same package.</p>
+
+    <div class="cap-grid">
+      <div class="cap-card reveal reveal-delay-1">
+        <div class="cap-icon">&#128274;</div>
+        <p class="cap-title">Safe for commercial work</p>
+        <p class="cap-body">Trained exclusively on Adobe Stock licensed imagery and public domain content. No other tool on this list offers that guarantee — or the IP indemnification that comes with it.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-2">
+        <div class="cap-icon">&#9881;&#65039;</div>
+        <p class="cap-title">It lives inside your tools</p>
+        <p class="cap-body">Generative Fill in Photoshop. Text Effects in Illustrator. Generate in Premiere Pro. Firefly works where your workflow already lives — no switching tabs, no exporting flat files.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-3">
+        <div class="cap-icon">&#128196;</div>
+        <p class="cap-title">Content credentials, automatically</p>
+        <p class="cap-body">Every output is tagged with the Content Authenticity Initiative standard. Clients, publishers, and regulators increasingly require provenance metadata. Firefly has it built in.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-4">
+        <div class="cap-icon">&#127981;</div>
+        <p class="cap-title">Enterprise-ready from day one</p>
+        <p class="cap-body">Custom AI models trained on your brand assets. Org-level access controls, SSO, and admin dashboards. Midjourney and DALL-E 3 offer none of these.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-5">
+        <div class="cap-icon">&#128640;</div>
+        <p class="cap-title">Vector output — not just raster</p>
+        <p class="cap-body">The only AI image tool that generates production-ready SVG files. Logos, icons, scalable design assets — with no pixelation at any size.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-6">
+        <div class="cap-icon">&#128176;</div>
+        <p class="cap-title">Already included in Creative Cloud</p>
+        <p class="cap-body">If you're already on Creative Cloud, Firefly credits are included. The most commercially safe AI image generator in the world — at no additional cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section section-dark" id="pricing">
+  <div class="container">
+    <p class="section-eye reveal">Pricing</p>
+    <h2 class="section-h2 reveal reveal-delay-1">What you actually pay</h2>
+    <p class="section-sub reveal reveal-delay-2">Firefly is the most affordable professional option — and the only one included in Creative Cloud.</p>
+
+    <div class="pricing-grid">
+      <div class="p-card featured reveal reveal-delay-1">
+        <div class="p-badge">Best value</div>
+        <p class="p-name">Adobe Firefly</p>
+        <p class="p-price">Free</p>
+        <p class="p-per">25 credits per month &mdash; no card required</p>
+        <p class="p-note">
+          $9.99&thinsp;/&thinsp;mo Standard &nbsp;&bull;&nbsp; $19.99&thinsp;/&thinsp;mo Pro<br>
+          <strong style="color:rgba(255,194,68,0.75)">Included</strong> with Creative Cloud at no extra cost
+        </p>
+      </div>
+      <div class="p-card reveal reveal-delay-2">
+        <p class="p-name">Midjourney</p>
+        <p class="p-price">$10</p>
+        <p class="p-per">Basic plan &mdash; limited generations</p>
+        <p class="p-note">$30–$120&thinsp;/&thinsp;mo for professional use<br>No free tier available</p>
+      </div>
+      <div class="p-card reveal reveal-delay-3">
+        <p class="p-name">DALL-E&nbsp;3</p>
+        <p class="p-price">$20</p>
+        <p class="p-per">Requires ChatGPT Plus</p>
+        <p class="p-note">Highest entry cost on this list<br>No standalone plan</p>
+      </div>
+      <div class="p-card reveal reveal-delay-4">
+        <p class="p-name">Canva AI</p>
+        <p class="p-price">$13</p>
+        <p class="p-per">Canva Pro &mdash; includes all AI tools</p>
+        <p class="p-note">Good value for non-designers<br>Limited for professional workflows</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PULL QUOTE ── -->
+<section class="pq-section">
+  <div class="pq-glow" aria-hidden="true"></div>
+  <div class="container">
+    <span class="pq-mark reveal" aria-hidden="true">&ldquo;</span>
+    <p class="pq-text reveal reveal-delay-1">
+      For paid client work,
+      <strong>Firefly is the only tool that won't expose you to IP liability.</strong>
+      That's not a feature — it's the entire argument.
+    </p>
+    <p class="pq-cite reveal reveal-delay-2">
+      Synthesized from independent reviews — ComputerTech, AIML API, Revoyant, 2026
+    </p>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-h2 reveal">Create without compromise.</h2>
+    <p class="cta-sub reveal reveal-delay-1">
+      Start free with 25 credits a month. No credit card.<br>Available inside Creative Cloud today.
+    </p>
+    <div class="cta-btns reveal reveal-delay-2">
+      <a href="https://firefly.adobe.com" class="btn-cta-primary">Get started for free</a>
+      <a href="https://www.adobe.com/creativecloud.html" class="btn-cta-secondary">Explore Creative Cloud</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="https://adobe.com" class="footer-logo" aria-label="Adobe">
+    <svg viewBox="0 0 240 234" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M144.174 0H240L143.617 234H52.2363L144.174 0Z" fill="#FF0000"/>
+      <path d="M94.6875 0H0L96.3835 234H187.765L94.6875 0Z" fill="#FF0000"/>
+    </svg>
+  </a>
+  <p>
+    &copy; 2026 Adobe Inc. All rights reserved.&ensp;&bull;&ensp;
+    Competitor data sourced from publicly available pricing pages and independent editorial reviews, April 2026.
+    Scores are editorial assessments and are not endorsed by the compared companies.
+  </p>
+</footer>
+
+<!-- ════════════════════════════════════════
+     JavaScript: Intersection Observer
+     - Scroll-reveal for .reveal elements
+     - Animated score counters
+     - Animated progress bars
+════════════════════════════════════════ -->
+<script>
+  // ── Scroll Reveal ──────────────────────────
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Score Counter + Bar Animator ───────────
+  const scoreObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const card = entry.target;
+
+        // Animate number counter
+        const scoreEl = card.querySelector('[data-score]');
+        if (scoreEl) {
+          const target = parseInt(scoreEl.dataset.score, 10);
+          const duration = 1200;
+          const start = performance.now();
+
+          const tick = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            scoreEl.textContent = Math.round(eased * target);
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+
+          requestAnimationFrame(tick);
+        }
+
+        // Animate progress bar
+        const fill = card.querySelector('[data-width]');
+        if (fill) {
+          setTimeout(() => {
+            fill.style.width = fill.dataset.width + '%';
+          }, 100);
+        }
+
+        scoreObserver.unobserve(card);
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll('.score-card').forEach(el => scoreObserver.observe(el));
+
+  // ── Hero reveal on load ────────────────────
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  });
+</script>
+
+</body>
+</html>

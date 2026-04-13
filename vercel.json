@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": "docs",
+  "framework": null,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/firefly-comparison-page.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
