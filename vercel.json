@@ -13,6 +13,10 @@
       "dest": "/firefly-comparison-page.html"
     },
     {
+      "src": "/remove-background",
+      "dest": "/remove-background-acquisition-playbook.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

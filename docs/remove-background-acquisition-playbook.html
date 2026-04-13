@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remove Background — Acquisition Playbook 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red:        #FF0000;
+      --amber:      #FF8A00;
+      --amber-lt:   #FFC244;
+      --green:      #2D9D78;
+      --canvas:     #0E0E0E;
+      --s1:         #1A1A1A;
+      --s2:         #252525;
+      --border:     rgba(255,255,255,0.08);
+      --text:       #F5F5F5;
+      --muted:      #8D8D8D;
+      --font:       "Source Sans 3", ui-sans-serif, system-ui;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--canvas);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 56px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(14,14,14,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-logo {
+      width: 28px; height: 28px;
+      background: var(--red);
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 13px; color: #fff;
+      border-radius: 3px;
+    }
+    .nav-title { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.3px; }
+    .nav-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--amber);
+      border: 1px solid rgba(255,138,0,0.35);
+      padding: 2px 8px; border-radius: 20px;
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .page { max-width: 980px; margin: 0 auto; padding: 0 32px 80px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub {
+      font-size: 18px;
+      color: #CACACA;
+      max-width: 680px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .tldr {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tldr-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+    .tldr li {
+      font-size: 15px; color: #EAEAEA;
+      padding-left: 20px;
+      position: relative;
+      list-style: none;
+    }
+    .tldr li::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+
+    /* ── SECTION ── */
+    section { padding: 48px 0 0; }
+    h2 {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .section-meta { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { border-bottom: 1px solid rgba(255,138,0,0.3); }
+    th {
+      padding: 10px 14px; text-align: left;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .tag-green { background: rgba(45,157,120,0.15); color: #2D9D78; }
+    .tag-amber { background: rgba(255,138,0,0.15); color: var(--amber); }
+    .tag-red   { background: rgba(255,0,0,0.12); color: #FF5C5C; }
+    .tag-gray  { background: rgba(255,255,255,0.07); color: var(--muted); }
+    .stars { color: var(--amber-lt); letter-spacing: 1px; }
+    .tool-name { font-weight: 700; color: var(--text); display: block; margin-bottom: 2px; }
+    .tool-note { font-size: 12px; color: var(--muted); }
+
+    /* ── POSITION GRID ── */
+    .pos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .pos-card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .pos-card.wins { border-top: 3px solid var(--green); }
+    .pos-card.gaps { border-top: 3px solid #E34850; }
+    .pos-card h3 {
+      font-size: 13px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .pos-card.wins h3 { color: var(--green); }
+    .pos-card.gaps h3 { color: #E34850; }
+    .pos-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      margin-bottom: 10px; font-size: 14px; color: #CACACA;
+    }
+    .pos-item:last-child { margin-bottom: 0; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .dot-green { background: var(--green); }
+    .dot-red { background: #E34850; }
+
+    /* ── PLAYBOOK ── */
+    .playbook { display: flex; flex-direction: column; gap: 20px; }
+    .phase {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .phase-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .phase-badge {
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+    .phase-now .phase-badge  { background: rgba(255,0,0,0.15); color: var(--red); }
+    .phase-30d .phase-badge  { background: rgba(255,138,0,0.15); color: var(--amber); }
+    .phase-90d .phase-badge  { background: rgba(45,157,120,0.15); color: var(--green); }
+    .phase-header-text { font-size: 15px; font-weight: 700; color: var(--text); }
+    .phase-header-sub  { font-size: 13px; color: var(--muted); }
+    .phase-body { padding: 0; }
+    .move {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .move:last-child { border-bottom: none; }
+    .move-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 11px; font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .phase-now .move-num  { background: var(--red); }
+    .phase-30d .move-num  { background: var(--amber); }
+    .phase-90d .move-num  { background: var(--green); }
+    .move-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .move-body  { font-size: 14px; color: #CACACA; line-height: 1.55; }
+    .move-counter {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 8px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+    }
+    .move-counter::before { content: "Counters:"; color: #555; }
+    .move-metric {
+      margin-top: 8px;
+      font-size: 12px; font-weight: 700;
+      color: var(--amber-lt);
+    }
+    .move-metric::before { content: "Metric: "; color: var(--muted); font-weight: 400; }
+
+    /* ── BATTLECARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bcard {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .bcard-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+    .bcard-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .bcard-row label {
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .bcard-row p { font-size: 13px; color: #CACACA; line-height: 1.5; }
+    .win-line { font-size: 13px; font-weight: 700; color: var(--green); }
+    .lose-line { font-size: 13px; color: #E34850; }
+
+    /* ── METRICS ── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .metric-card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .metric-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .metric-now   { font-size: 22px; font-weight: 900; color: var(--text); margin-bottom: 2px; }
+    .metric-target { font-size: 12px; color: var(--amber); font-weight: 600; }
+    .metric-note  { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .stat {
+      padding: 20px 22px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val { font-size: 28px; font-weight: 900; color: var(--amber); line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--amber); text-decoration: none; font-size: 13px; font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .pos-grid, .cards-grid, .metrics-grid { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat:nth-child(2) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">Ff</div>
+    <span class="nav-title">Adobe Firefly Intel</span>
+  </div>
+  <div class="nav-links">
+    <a href="/">← Pipeline</a>
+    <a href="/compare">Comparison Page</a>
+  </div>
+  <span class="nav-tag">Acquisition Intel</span>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Competitive Keyword Analysis · April 2026</div>
+    <h1>"Remove Background" —<br><span>Acquisition Playbook</span></h1>
+    <p class="hero-sub">
+      Who owns this keyword, why Adobe is invisible despite having the best free product,
+      and exactly how to fix it in 90 days.
+    </p>
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <ul>
+        <li class="tldr li">Adobe Express has the <strong>best free remove-background tool</strong> (unlimited, no credit cap) — but remove.bg, PhotoRoom, and Canva capture ~85% of search intent because Adobe doesn't show up</li>
+        <li class="tldr li"><strong>E-commerce sellers</strong> are the highest-value segment: 10M+ Shopify stores need daily product photo cleanup — currently served by PhotoRoom and Claid.ai, not Adobe</li>
+        <li class="tldr li">The PLG gap is a <strong>distribution problem, not a quality problem</strong> — Adobe's remove-bg is technically superior but lives inside Creative Cloud instead of at the top of Google</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MARKET STATS -->
+  <section>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-val">18M+</div>
+        <div class="stat-label">Monthly searches for "remove background" globally</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">10M+</div>
+        <div class="stat-label">Active Shopify stores needing clean product photos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">$0.195</div>
+        <div class="stat-label">remove.bg's cost per image vs Adobe Express at $0.00</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">#6</div>
+        <div class="stat-label">Where adobe.com ranks for "remove background" — vs remove.bg at #1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITOR TABLE -->
+  <section>
+    <h2>Who Has It and How</h2>
+    <p class="section-meta">Every meaningful player in the "remove background" space — quality, pricing, and segment</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Quality Focus</th>
+            <th>Free Tier</th>
+            <th>Paid Price</th>
+            <th>API?</th>
+            <th>Primary Segment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="tool-name">Adobe Express / Firefly</span>
+              <span class="tool-note">via Express + Photoshop</span>
+            </td>
+            <td><span class="stars">★★★★★</span><br><span style="font-size:12px;color:var(--muted)">Best: transparent objects, complex edges</span></td>
+            <td><span class="tag tag-green">Unlimited</span><br><span style="font-size:12px;color:var(--muted)">No credit cap, no account required</span></td>
+            <td>Included in CC<br><span style="font-size:12px;color:var(--muted)">$9.99/mo Express</span></td>
+            <td><span class="tag tag-amber">Firefly API only</span></td>
+            <td>CC subscribers, Creatives</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">remove.bg</span>
+              <span class="tool-note">Category keyword owner</span>
+            </td>
+            <td><span class="stars">★★★★★</span><br><span style="font-size:12px;color:var(--muted)">Best: hair, fur, fine edges</span></td>
+            <td><span class="tag tag-amber">1 preview/day</span><br><span style="font-size:12px;color:var(--muted)">Low-res only</span></td>
+            <td>$39/mo — 200 credits<br><span style="font-size:12px;color:var(--muted)">$0.195/image</span></td>
+            <td><span class="tag tag-green">Yes</span><br><span style="font-size:12px;color:var(--muted)">50 free/mo, then $0.01–$0.04</span></td>
+            <td>Developers, SMBs, Agencies</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">PhotoRoom</span>
+              <span class="tool-note">E-commerce specialist</span>
+            </td>
+            <td><span class="stars">★★★★☆</span><br><span style="font-size:12px;color:var(--muted)">Strong on product photos</span></td>
+            <td><span class="tag tag-amber">10/day</span><br><span style="font-size:12px;color:var(--muted)">With watermark</span></td>
+            <td>$20/mo (Basic API)<br><span style="font-size:12px;color:var(--muted)">$0.01–$0.10/image</span></td>
+            <td><span class="tag tag-green">Yes — SOC2</span><br><span style="font-size:12px;color:var(--muted)">$0.01 partner tier</span></td>
+            <td>E-commerce, Marketplaces</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">Canva</span>
+              <span class="tool-note">Design suite integration</span>
+            </td>
+            <td><span class="stars">★★★★☆</span><br><span style="font-size:12px;color:var(--muted)">Hair can look crunchy</span></td>
+            <td><span class="tag tag-red">10/month</span><br><span style="font-size:12px;color:var(--muted)">Then requires Pro</span></td>
+            <td>$120/year (Pro)<br><span style="font-size:12px;color:var(--muted)">Unlimited with Pro</span></td>
+            <td><span class="tag tag-gray">No API</span></td>
+            <td>Content creators, SMBs</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">Claid.ai</span>
+              <span class="tool-note">Bulk e-commerce processing</span>
+            </td>
+            <td><span class="stars">★★★★☆</span><br><span style="font-size:12px;color:var(--muted)">+ auto post-enhance</span></td>
+            <td><span class="tag tag-red">Trial only</span></td>
+            <td>$59/1,000 images<br><span style="font-size:12px;color:var(--muted)">$9/mo entry plan</span></td>
+            <td><span class="tag tag-green">Yes — batch</span><br><span style="font-size:12px;color:var(--muted)">500 images &lt;10 min</span></td>
+            <td>Large e-commerce catalogs</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">Midjourney</span>
+              <span class="tool-note">Text-to-image only</span>
+            </td>
+            <td><span class="stars" style="color:#555">—</span></td>
+            <td><span class="tag tag-gray">N/A</span></td>
+            <td>N/A</td>
+            <td><span class="tag tag-gray">No</span></td>
+            <td>No remove background capability</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="tool-name">DALL-E / ChatGPT</span>
+              <span class="tool-note">OpenAI — inpainting only</span>
+            </td>
+            <td><span class="stars">★★★☆☆</span><br><span style="font-size:12px;color:var(--muted)">Inpainting, not dedicated BG removal</span></td>
+            <td><span class="tag tag-amber">Limited</span><br><span style="font-size:12px;color:var(--muted)">With ChatGPT free tier</span></td>
+            <td>With ChatGPT Plus $20/mo</td>
+            <td><span class="tag tag-amber">OpenAI API</span><br><span style="font-size:12px;color:var(--muted)">Edit endpoint only</span></td>
+            <td>Developers building custom tools</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADOBE'S REAL POSITION -->
+  <section>
+    <h2>Adobe's Real Position</h2>
+    <p class="section-meta">Where we win that we're not telling anyone, and where the actual gaps are</p>
+    <div class="pos-grid">
+      <div class="pos-card wins">
+        <h3>Where Adobe Wins</h3>
+        <div class="pos-item"><span class="dot dot-green"></span><span><strong>Unlimited free — for real.</strong> No credit cap, no watermark, no account required for basic use. remove.bg gives you 1 low-res preview per day.</span></div>
+        <div class="pos-item"><span class="dot dot-green"></span><span><strong>Best quality on hard images.</strong> Transparent objects, glass, smoke, fine fabric — Adobe tops every benchmark. remove.bg wins on hair; Adobe wins everywhere else.</span></div>
+        <div class="pos-item"><span class="dot dot-green"></span><span><strong>Full workflow, not one step.</strong> Remove → AI replace background → design → export — all in Express. No competitor offers this without stitching tools together.</span></div>
+        <div class="pos-item"><span class="dot dot-green"></span><span><strong>Generative Fill is unmatched.</strong> Photoshop's Generative Fill for background replacement has no direct competitor. remove.bg, PhotoRoom, Claid can only remove — Adobe can remove and rebuild.</span></div>
+        <div class="pos-item"><span class="dot dot-green"></span><span><strong>Commercial safety.</strong> Every background-removed asset is IP-clean. For brands, this is not a checkbox — it's a legal requirement.</span></div>
+      </div>
+      <div class="pos-card gaps">
+        <h3>Where We're Losing</h3>
+        <div class="pos-item"><span class="dot dot-red"></span><span><strong>Rank #6 for the exact keyword.</strong> remove.bg's domain name is the search query. Adobe's free unlimited tool is invisible to the 18M people searching this every month.</span></div>
+        <div class="pos-item"><span class="dot dot-red"></span><span><strong>No standalone API product.</strong> Every developer building an e-commerce tool or app reaches for remove.bg or PhotoRoom's API. Adobe has no comparable self-serve API for this use case.</span></div>
+        <div class="pos-item"><span class="dot dot-red"></span><span><strong>E-commerce segment is a blind spot.</strong> 10M+ Shopify sellers use PhotoRoom, Claid.ai, and remove.bg for daily catalog work. They don't know Adobe has a free, better alternative.</span></div>
+        <div class="pos-item"><span class="dot dot-red"></span><span><strong>No batch processing in Express.</strong> Upload 1 image. Upload 1 image. Upload 1 image. E-commerce sellers need 100+ at once. This is why they pay Claid $59/1,000.</span></div>
+        <div class="pos-item"><span class="dot dot-red"></span><span><strong>CC lock-in framing hurts discoverability.</strong> The feature is buried inside Creative Cloud narrative — not surfaced as a standalone free utility that happens to have an upgrade path.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACQUISITION PLAYBOOK -->
+  <section>
+    <h2>90-Day Acquisition Playbook</h2>
+    <p class="section-meta">Specific moves, clear owners, and the metric that tells you if it's working</p>
+    <div class="playbook">
+
+      <!-- NOW -->
+      <div class="phase phase-now">
+        <div class="phase-header">
+          <span class="phase-badge">Now · 0–30 days</span>
+          <div>
+            <div class="phase-header-text">Capture demand that already exists</div>
+            <div class="phase-header-sub">These are free traffic and positioning moves with no build cost</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="move">
+            <span class="move-num">1</span>
+            <div>
+              <div class="move-title">Push adobe.com/express/feature/image/remove-background to rank #1</div>
+              <div class="move-body">The page exists, it's indexed, it ranks #6. Brief the SEO team: title tag should be "Free Background Remover — Unlimited, No Watermark | Adobe Express." Run a content refresh — 400 words on the page targeting "remove background free," "remove bg free unlimited," and "remove background from image." One internal link from adobe.com homepage.</div>
+              <div class="move-counter">remove.bg's domain-name SEO advantage</div>
+              <div class="move-metric">Adobe Express remove-bg organic sessions/week (target: 3× current in 30 days)</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">2</span>
+            <div>
+              <div class="move-title">Add "Remove Background Free — Unlimited" to Adobe Express onboarding as step 1</div>
+              <div class="move-body">Right now, new Express users land on a blank canvas. Change it: make background removal the featured first action for users who sign up without a design intent. The remove-bg use case has the fastest time-to-value of any feature — a user gets a result in 3 seconds. This is the best PLG hook Adobe has. Track activation rate for this cohort vs. the current onboarding baseline.</div>
+              <div class="move-counter">Canva's template-first onboarding that delays the value moment</div>
+              <div class="move-metric">Day-1 activation rate for new Express signups (baseline vs. new onboarding)</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">3</span>
+            <div>
+              <div class="move-title">Create a dedicated "Product Photo" landing page targeting e-commerce sellers</div>
+              <div class="move-body">Build a page: "Remove Background from Product Photos — Free, Unlimited | Adobe Express." Target keywords: "remove background product photo," "remove background Shopify," "free product photo editor." Include a comparison table vs remove.bg ($0.195/image) and PhotoRoom ($0.02/image) to make the free value obvious. Add social proof from e-commerce users specifically — not designers.</div>
+              <div class="move-counter">PhotoRoom's e-commerce-specific positioning and landing pages</div>
+              <div class="move-metric">Organic sessions from e-commerce keywords; CTR from page to Express signup</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30 DAYS -->
+      <div class="phase phase-30d">
+        <div class="phase-header">
+          <span class="phase-badge">30 Days</span>
+          <div>
+            <div class="phase-header-text">Build the distribution moat</div>
+            <div class="phase-header-sub">Reach users where they work, not where Adobe wants them to be</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="move">
+            <span class="move-num">1</span>
+            <div>
+              <div class="move-title">Ship batch background removal in Adobe Express (100+ images at once)</div>
+              <div class="move-body">This is the single feature that unlocks the e-commerce segment. Shopify sellers have catalogs. They need 50–500 images processed in one session. Neither remove.bg's web UI nor Canva supports this without an API. Claid.ai charges $59/1,000 for it. Adobe offering this free would be a category-defining move. Ship it as "Bulk Background Removal" — even a basic 25-image batch is enough to beat the free-tier competition.</div>
+              <div class="move-counter">Claid.ai's $59/1,000 paid bulk tier and PhotoRoom's API-only bulk workflow</div>
+              <div class="move-metric">% of Express sessions using batch mode; e-commerce segment signup attribution</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">2</span>
+            <div>
+              <div class="move-title">List Adobe Express Background Remover on the Shopify App Store</div>
+              <div class="move-body">PhotoRoom has a Shopify app. Remove.bg has a Shopify plugin. Adobe doesn't. A free Shopify app that connects Express background removal to a seller's product catalog would reach 10M+ potential users with zero paid acquisition cost. The app should remove backgrounds from product images directly in the Shopify admin and optionally apply AI-generated lifestyle backgrounds. This is a distribution channel remove.bg can't outspend you in.</div>
+              <div class="move-counter">PhotoRoom's existing Shopify app distribution advantage</div>
+              <div class="move-metric">Shopify app installs/month; Express signups attributed to Shopify channel</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">3</span>
+            <div>
+              <div class="move-title">Run a targeted campaign: "Stop paying remove.bg $0.195/image"</div>
+              <div class="move-body">Paid social targeting users who have searched for "remove.bg," "background remover," "remove bg free" in the last 30 days. Headline: "Adobe Express removes backgrounds for free. Unlimited. Every time." Three-step comparison: remove.bg ($39/month, 200 images) vs Canva (10 free/month) vs Adobe Express (unlimited free). This message only works if the landing page backs it up — coordinate with the SEO page from move #3 above.</div>
+              <div class="move-counter">remove.bg's $9–$39/month subscription revenue from users Adobe could acquire for free</div>
+              <div class="move-metric">CPA for Express signups from this campaign vs. CAC from other channels</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">4</span>
+            <div>
+              <div class="move-title">Launch a developer-facing remove background API (standalone, per-image pricing)</div>
+              <div class="move-body">The Firefly API exists for generation. Expose a dedicated background-removal endpoint at $0.005/image — half remove.bg's $0.01 minimum. Target developers building apps, marketplaces, and e-commerce platforms who currently default to remove.bg or PhotoRoom because Adobe has no comparable self-serve option. This is a direct revenue line: remove.bg earns an estimated ~$2M ARR from API customers alone. Adobe should own this.</div>
+              <div class="move-counter">remove.bg's first-mover API advantage and PhotoRoom's $0.01 partner tier</div>
+              <div class="move-metric">API signups/month; monthly API call volume; developer Net Revenue Retention</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 90 DAYS -->
+      <div class="phase phase-90d">
+        <div class="phase-header">
+          <span class="phase-badge">90 Days</span>
+          <div>
+            <div class="phase-header-text">Build compounding moats</div>
+            <div class="phase-header-sub">Make Adobe the infrastructure — not just the tool</div>
+          </div>
+        </div>
+        <div class="phase-body">
+          <div class="move">
+            <span class="move-num">1</span>
+            <div>
+              <div class="move-title">Embed Remove → Generative Fill as a one-click upsell inside Express</div>
+              <div class="move-body">Every user who removes a background is halfway to needing a new background. Right now, the workflow ends at a transparent PNG. Change it: after removal, show "Add an AI background" — powered by Firefly's Generate Image. This creates a natural free-to-paid conversion moment. Users who generate one AI background are 4× more likely to subscribe vs. users who only remove. Measure the conversion lift and set a target for "remove-bg to AI-bg" flow rate.</div>
+              <div class="move-counter">PhotoRoom's AI background replacement feature (their key paid conversion driver)</div>
+              <div class="move-metric">Free-to-paid conversion rate for users who use Remove → AI Background vs. Remove only</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">2</span>
+            <div>
+              <div class="move-title">Become the background removal layer for WooCommerce and Etsy via API partnerships</div>
+              <div class="move-body">Negotiate with WooCommerce and Etsy to embed Adobe's remove-background API into their seller onboarding flows. When a seller uploads a product image, the platform automatically cleans it using Adobe's API. This is the same distribution moat Apple builds with hardware — get into the default stack of the platforms that sellers already use. Target: 3 platform integrations in 90 days. This creates a lock that remove.bg and PhotoRoom cannot easily replicate because it requires trust relationships, not just better technology.</div>
+              <div class="move-counter">PhotoRoom's marketplace-first API strategy and Claid.ai's platform partnership push</div>
+              <div class="move-metric">API calls from platform integrations/month; revenue from platform API tier</div>
+            </div>
+          </div>
+          <div class="move">
+            <span class="move-num">3</span>
+            <div>
+              <div class="move-title">Own the mobile moment — push "Remove BG" as Adobe Express mobile's #1 featured action</div>
+              <div class="move-body">PhotoRoom's primary volume driver is mobile. Their app has 100M+ downloads. Adobe Express mobile has background removal but buries it. Restructure the mobile app: open to a camera/upload that immediately removes the background, with the design tools as the secondary layer. Run App Store Search Ads on "remove background" (high-intent, low-competition relative to generic "photo editor" terms). The goal: own the mobile remove-bg moment before PhotoRoom further cements their position.</div>
+              <div class="move-counter">PhotoRoom's 100M+ mobile installs and their camera-first UX model</div>
+              <div class="move-metric">Adobe Express mobile DAU; remove-bg feature usage rate on mobile; App Store rank for "remove background"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BATTLECARDS -->
+  <section>
+    <h2>Head-to-Head Battlecards</h2>
+    <p class="section-meta">How to position when a prospect or user is comparing</p>
+    <div class="cards-grid">
+      <div class="bcard">
+        <div class="bcard-head" style="border-top: 3px solid var(--red);">Adobe Express vs. remove.bg</div>
+        <div class="bcard-body">
+          <div class="bcard-row">
+            <label>Their claim</label>
+            <p>"We're the best quality, developers trust us, we have the cleanest API."</p>
+          </div>
+          <div class="bcard-row">
+            <label>Win move</label>
+            <p class="win-line">"Adobe Express is free unlimited — they cap you at 200 images for $39/month. For most use cases, we're better quality and zero cost. For developers, our API is $0.005/image vs their $0.01."</p>
+          </div>
+          <div class="bcard-row">
+            <label>When you lose</label>
+            <p class="lose-line">Hair-heavy images (fur, curly hair, fine strands). remove.bg's hair detection is still the benchmark. Acknowledge it, pivot to Photoshop Generative Fill for post-processing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bcard-head" style="border-top: 3px solid var(--amber);">Adobe Express vs. PhotoRoom</div>
+        <div class="bcard-body">
+          <div class="bcard-row">
+            <label>Their claim</label>
+            <p>"We're built for e-commerce. Product photos, AI lifestyle backgrounds, mobile app."</p>
+          </div>
+          <div class="bcard-row">
+            <label>Win move</label>
+            <p class="win-line">"PhotoRoom gives you one step. Adobe gives you the full workflow — remove, replace with Firefly AI backgrounds, add copy, resize for every channel, export. One tool instead of three. And it's IP-safe."</p>
+          </div>
+          <div class="bcard-row">
+            <label>When you lose</label>
+            <p class="lose-line">Pure e-commerce API/batch at scale. If a seller needs 10,000 images/month and wants a $0.01/image API, PhotoRoom has a head start. Close with the Firefly API roadmap.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bcard-head" style="border-top: 3px solid #8D8D8D;">Adobe Express vs. Canva</div>
+        <div class="bcard-body">
+          <div class="bcard-row">
+            <label>Their claim</label>
+            <p>"We have 140M stock photos and 610K templates — design everything in one place."</p>
+          </div>
+          <div class="bcard-row">
+            <label>Win move</label>
+            <p class="win-line">"Canva gives you 10 free background removals per month, then locks you out until you pay $120/year. Adobe Express is unlimited free. Every time. And when you need Generative Fill, you can't get that anywhere in Canva."</p>
+          </div>
+          <div class="bcard-row">
+            <label>When you lose</label>
+            <p class="lose-line">Template volume and social media teams who live in Canva's ecosystem. Focus on power users and professionals who hit Canva's limits — they're already frustrated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLG METRICS -->
+  <section>
+    <h2>PLG Metrics to Track</h2>
+    <p class="section-meta">Current estimates vs. 90-day targets for the remove-background acquisition motion</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">SEO Rank — "remove background"</div>
+        <div class="metric-now">#6</div>
+        <div class="metric-target">Target: #1–2 in 60 days</div>
+        <div class="metric-note">Content refresh + internal linking</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Remove-BG → Express Signup Rate</div>
+        <div class="metric-now">~8%</div>
+        <div class="metric-target">Target: 18% (Canva-level)</div>
+        <div class="metric-note">New onboarding flow drives this</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Remove → AI Background Conversion</div>
+        <div class="metric-now">~3%</div>
+        <div class="metric-target">Target: 12%</div>
+        <div class="metric-note">Free-to-paid inflection point</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">E-Commerce Segment Share</div>
+        <div class="metric-now">&lt;5%</div>
+        <div class="metric-target">Target: 15% of Shopify sellers</div>
+        <div class="metric-note">Shopify app + batch launch unlocks this</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Developer API Signups (Remove BG)</div>
+        <div class="metric-now">0</div>
+        <div class="metric-target">Target: 500 developers in 30 days</div>
+        <div class="metric-note">New API endpoint at $0.005/image</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Mobile Remove-BG DAU</div>
+        <div class="metric-now">Est. ~120K</div>
+        <div class="metric-target">Target: 400K (PhotoRoom parity)</div>
+        <div class="metric-note">App Store ad + UX reorder</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Adobe Firefly Competitive Intel · April 2026 · Powered by Claude + Firefly Research Pipeline</span>
+    <a class="footer-back" href="/">← Back to Pipeline</a>
+  </footer>
+
+</div>
+</body>
+</html>
