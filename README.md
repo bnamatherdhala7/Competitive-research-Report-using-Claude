@@ -36,12 +36,21 @@ You type: "generate acquisition playbook for Adobe Acrobat"
    Claude reads CLAUDE.md + workflow SOP
    (decides what to research, what sections to write)
               ↓
-   Brave Search API (live web research)
-   ├── "Adobe Acrobat pricing 2026"
-   ├── "Foxit PDF Editor pricing 2026"
-   ├── "Adobe Acrobat review reddit"
-   ├── "Adobe Acrobat alternative"
-   └── Returns: live results from competitor sites, G2, forums
+   ┌─────────────────────────────────────────────────────┐
+   │              4 Data Sources (run in parallel)        │
+   │                                                     │
+   │  Brave Search API      Reddit public JSON API       │
+   │  ├── pricing 2026      ├── {product}+review         │
+   │  ├── competitor news   ├── {product}+vs+adobe       │
+   │  └── market position   └── switching threads        │
+   │  (live pricing/news)   (organic sentiment — no key) │
+   │                                                     │
+   │  YouTube Data API v3   Twitter/X API v2             │
+   │  ├── review videos     ├── competitor launches      │
+   │  ├── tutorial trends   ├── pricing change tweets    │
+   │  └── adoption signals  └── real-time announcements  │
+   │  (leading indicator)   (earliest signal of all 4)   │
+   └─────────────────────────────────────────────────────┘
               ↓
    Claude Sonnet synthesizes findings → writes 13-section markdown
    (pricing tables · battlecards · SEO gaps · GEO analysis · PLG motions)
@@ -56,13 +65,16 @@ You type: "generate acquisition playbook for Adobe Acrobat"
 
 **APIs used per report:**
 
-| API | Purpose | Cost |
+| API | What it captures | Cost |
 |---|---|---|
-| Brave Search API | Live competitor pricing, Reddit threads, news | Free (2K queries/mo) |
+| Reddit public JSON API | Community sentiment, switching reasons, pricing complaints — no key required | Free (rate-limited) |
+| YouTube Data API v3 | Review videos, tutorial trends, adoption signals — leading indicator 2–3 months ahead | Free (10K units/day) |
+| Brave Search API | Live competitor pricing pages, news, comparison articles, G2 reviews | Free (2K queries/mo) |
+| Twitter/X API v2 | Breaking competitor announcements, pricing change tweets — earliest signal source | Free Basic (1M/mo) |
 | Anthropic Claude Sonnet | Research synthesis + full report writing | ~$0.10–0.15/report |
 | Puppeteer (headless Chrome) | Markdown → Adobe-branded PDF | Free (local) |
 
-For the automated Firefly pipeline (Trigger.dev): Reddit public JSON + YouTube Data API v3 + Brave + Claude Haiku = **$0.003/report**.
+For the automated Firefly pipeline (Trigger.dev): Reddit + YouTube + Brave + Twitter/X + Claude Haiku = **$0.003/report**.
 
 ---
 
@@ -221,8 +233,9 @@ Reads the workflow, runs web searches, synthesizes findings,
 writes the report. Handles the judgment calls.
 
 LAYER 3 — TOOLS  (scripts/ + src/trigger/)
-Deterministic code: Brave Search scraping, Reddit JSON API,
-YouTube Data API, md-to-pdf.ts for PDF generation.
+Deterministic code: Reddit JSON API (sentiment), YouTube Data API
+(adoption trends), Brave Search (pricing/news), Twitter/X API
+(real-time signals), md-to-pdf.ts for PDF generation.
 ```
 
 ---
@@ -261,9 +274,10 @@ workflows/
 
 src/trigger/competitor-analysis/
   orchestrator.ts    ← Main task: coordinates all scrapers
-  reddit.ts          ← Reddit public JSON API scraper
-  youtube.ts         ← YouTube Data API v3 scraper
-  web-search.ts      ← Brave Search API
+  reddit.ts          ← Reddit public JSON API — community sentiment (no key)
+  youtube.ts         ← YouTube Data API v3 — adoption trends, review videos
+  web-search.ts      ← Brave Search API — live pricing, news, comparisons
+  twitter.ts         ← Twitter/X API v2 — real-time announcements (Phase 2)
   analyzer.ts        ← Claude Haiku analysis
   report-template.ts ← HTML report template
 

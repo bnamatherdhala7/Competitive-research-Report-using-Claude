@@ -77,9 +77,10 @@ workflows/                          # Markdown SOPs — what to do and how
 src/trigger/                        # Trigger.dev tasks (cloud execution)
   competitor-analysis/
     orchestrator.ts                 # Main task: scrape → analyze → return report
-    reddit.ts                       # Reddit JSON API scraper
-    youtube.ts                      # YouTube Data API v3 scraper
-    web-search.ts                   # Brave Search API
+    reddit.ts                       # Reddit public JSON API (no key) — community sentiment
+    youtube.ts                      # YouTube Data API v3 — adoption trends, review videos
+    web-search.ts                   # Brave Search API — live pricing, news, comparison pages
+    twitter.ts                      # Twitter/X API v2 — real-time announcements (Phase 2)
     analyzer.ts                     # Claude Haiku — structured analysis
     report-template.ts              # Adobe-branded HTML template
     types.ts                        # Shared TypeScript interfaces
@@ -90,8 +91,15 @@ scripts/                            # Local one-shot tools
   md-to-pdf.ts                      # Convert any markdown doc → Adobe-branded PDF on Desktop
 
 docs/                               # Generated reports — checked into git
-  acrobat-competitor-analysis.md    # Adobe Acrobat — acquisition team focus
-  adobe-express-competitor-analysis.md  # Adobe Express — PM strategy focus
+  Acrobat-Acquisition-Playbook.md           # Adobe Acrobat — acquisition team focus + PLG
+  Express-Acquisition-Playbook.md           # Adobe Express — Canva battlecards + PLG
+  Remove-Background-Playbook.md             # Firefly remove background — SEO/e-commerce GTM
+  Cross-Product-Synthesis.md               # SVP-level synthesis across all 3 products
+  Execution-Briefs.md                      # 9 shippable PLG briefs — copy, A/B tests, metrics
+  GEO-Content-Briefs.md                    # 7 pages for ChatGPT/Perplexity/AI Overviews
+  DEMO-GUIDE.md                            # 10-minute demo script + Q&A prep
+  PRD-competitive-intelligence.md          # Full PRD: pipeline, API calls, phase roadmap
+  index.html                               # Vercel landing page — links to all reports
 
 .env                                # API keys (NEVER commit, NEVER hardcode)
 .gitignore                          # Must include .env
@@ -217,6 +225,12 @@ When the user asks for a competitive analysis on any product, follow `workflows/
 | Manual (WebSearch + Sonnet) | < $0.20/report | < 15 minutes |
 | Manual with Haiku writing | < $0.05/report | < 12 minutes |
 
+**Data sources for research** (use all 4 for automated pipeline; WebSearch covers these in manual mode):
+- **Brave Search** — `api.search.brave.com/res/v1/web/search` — live pricing pages, news, competitor landing pages. 2K queries/month free. Best for: pricing verification, launch news, conquest keywords.
+- **Reddit** — `reddit.com/search.json?q={product}+review&sort=top&t=year` — no auth required, add `User-Agent` header. Best for: organic sentiment, switching reasons, complaints. Highest signal-to-noise.
+- **YouTube Data API v3** — `youtube.googleapis.com/youtube/v3/search` — 10K units/day free (100 units/search). Best for: adoption trends, tutorial volume as proxy for market share. 2–3 month leading indicator.
+- **Twitter/X API v2** — `api.twitter.com/2/tweets/search/recent` — 1M reads/month on Basic tier. Best for: breaking competitor announcements, pricing change tweets — earliest signal of any source.
+
 **Cost rules**:
 - Always use WebSearch for research — costs $0.00
 - Use Claude Haiku for synthesis when possible — 73% cheaper than Sonnet
@@ -241,5 +255,9 @@ npx tsx scripts/md-to-pdf.ts docs/[product]-competitor-analysis.md
 
 | Report | File | Audience | PLG Section |
 |---|---|---|---|
-| Adobe Acrobat PDF | `docs/acrobat-competitor-analysis.md` | Acquisition team | ✅ |
-| Adobe Express | `docs/adobe-express-competitor-analysis.md` | PM strategy | ✅ |
+| Adobe Acrobat | `docs/Acrobat-Acquisition-Playbook.md` | Acquisition team | ✅ |
+| Adobe Express | `docs/Express-Acquisition-Playbook.md` | PM strategy | ✅ |
+| Firefly Remove Background | `docs/Remove-Background-Playbook.md` | Growth / SEO | ✅ |
+| Cross-Product Synthesis | `docs/Cross-Product-Synthesis.md` | VP/SVP leadership | ✅ |
+| Execution Briefs | `docs/Execution-Briefs.md` | Copywriters / PMs | — |
+| GEO Content Briefs | `docs/GEO-Content-Briefs.md` | Content / SEO team | — |

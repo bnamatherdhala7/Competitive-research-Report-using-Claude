@@ -63,21 +63,39 @@ Do not ask the user to confirm the competitor list. Research all of them.
 
 ### Step 2 — Research the Product and Its Market
 
-Run these searches first to understand the product and identify competitors:
+Use all four data sources in parallel. Each source captures different signal types — do not rely on Brave Search alone.
 
+#### Brave Search (pricing, news, positioning)
 ```
-"[PRODUCT_NAME] competitors 2025"
+"[PRODUCT_NAME] competitors 2026"
 "[PRODUCT_NAME] alternatives"
-"[PRODUCT_NAME] vs [likely competitor]"
 "[PRODUCT_NAME] pricing"
-"[PRODUCT_NAME] review reddit"
+"[PRODUCT_NAME] vs [likely competitor]"
 ```
+What to extract: competitor list, current pricing, recent product launches, acquisition news, competitor conquest landing pages targeting [PRODUCT_NAME] users.
 
-From these results:
-- Confirm what the product does
-- Extract the 6–8 most frequently mentioned competitors
-- Note any recent news (price changes, product launches, acquisitions)
-- Note the most common customer complaints
+#### Reddit (community sentiment — public JSON API, no key)
+URL pattern: `https://www.reddit.com/search.json?q=[PRODUCT_NAME]+review&sort=top&t=year`
+```
+"[PRODUCT_NAME] review reddit"
+"[PRODUCT_NAME] cancel reddit"
+"[PRODUCT_NAME] alternative reddit"
+```
+What to extract: organic user complaints, switching reasons, competitor recommendations, pricing frustrations, feature requests. Reddit is the highest-trust signal source — users are not being paid to say anything.
+
+#### YouTube (adoption trends — YouTube Data API v3)
+Search: `[PRODUCT_NAME] review 2026`, `[PRODUCT_NAME] tutorial`, `[PRODUCT_NAME] vs [competitor]`
+What to extract: tutorial volume per competitor (indicates adoption rate), review sentiment in video titles, "switching from X to Y" videos (these are leading indicators of market share shifts 2–3 months ahead of web data).
+
+#### Twitter/X (real-time signals — Bearer Token)
+Search: `[PRODUCT_NAME] pricing`, `from:[product_twitter_handle]`, `[PRODUCT_NAME] launch`
+What to extract: competitor announcements (products launch on X before press coverage), pricing change tweets, high-follower account complaints or recommendations, trending hashtags in the product category.
+
+**From all four sources combined:**
+- Confirm what the product does and its market category
+- Extract the 6–8 most frequently mentioned competitors across sources
+- Note any recent moves (price changes, product launches, acquisitions) — Twitter/X and Brave will show this first
+- Note the most common customer complaints — Reddit will show this most honestly
 
 ### Step 3 — Research Each Competitor
 
