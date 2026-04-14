@@ -173,7 +173,7 @@
     max-width: 580px;
     line-height: 1.6;
   }
-  .demo-section .btn-outline {
+  .btn-outline {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -187,7 +187,7 @@
     font-weight: 600;
     transition: background 0.15s;
   }
-  .demo-section .btn-outline:hover {
+  .btn-outline:hover {
     background: rgba(235,16,0,0.08);
   }
 
@@ -226,21 +226,40 @@
 <main>
   <div class="intro">
     <h2>Acquisition Playbooks</h2>
-    <p>Focused intelligence reports for Acrobat, Express, and Firefly teams — covering pricing, competitor messaging, battlecards, and PLG acquisition motions.</p>
+    <p>Focused intelligence reports for Acrobat, Express, and Firefly teams — covering pricing, competitor messaging, battlecards, SEO/GEO gaps, and PLG acquisition motions.</p>
   </div>
 
   <div class="reports">
+
+    <!-- Executive Synthesis — pinned at top -->
+    <div class="card" style="border-color: #EB1000;">
+      <div class="card-icon" style="background: #1A1A1A; border: 2px solid #EB1000; color: #EB1000; font-size: 14px;">SVP</div>
+      <div class="card-body">
+        <h3>Cross-Product Executive Synthesis — April 2026</h3>
+        <p>The common pattern across Acrobat, Express, and Firefly: same problem, three markets. Priority matrix, 90-day dashboard, and the three questions to ask in your next leadership meeting.</p>
+        <div class="tags">
+          <span class="tag">Executive</span>
+          <span class="tag">Cross-Product</span>
+          <span class="tag">Priority Matrix</span>
+          <span class="tag">90-Day Dashboard</span>
+        </div>
+        <a href="Adobe-Cross-Product-Synthesis-2026-04.pdf" class="btn" download>
+          <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-icon">Ac</div>
       <div class="card-body">
         <h3>Adobe Acrobat — Acquisition Playbook 2026</h3>
-        <p>Pricing vs Foxit/UPDF/M365, cancel-intervention PLG motion, signer-to-trial conversion, Acrobat Sign compliance moat, and 8-metric dashboard.</p>
+        <p>Pricing vs Foxit/UPDF/M365, SEO gaps, GEO positions, signer-to-trial CTA, Acrobat Sign compliance moat, real user quotes from FTC filings, and 8-metric dashboard.</p>
         <div class="tags">
           <span class="tag">Pricing</span>
           <span class="tag">Battlecards</span>
-          <span class="tag">PLG Motions</span>
-          <span class="tag">Cancel Intervention</span>
+          <span class="tag">SEO Gaps</span>
+          <span class="tag">GEO</span>
           <span class="tag">Signer-to-Trial</span>
         </div>
         <a href="Adobe-Acrobat-Acquisition-Playbook-2026-04.pdf" class="btn" download>
@@ -290,7 +309,47 @@
 
   </div>
 
-  <div class="demo-section">
+  <!-- Working Docs -->
+  <div class="intro" style="margin-top: 56px; margin-bottom: 24px;">
+    <h2>Working Documents</h2>
+    <p>Execution-ready artifacts that translate playbook insights into shippable briefs, GEO content architecture, and team reference guides.</p>
+  </div>
+
+  <div class="reports">
+
+    <div class="card">
+      <div class="card-icon" style="font-size: 13px;">EB</div>
+      <div class="card-body">
+        <h3>Execution Briefs</h3>
+        <p>9 ready-to-ship briefs — one per PLG "Now" motion. Landing page copy, CTA text, email body, A/B test hypothesis, and success metric. Hand directly to copywriter, engineer, or PM sprint.</p>
+        <div class="tags">
+          <span class="tag">Landing Page Copy</span>
+          <span class="tag">Email Copy</span>
+          <span class="tag">A/B Tests</span>
+          <span class="tag">9 Briefs</span>
+        </div>
+        <a href="Execution-Briefs.md" class="btn-outline">View Briefs →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon" style="font-size: 13px;">GEO</div>
+      <div class="card-body">
+        <h3>GEO Content Briefs</h3>
+        <p>7 pages Adobe should publish to appear in ChatGPT, Perplexity, and Google AI Overviews. Each brief includes URL, H1, 5 required data points, FAQ schema, and meta description — ready for a content team.</p>
+        <div class="tags">
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Perplexity</span>
+          <span class="tag">FAQ Schema</span>
+          <span class="tag">7 Pages</span>
+        </div>
+        <a href="GEO-Content-Briefs.md" class="btn-outline">View Briefs →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="demo-section" style="margin-top: 32px;">
     <h2>How to Use This in Your Claude Account</h2>
     <p>These reports were generated using Claude + live web research. Your team can run the same analysis on any Adobe product — no setup required for Claude.ai users, or use the full automated pipeline with Claude Code.</p>
     <a href="DEMO-GUIDE.md" class="btn-outline">View Demo Guide →</a>
