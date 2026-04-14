@@ -4,25 +4,12 @@
   "outputDirectory": "docs",
   "framework": null,
   "routes": [
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/compare",
-      "dest": "/firefly-comparison-page.html"
-    },
-    {
-      "src": "/firefly",
-      "dest": "/firefly-vs-competitors.html"
-    },
-    {
-      "src": "/remove-background",
-      "dest": "/remove-background-acquisition-playbook.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+    { "src": "/",                  "dest": "/index.html" },
+    { "src": "/acrobat",           "dest": "/acrobat-vs.html" },
+    { "src": "/express",           "dest": "/express-vs.html" },
+    { "src": "/firefly",           "dest": "/firefly-vs-competitors.html" },
+    { "src": "/compare",           "dest": "/firefly-comparison-page.html" },
+    { "src": "/remove-background", "dest": "/remove-background-acquisition-playbook.html" },
+    { "src": "/(.*)",              "dest": "/$1" }
   ]
 }
