@@ -108,8 +108,10 @@ git clone https://github.com/bnamatherdhala7/Competitive-research-Report-using-C
 npm install
 
 # 3. Add your API keys to .env
-# ANTHROPIC_API_KEY=your_key
-# BRAVE_API_KEY=your_key
+ANTHROPIC_API_KEY=your_key        # console.anthropic.com — AI synthesis
+BRAVE_API_KEY=your_key            # api.search.brave.com — web search (free 2K/mo)
+YOUTUBE_API_KEY=your_key          # console.cloud.google.com — video search (free 10K/day)
+TWITTER_BEARER_TOKEN=your_key     # developer.twitter.com — competitor sentiment on X
 
 # 4. Run a competitive analysis on any product
 npm run test-run
@@ -118,7 +120,16 @@ npm run test-run
 npm run save-report
 ```
 
-The system automatically researches Reddit, YouTube, and web sources, synthesizes findings with Claude, and outputs a formatted PDF — in under 60 seconds.
+The system automatically researches Reddit, YouTube, Twitter/X, and web sources, synthesizes findings with Claude, and outputs a formatted PDF — in under 60 seconds.
+
+**Where to get each key:**
+
+| Key | Link | Free tier |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | $5 free credit on signup |
+| `BRAVE_API_KEY` | [api.search.brave.com](https://api.search.brave.com) | 2,000 queries/month free |
+| `YOUTUBE_API_KEY` | [console.cloud.google.com](https://console.cloud.google.com) → APIs & Services → YouTube Data API v3 | 10,000 units/day free |
+| `TWITTER_BEARER_TOKEN` | [developer.twitter.com](https://developer.twitter.com) → Create App → Keys & Tokens | Free Basic tier (1M tweets/month read) |
 
 ---
 
@@ -131,48 +142,6 @@ npx tsx scripts/md-to-pdf.ts docs/your-report.md
 ```
 
 The PDF appears on your Desktop with Adobe branding, section formatting, and print-ready A4 layout.
-
----
-
-## Demo Walkthrough — 10 Minutes
-
-Use this script to walk your team through the system live.
-
-### Minute 0–2: The Problem
-> "Every month, a PM needs to answer: what are competitors doing with pricing, features, and messaging? For Adobe, that means checking Foxit, UPDF, Canva, Midjourney, remove.bg, and a dozen others — manually. That's 3–5 hours of work per product, every month. And whoever does it checks different things, misses different things."
->
-> "What if a complete acquisition playbook — pricing, battlecards, SEO gaps, and PLG recommendations — took 30 seconds and cost less than a penny?"
-
-### Minute 2–5: Hit Run
-
-Open terminal. Type and hit Enter:
-```bash
-npm run test-run
-```
-
-**As it runs, narrate what's happening:**
-> "It's searching Brave for live competitor pricing right now... pulling Reddit discussions about Foxit vs Acrobat... checking what remove.bg changed on their pricing page this week... sending all of that to Claude for synthesis..."
-
-### Minute 5–7: Show the PDF
-
-Open one of the PDFs from the `docs/` folder. Walk through:
-
-1. **TL;DR** — "Three sentences. The most important insight. This is what you'd share in a leadership sync."
-2. **What Customers Are Saying** — "Real quotes from FTC complaint filings, Reddit threads, and G2 reviews — the same sources a PM would check manually."
-3. **SEO Gaps Table** — "Adobe ranks #6 for 'remove background' — an 18M-search keyword — for a feature we give away free. This is a pure distribution problem, not a product problem."
-4. **GEO Section** — "How Adobe appears in ChatGPT and Perplexity when users ask 'best PDF editor.' This is a new acquisition surface that didn't exist 12 months ago."
-5. **Battlecards** — "Three ready-to-use sales battlecards. Each one has the win move, the trap to avoid, and when to stop competing."
-6. **PLG Metrics Dashboard** — "Acquisition KPIs. Not vanity metrics — each row ties to a specific PLG motion in the report."
-
-### Minute 7–9: The Numbers
-
-> "Total cost: three-tenths of one cent. Run monthly for a year: four cents. The alternative is 60 hours of analyst time."
->
-> "The real value is consistency. Same competitors, same structure, every month. No more stale data in strategy reviews."
-
-### Minute 9–10: What's Next
-
-> "This is one workflow. The same approach works for any recurring PM research task — win/loss analysis, customer interview synthesis, feature request triage, PRD drafts. The question isn't 'can we automate this.' It's 'which task do we automate next.'"
 
 ---
 
@@ -260,19 +229,19 @@ YouTube Data API, md-to-pdf.ts for PDF generation.
 
 ## Setup (One Time)
 
-You need two API keys to run the full pipeline locally:
-
 | Key | Where to get it | Cost |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | New accounts get $5 free credit |
+| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) | $5 free credit on signup |
 | `BRAVE_API_KEY` | [api.search.brave.com](https://api.search.brave.com) | Free (2,000 searches/month) |
-| `YOUTUBE_API_KEY` | [console.cloud.google.com](https://console.cloud.google.com) | Free (10,000 units/day) |
+| `YOUTUBE_API_KEY` | [console.cloud.google.com](https://console.cloud.google.com) → YouTube Data API v3 | Free (10,000 units/day) |
+| `TWITTER_BEARER_TOKEN` | [developer.twitter.com](https://developer.twitter.com) → Create App → Keys & Tokens | Free Basic tier |
 
 ```bash
 # .env file (never commit this)
 ANTHROPIC_API_KEY=your-key-here
 BRAVE_API_KEY=your-key-here
 YOUTUBE_API_KEY=your-key-here
+TWITTER_BEARER_TOKEN=your-token-here
 ```
 
 ```bash
