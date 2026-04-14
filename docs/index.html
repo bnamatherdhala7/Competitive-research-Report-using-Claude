@@ -87,7 +87,7 @@
     transition: border-color 0.2s;
   }
   .card:hover {
-    border-color: var(--red);
+    border-color: #555;
   }
 
   .card-icon {
@@ -111,32 +111,76 @@
   .card-body h3 {
     font-size: 17px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     color: var(--text);
   }
-  .card-body p {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 16px;
-    line-height: 1.5;
+
+  /* Stat badge */
+  .stat-badge {
+    display: inline-block;
+    background: rgba(235,16,0,0.12);
+    border: 1px solid rgba(235,16,0,0.3);
+    color: #FF6B6B;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    line-height: 1.4;
   }
 
-  .tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+  /* TL;DR */
+  .tldr {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.55;
+    opacity: 0.85;
+  }
+
+  /* Key actions */
+  .actions {
+    list-style: none;
     margin-bottom: 18px;
   }
-  .tag {
-    background: var(--s2);
-    border: 1px solid var(--border);
+  .actions li {
+    font-size: 13px;
     color: var(--muted);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+  }
+  .actions li:last-child {
+    border-bottom: none;
+  }
+  .actions li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--red);
     font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 4px;
-    font-weight: 500;
+    top: 6px;
+  }
+  .actions-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    opacity: 0.7;
   }
 
+  /* Buttons */
+  .btn-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
   .btn {
     display: inline-flex;
     align-items: center;
@@ -152,6 +196,83 @@
   }
   .btn:hover { opacity: 0.85; }
   .btn svg { width: 14px; height: 14px; fill: white; }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-outline:hover {
+    border-color: #555;
+    color: var(--text);
+  }
+  .btn-outline svg { width: 13px; height: 13px; }
+
+  /* SVP card overrides */
+  .card-svp {
+    border-color: rgba(235,16,0,0.4);
+    background: linear-gradient(135deg, #1A1A1A 0%, #1f1515 100%);
+  }
+  .card-svp:hover {
+    border-color: var(--red);
+  }
+  .card-svp .stat-badge {
+    background: rgba(235,16,0,0.18);
+    border-color: rgba(235,16,0,0.5);
+    color: #FF8080;
+  }
+  .card-svp .tldr {
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  /* Divider label */
+  .section-label {
+    margin-top: 52px;
+    margin-bottom: 24px;
+  }
+  .section-label h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .section-label p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 620px;
+  }
+
+  /* Working docs cards (simpler) */
+  .card-doc .card-body p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .tag {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
 
   /* Demo section */
   .demo-section {
@@ -173,23 +294,6 @@
     max-width: 580px;
     line-height: 1.6;
   }
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--red);
-    border: 1px solid var(--red);
-    text-decoration: none;
-    padding: 9px 18px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    transition: background 0.15s;
-  }
-  .btn-outline:hover {
-    background: rgba(235,16,0,0.08);
-  }
 
   /* Footer */
   footer {
@@ -210,6 +314,7 @@
     main { padding: 36px 16px; }
     .card { flex-direction: column; padding: 20px; }
     footer { padding: 20px; flex-direction: column; gap: 8px; }
+    .btn-row { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -226,98 +331,122 @@
 <main>
   <div class="intro">
     <h2>Acquisition Playbooks</h2>
-    <p>Focused intelligence reports for Acrobat, Express, and Firefly teams — covering pricing, competitor messaging, battlecards, SEO/GEO gaps, and PLG acquisition motions.</p>
+    <p>Focused intelligence for Acrobat, Express, and Firefly teams — covering pricing gaps, competitor messaging, SEO/GEO opportunities, and PLG acquisition motions ready to ship.</p>
   </div>
 
   <div class="reports">
 
-    <!-- Executive Synthesis — pinned at top -->
-    <div class="card" style="border-color: #EB1000;">
+    <!-- SVP Executive Synthesis -->
+    <div class="card card-svp">
       <div class="card-icon" style="background: #1A1A1A; border: 2px solid #EB1000; color: #EB1000; font-size: 14px;">SVP</div>
       <div class="card-body">
         <h3>Cross-Product Executive Synthesis — April 2026</h3>
-        <p>The common pattern across Acrobat, Express, and Firefly: same problem, three markets. Priority matrix, 90-day dashboard, and the three questions to ask in your next leadership meeting.</p>
-        <div class="tags">
-          <span class="tag">Executive</span>
-          <span class="tag">Cross-Product</span>
-          <span class="tag">Priority Matrix</span>
-          <span class="tag">90-Day Dashboard</span>
+        <div class="stat-badge">Adobe ranks #5–8 for its top acquisition keyword across all 3 products</div>
+        <p class="tldr">Same distribution problem in three markets — Acrobat, Express, and Firefly each have a superior product that ranks below #5 for their highest-volume keyword. The fix is not engineering. It is 3 landing pages, 7 content briefs, and one free hub.</p>
+        <div class="actions-label">Key Actions</div>
+        <ul class="actions">
+          <li>Build <strong>adobe.com/free</strong> — one hub page, 2 days of content work, lifts SEO and GEO across all 3 products simultaneously and directly counters the "Adobe is expensive" narrative</li>
+          <li>Publish <strong>7 GEO content briefs within 60 days</strong> — before the next AI model training cycle locks in Smallpdf, Canva, and remove.bg as the default answers in ChatGPT and Perplexity</li>
+          <li>Ship <strong>"Made with Express" share loop</strong> — the only viral acquisition mechanic missing across all three products; Canva's equivalent drives 60%+ of their new signups</li>
+        </ul>
+        <div class="btn-row">
+          <a href="Adobe-Cross-Product-Synthesis-2026-04.pdf" class="btn" download>
+            <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            Full PDF
+          </a>
         </div>
-        <a href="Adobe-Cross-Product-Synthesis-2026-04.pdf" class="btn" download>
-          <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-          Download PDF
-        </a>
       </div>
     </div>
 
+    <!-- Acrobat -->
     <div class="card">
       <div class="card-icon">Ac</div>
       <div class="card-body">
         <h3>Adobe Acrobat — Acquisition Playbook 2026</h3>
-        <p>Pricing vs Foxit/UPDF/M365, SEO gaps, GEO positions, signer-to-trial CTA, Acrobat Sign compliance moat, real user quotes from FTC filings, and 8-metric dashboard.</p>
-        <div class="tags">
-          <span class="tag">Pricing</span>
-          <span class="tag">Battlecards</span>
-          <span class="tag">SEO Gaps</span>
-          <span class="tag">GEO</span>
-          <span class="tag">Signer-to-Trial</span>
+        <div class="stat-badge">Adobe ranks #5–7 for "PDF editor" — 450K monthly searches going to Smallpdf</div>
+        <p class="tldr">Smallpdf has 40 acquisition landing pages per product; Adobe has one. The SEO gap is a content problem, not an engineering problem — and Acrobat Sign creates a unique acquisition entry point no competitor can replicate.</p>
+        <div class="actions-label">Key Actions</div>
+        <ul class="actions">
+          <li>Add <strong>signer-to-trial CTA</strong> on every Acrobat Sign completion email — zero engineering required, 2-week sprint, highest conversion leverage of any motion in this report</li>
+          <li>Publish <strong>/pdf-editor-free</strong> landing page targeting the 450K/mo keyword where Adobe ranks #5–7 behind Smallpdf, ILovePDF, and PDF24</li>
+          <li>Publish <strong>"Adobe vs Smallpdf" GEO brief</strong> so ChatGPT and Perplexity cite Acrobat — not Smallpdf — when answering "best free PDF editor"</li>
+        </ul>
+        <div class="btn-row">
+          <a href="Adobe-Acrobat-Acquisition-Playbook-2026-04.pdf" class="btn" download>
+            <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            Full PDF
+          </a>
+          <a href="Execution-Briefs.md" class="btn-outline">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
+            Execution Briefs
+          </a>
         </div>
-        <a href="Adobe-Acrobat-Acquisition-Playbook-2026-04.pdf" class="btn" download>
-          <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-          Download PDF
-        </a>
       </div>
     </div>
 
+    <!-- Express -->
     <div class="card">
       <div class="card-icon">Ex</div>
       <div class="card-body">
         <h3>Adobe Express — Acquisition Playbook 2026</h3>
-        <p>Canva/M365 battlecards, Firefly Safe badge for enterprise, ChatGPT plugin activation, viral share loop, and Creative Cloud expansion motion.</p>
-        <div class="tags">
-          <span class="tag">Pricing</span>
-          <span class="tag">vs Canva</span>
-          <span class="tag">PLG Loops</span>
-          <span class="tag">Firefly Safe</span>
-          <span class="tag">CC Activation</span>
+        <div class="stat-badge">Canva's share loop drives 60%+ of new signups — Adobe Express has no viral loop</div>
+        <p class="tldr">Express is $20/yr cheaper than Canva with commercially safe AI — but every new Express user costs Adobe money while every new Canva user costs Canva nothing. The missing piece is a share mechanic, not a better product.</p>
+        <div class="actions-label">Key Actions</div>
+        <ul class="actions">
+          <li>Ship <strong>"Made with Adobe Express" share badge</strong> on every exported design — turns each output into a free acquisition touchpoint, directly counters Canva's viral loop</li>
+          <li>Activate <strong>ChatGPT plugin</strong> to intercept "design this for me" intent before Canva's plugin captures that query at the AI layer</li>
+          <li>Add <strong>Photoshop → Express export prompt</strong> for CC subscribers — converts existing paid users into Express activations at zero acquisition cost</li>
+        </ul>
+        <div class="btn-row">
+          <a href="Adobe-Express-Acquisition-Playbook-2026-04.pdf" class="btn" download>
+            <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            Full PDF
+          </a>
+          <a href="Execution-Briefs.md" class="btn-outline">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
+            Execution Briefs
+          </a>
         </div>
-        <a href="Adobe-Express-Acquisition-Playbook-2026-04.pdf" class="btn" download>
-          <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-          Download PDF
-        </a>
       </div>
     </div>
 
+    <!-- Firefly / Remove Background -->
     <div class="card">
       <div class="card-icon">Ff</div>
       <div class="card-body">
         <h3>Firefly — Remove Background Keyword Playbook 2026</h3>
-        <p>18M+ monthly searches, Adobe ranks #6 vs remove.bg at #1. SEO sprint, e-commerce go-to-market, Shopify app strategy, developer API roadmap.</p>
-        <div class="tags">
-          <span class="tag">SEO Acquisition</span>
-          <span class="tag">vs remove.bg</span>
-          <span class="tag">E-commerce GTM</span>
-          <span class="tag">Shopify App</span>
-          <span class="tag">Generative Fill</span>
+        <div class="stat-badge">Adobe ranks #6 for "remove background" — 18M searches/mo · Adobe is free · remove.bg charges $0.195/image</div>
+        <p class="tldr">Adobe offers the same output for free while the market leader charges per image — but Adobe doesn't rank for the keyword. This is a distribution gap, not a product gap, and it sits in front of 18 million monthly searches.</p>
+        <div class="actions-label">Key Actions</div>
+        <ul class="actions">
+          <li>Publish <strong>/remove-background-free</strong> landing page — remove.bg's core SEO keyword, Adobe currently absent from the top 5 results for 18M monthly searches</li>
+          <li>List on <strong>Shopify App Store</strong> — 4.4M merchants need batch background removal for product photos; no Adobe presence today despite a clear use case and free price point</li>
+          <li>Run <strong>"Same quality, Adobe free"</strong> head-to-head campaign directly countering remove.bg's $0.195/image pricing with Adobe's zero-cost offer</li>
+        </ul>
+        <div class="btn-row">
+          <a href="Adobe-Remove-Background-Playbook-2026-04.pdf" class="btn" download>
+            <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            Full PDF
+          </a>
+          <a href="Execution-Briefs.md" class="btn-outline">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h12M2 8h8M2 12h10"/></svg>
+            Execution Briefs
+          </a>
         </div>
-        <a href="Adobe-Remove-Background-Playbook-2026-04.pdf" class="btn" download>
-          <svg viewBox="0 0 16 16"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-          Download PDF
-        </a>
       </div>
     </div>
 
   </div>
 
   <!-- Working Docs -->
-  <div class="intro" style="margin-top: 56px; margin-bottom: 24px;">
+  <div class="section-label">
     <h2>Working Documents</h2>
     <p>Execution-ready artifacts that translate playbook insights into shippable briefs, GEO content architecture, and team reference guides.</p>
   </div>
 
   <div class="reports">
 
-    <div class="card">
+    <div class="card card-doc">
       <div class="card-icon" style="font-size: 13px;">EB</div>
       <div class="card-body">
         <h3>Execution Briefs</h3>
@@ -332,7 +461,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card card-doc">
       <div class="card-icon" style="font-size: 13px;">GEO</div>
       <div class="card-body">
         <h3>GEO Content Briefs</h3>
