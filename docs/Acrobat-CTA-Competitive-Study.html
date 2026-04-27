@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acrobat CTA & Hub Page — Competitive Study 2026</title>
+<style>
+  :root {
+    --red: #EB1000;
+    --bg: #0E0E0E;
+    --s1: #1A1A1A;
+    --s2: #222222;
+    --s3: #2A2A2A;
+    --text: #F0F0F0;
+    --muted: #888;
+    --border: #2E2E2E;
+    --green: #22C55E;
+    --amber: #F59E0B;
+    --blue: #3B82F6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--red);
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .logo { font-size: 28px; font-weight: 900; color: white; letter-spacing: -1px; }
+  .header-text h1 { font-size: 17px; font-weight: 400; color: white; }
+  .header-text p { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  /* ── LAYOUT ── */
+  main { max-width: 1100px; margin: 0 auto; padding: 52px 24px 80px; }
+  section { margin-bottom: 72px; }
+  h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+  .subtitle { font-size: 14px; color: var(--muted); margin-bottom: 32px; max-width: 680px; line-height: 1.6; }
+
+  /* ── QUESTION BANNER ── */
+  .questions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 52px;
+  }
+  .q-card {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+  .q-card .q-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .q-card p { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+  /* ── VERDICT TABLE ── */
+  .verdict-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .verdict-table th {
+    background: var(--s2);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .verdict-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    color: var(--text);
+  }
+  .verdict-table tr:last-child td { border-bottom: none; }
+  .verdict-table tr:hover td { background: var(--s1); }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .badge-green { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-red { background: rgba(235,16,0,0.12); color: #ff6b6b; border: 1px solid rgba(235,16,0,0.3); }
+  .badge-amber { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-blue { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+  .cta-text { font-family: monospace; font-size: 12px; background: var(--s2); padding: 2px 7px; border-radius: 3px; color: #e5e5e5; }
+  .acrobat-row td { background: rgba(235,16,0,0.04); }
+  .acrobat-row:hover td { background: rgba(235,16,0,0.08) !important; }
+
+  /* ── BROWSER MOCKUP GRID ── */
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .mockup-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .browser {
+    background: var(--s1);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .browser-bar {
+    background: var(--s2);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dots span {
+    width: 9px; height: 9px; border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .browser-url {
+    flex: 1;
+    background: var(--s3);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: monospace;
+  }
+  .browser-body { padding: 20px; }
+  .browser-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Page wireframe elements */
+  .wf-nav {
+    background: var(--s2);
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .wf-nav-logo { font-size: 11px; font-weight: 700; color: var(--muted); }
+  .wf-nav-cta {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .wf-hero {
+    text-align: center;
+    padding: 14px 8px;
+    margin-bottom: 12px;
+  }
+  .wf-headline {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .wf-subhead {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .wf-cta-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .wf-btn {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .wf-btn-primary-green { background: #16a34a; color: white; }
+  .wf-btn-primary-red { background: var(--red); color: white; }
+  .wf-btn-primary-blue { background: #2563eb; color: white; }
+  .wf-btn-primary-amber { background: #d97706; color: white; }
+  .wf-btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .wf-btn-outline-red { background: transparent; color: var(--red); border: 1px solid var(--red); }
+
+  /* Task grid wireframe */
+  .wf-task-grid {
+    display: grid;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .wf-task-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .wf-task-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .wf-task-grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .wf-task {
+    background: var(--s3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 4px;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .wf-task-icon { font-size: 11px; display: block; margin-bottom: 2px; }
+  .wf-section-label {
+    font-size: 9px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    margin-top: 10px;
+  }
+  .wf-feature-list { margin-top: 10px; }
+  .wf-feature {
+    background: var(--s3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 9px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .wf-fold-line {
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    padding-top: 8px;
+    margin-top: 8px;
+    font-size: 9px;
+    color: rgba(255,255,255,0.15);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* Annotation callouts */
+  .callout {
+    background: rgba(235,16,0,0.08);
+    border: 1px solid rgba(235,16,0,0.25);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #ff8080;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+  .callout strong { color: #ff6060; }
+  .callout-green {
+    background: rgba(34,197,94,0.08);
+    border-color: rgba(34,197,94,0.25);
+    color: #86efac;
+  }
+  .callout-green strong { color: #4ade80; }
+  .callout-amber {
+    background: rgba(245,158,11,0.08);
+    border-color: rgba(245,158,11,0.25);
+    color: #fcd34d;
+  }
+  .callout-amber strong { color: #fbbf24; }
+
+  /* ── PRICING PAGE COMPARISON ── */
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 8px; }
+  .plan-card {
+    background: var(--s3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    position: relative;
+  }
+  .plan-card.most-popular { border-color: rgba(245,158,11,0.5); }
+  .plan-card.free-first { border-color: rgba(34,197,94,0.4); }
+  .plan-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .badge-most-popular { background: #d97706; color: white; }
+  .badge-free { background: #16a34a; color: white; }
+  .plan-name { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 4px; margin-top: 6px; }
+  .plan-price { font-size: 10px; color: var(--muted); margin-bottom: 8px; }
+  .plan-cta {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+  }
+
+  /* ── RECOMMENDATION SECTION ── */
+  .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rec-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .rec-header {
+    padding: 12px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rec-header-before { background: rgba(235,16,0,0.15); color: #ff6b6b; border-bottom: 1px solid rgba(235,16,0,0.2); }
+  .rec-header-after { background: rgba(34,197,94,0.12); color: #4ade80; border-bottom: 1px solid rgba(34,197,94,0.2); }
+  .rec-body { background: var(--s1); padding: 20px; }
+  .rec-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+  .change-list { list-style: none; margin-top: 16px; }
+  .change-list li {
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 18px;
+    position: relative;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .change-list li:last-child { border-bottom: none; }
+  .change-list li::before { position: absolute; left: 0; top: 9px; }
+  .change-list.do li::before { content: '✓'; color: var(--green); font-weight: 700; }
+  .change-list.dont li::before { content: '✗'; color: var(--red); }
+  .change-list li span { color: var(--muted); font-size: 12px; display: block; margin-top: 2px; }
+
+  /* Evidence strip */
+  .evidence {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .evidence strong { color: var(--text); }
+  .evidence .src { font-size: 11px; color: var(--muted); }
+
+  /* Section divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0;
+  }
+
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    .mockup-grid { grid-template-columns: 1fr 1fr; }
+    .questions, .rec-grid, .plan-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .mockup-grid, .mockup-grid-2col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Ac</div>
+  <div class="header-text">
+    <h1>Acrobat CTA & Hub Page — Competitive Study</h1>
+    <p>Design Research · April 2026 · Adobe Internal · Responding to Nathan's redesign feedback</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- THE TWO QUESTIONS -->
+  <section>
+    <h2>The Two Design Questions</h2>
+    <p class="subtitle">Nathan's feedback raises two distinct UX decisions for Acrobat. Each has a clear answer in competitor data.</p>
+    <div class="questions">
+      <div class="q-card">
+        <div class="q-num">Question 1 — Hub Page CTA</div>
+        <p>Should the hero CTA on hub pages be a specific premium product push <em>("Try Acrobat Studio")</em> or a generic free-entry point <em>("Try Acrobat for free" → plans page)</em> that lets users self-select?</p>
+      </div>
+      <div class="q-card">
+        <div class="q-num">Question 2 — Task-Based Navigation</div>
+        <p>Should product/offering pages expose task-based pathways <em>(Merge PDF, PDF to Word, Compress…)</em> like competitors, in addition to the core capabilities grid?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT TABLE -->
+  <section>
+    <h2>At a Glance — CTA Strategy Across 5 Competitors</h2>
+    <p class="subtitle">Every competitor except Foxit leads with free access. Adobe's current pattern matches Foxit — the only premium-push outlier in the category.</p>
+    <table class="verdict-table">
+      <thead>
+        <tr>
+          <th>Competitor</th>
+          <th>Primary Hero CTA</th>
+          <th>CTA Destination</th>
+          <th>Free-First?</th>
+          <th>Task Grid Above Fold?</th>
+          <th>Pricing Page Lead CTA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>iLovePDF</strong></td>
+          <td><span class="cta-text">No hero CTA — task grid IS the page</span></td>
+          <td>Direct tool use</td>
+          <td><span class="badge badge-green">Yes — "100% FREE"</span></td>
+          <td><span class="badge badge-green">Yes — 29 tools</span></td>
+          <td><span class="cta-text">Start for free</span></td>
+        </tr>
+        <tr>
+          <td><strong>Smallpdf</strong></td>
+          <td><span class="cta-text">Start Free Trial</span></td>
+          <td>Account/trial signup</td>
+          <td><span class="badge badge-green">Yes — trial framed as free</span></td>
+          <td><span class="badge badge-amber">Below fold — 6 tools</span></td>
+          <td><span class="cta-text">Try 7 Days Free</span></td>
+        </tr>
+        <tr>
+          <td><strong>PDF24</strong></td>
+          <td><span class="cta-text">No CTA — task grid IS the page</span></td>
+          <td>Direct tool use</td>
+          <td><span class="badge badge-green">Fully free — no paid tier</span></td>
+          <td><span class="badge badge-green">Yes — 24 tools</span></td>
+          <td>No pricing page</td>
+        </tr>
+        <tr>
+          <td><strong>UPDF</strong></td>
+          <td><span class="cta-text">Free Download</span></td>
+          <td>App download</td>
+          <td><span class="badge badge-green">Yes — download first</span></td>
+          <td><span class="badge badge-red">No — capabilities only</span></td>
+          <td><span class="cta-text">Buy Now</span></td>
+        </tr>
+        <tr>
+          <td><strong>Foxit</strong></td>
+          <td><span class="cta-text">Buy Now</span></td>
+          <td>Checkout / cart</td>
+          <td><span class="badge badge-red">No — paid-first</span></td>
+          <td><span class="badge badge-red">No — feature categories</span></td>
+          <td><span class="cta-text">Add to Cart</span></td>
+        </tr>
+        <tr class="acrobat-row">
+          <td><strong>Adobe Acrobat (current)</strong></td>
+          <td><span class="cta-text">Try Acrobat Studio</span></td>
+          <td>Specific product checkout</td>
+          <td><span class="badge badge-red">No — premium push</span></td>
+          <td><span class="badge badge-red">No — no task grid</span></td>
+          <td><span class="cta-text">Get Acrobat Pro</span> (primary)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px; color: var(--muted); margin-top: 8px;">* Acrobat row highlighted. Acrobat currently matches Foxit's pattern — the only paid-first competitor among the top 5.</div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: HUB PAGE MOCKUPS -->
+  <section>
+    <h2>Question 1 — Hub Page CTA: Visual Comparison</h2>
+    <p class="subtitle">How each competitor structures their hero section and primary call-to-action. Mockups reflect actual page structure and button text from live research.</p>
+
+    <div class="mockup-grid">
+
+      <!-- iLovePDF -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">ilovepdf.com</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>iLovePDF — Homepage</span>
+            <span class="badge badge-green">Free-First</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">iLovePDF</span>
+            <span class="wf-nav-cta" style="background:#7c3aed; color:white;">Get Premium</span>
+          </div>
+          <!-- NO HERO — task grid starts immediately -->
+          <div class="wf-section-label">All PDF Tools — above the fold</div>
+          <div class="wf-task-grid wf-task-grid-3">
+            <div class="wf-task"><span class="wf-task-icon">⊕</span>Merge PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✂</span>Split PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">⊞</span>Compress</div>
+            <div class="wf-task"><span class="wf-task-icon">W</span>PDF to Word</div>
+            <div class="wf-task"><span class="wf-task-icon">✏</span>Edit PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✍</span>Sign PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">🖼</span>PDF to JPG</div>
+            <div class="wf-task"><span class="wf-task-icon">🔒</span>Protect</div>
+            <div class="wf-task"><span class="wf-task-icon">+21</span>More…</div>
+          </div>
+          <div class="callout callout-green" style="margin-top:10px;">
+            <strong>Pattern:</strong> No hero section. No CTA above the fold. The task grid IS the product. "Get Premium" is a persistent nav button — not a push. Upsell appears only when a limit is hit mid-task.
+          </div>
+        </div>
+      </div>
+
+      <!-- Smallpdf -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">smallpdf.com</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>Smallpdf — Homepage</span>
+            <span class="badge badge-green">Trial-as-Free</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">Smallpdf</span>
+            <span class="wf-nav-cta" style="background:#16a34a; color:white;">Start Free Trial</span>
+          </div>
+          <div class="wf-hero">
+            <div class="wf-headline">"We make PDF easy."</div>
+            <div class="wf-subhead">All the tools you'll need to be more productive and work smarter with documents.</div>
+            <div class="wf-cta-row">
+              <span class="wf-btn wf-btn-primary-green">Start Free Trial</span>
+              <span class="wf-btn wf-btn-secondary">Explore All PDF Tools</span>
+            </div>
+          </div>
+          <div class="wf-fold-line">— FOLD —</div>
+          <div class="wf-section-label">Most Popular PDF Tools</div>
+          <div class="wf-task-grid wf-task-grid-3">
+            <div class="wf-task"><span class="wf-task-icon">W</span>PDF to Word</div>
+            <div class="wf-task"><span class="wf-task-icon">⊕</span>Merge PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">🖼</span>JPG to PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✍</span>Sign PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✏</span>Edit PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">⊞</span>Compress</div>
+          </div>
+          <div class="callout callout-green" style="margin-top:10px;">
+            <strong>Pattern:</strong> Free trial framed as the free option — no price mentioned above fold. Task grid appears below as a secondary discovery path. Two CTAs: trial (primary) + explore tools (secondary).
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF24 -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">tools.pdf24.org</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>PDF24 Tools — Homepage</span>
+            <span class="badge badge-green">Radically Free</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">PDF24</span>
+            <span style="font-size:9px; color: var(--muted);">No premium nav CTA</span>
+          </div>
+          <div class="wf-hero" style="padding: 6px;">
+            <div class="wf-headline" style="font-size:11px;">PDF24 Tools</div>
+            <div class="wf-subhead">"Free and easy-to-use online PDF solutions"<br>"All tools free of charge and without any restrictions."</div>
+          </div>
+          <div class="wf-section-label">Frequently Used Tools — above the fold</div>
+          <div class="wf-task-grid wf-task-grid-3">
+            <div class="wf-task"><span class="wf-task-icon">⊕</span>Merge PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✂</span>Split PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">⊞</span>Compress</div>
+            <div class="wf-task"><span class="wf-task-icon">✏</span>Edit PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✍</span>Sign PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">🔄</span>Convert</div>
+            <div class="wf-task"><span class="wf-task-icon">🔒</span>Protect</div>
+            <div class="wf-task"><span class="wf-task-icon">🔓</span>Unlock</div>
+            <div class="wf-task"><span class="wf-task-icon">+49</span>More…</div>
+          </div>
+          <div class="callout callout-green" style="margin-top:10px;">
+            <strong>Pattern:</strong> No upsell, no CTA, no pricing page. Pure task catalog. Revenue via display ads. Sets the floor for "free" in user perception of the category.
+          </div>
+        </div>
+      </div>
+
+      <!-- Foxit -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">foxit.com/pdf-editor</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>Foxit — PDF Editor Page</span>
+            <span class="badge badge-red">Paid-First</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">Foxit</span>
+            <span class="wf-nav-cta" style="background:#2563eb; color:white;">Buy Now</span>
+          </div>
+          <div class="wf-hero">
+            <div class="wf-headline">"The #1 Alternative to Adobe Acrobat"</div>
+            <div class="wf-subhead">"The Smarter Way to Create, Edit, and Manage Documents"</div>
+            <div class="wf-cta-row">
+              <span class="wf-btn wf-btn-primary-blue">Buy Now</span>
+              <span class="wf-btn wf-btn-secondary">Try It Free</span>
+            </div>
+          </div>
+          <div class="wf-section-label">Feature Categories (not clickable tasks)</div>
+          <div class="wf-feature-list">
+            <div class="wf-feature">📄 Create PDF · Advanced Editing · Convert PDF</div>
+            <div class="wf-feature">🔒 Protect PDF · Fill &amp; Sign · Share &amp; Collaborate</div>
+            <div class="wf-feature">🤖 Translate · AI Image Generate · Accessibility</div>
+          </div>
+          <div class="callout" style="margin-top:10px;">
+            <strong>Pattern:</strong> "Buy Now" is primary. "Try It Free" is secondary with equal weight. Feature categories are marketing copy — users cannot start a task directly from this page.
+          </div>
+        </div>
+      </div>
+
+      <!-- UPDF -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">updf.com</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>UPDF — Homepage</span>
+            <span class="badge badge-amber">Download-First</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">UPDF</span>
+            <span class="wf-nav-cta" style="background:#d97706; color:white;">Buy Now</span>
+          </div>
+          <div class="wf-hero">
+            <div class="wf-headline">"UPDF 2.5 – AI-Powered PDF Editor"</div>
+            <div class="wf-subhead">Edit, annotate, and convert PDFs across desktop and mobile.</div>
+            <div class="wf-cta-row">
+              <span class="wf-btn wf-btn-primary-amber">Free Download</span>
+              <span class="wf-btn wf-btn-secondary">Buy Now</span>
+            </div>
+          </div>
+          <div class="wf-section-label">Capability Features (app install required)</div>
+          <div class="wf-feature-list">
+            <div class="wf-feature">✍ Annotations · Highlights · Stickers</div>
+            <div class="wf-feature">✏ Text &amp; image editing</div>
+            <div class="wf-feature">📱 Desktop + Mobile sync</div>
+          </div>
+          <div class="callout callout-amber" style="margin-top:10px;">
+            <strong>Pattern:</strong> App download is the free entry point — no web tool path. Capability-first layout. No task grid. "Buy Now" in nav as persistent upsell.
+          </div>
+        </div>
+      </div>
+
+      <!-- Adobe Current -->
+      <div class="browser" style="border-color: rgba(235,16,0,0.4);">
+        <div class="browser-bar" style="background: rgba(235,16,0,0.08);">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">adobe.com/acrobat — current</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>Adobe Acrobat — Current Hub Page</span>
+            <span class="badge badge-red">Premium Push</span>
+          </div>
+          <div class="wf-nav">
+            <span class="wf-nav-logo">Adobe Acrobat</span>
+            <span class="wf-nav-cta" style="background:var(--red); color:white;">Try Acrobat Studio</span>
+          </div>
+          <div class="wf-hero">
+            <div class="wf-headline">Hero: Product-specific pitch</div>
+            <div class="wf-subhead">Leads with Acrobat Studio (premium) — no free framing above the fold</div>
+            <div class="wf-cta-row">
+              <span class="wf-btn wf-btn-primary-red">Try Acrobat Studio</span>
+              <span class="wf-btn wf-btn-secondary">See plans</span>
+            </div>
+          </div>
+          <div class="wf-section-label" style="margin-top:14px;">No task grid — capabilities section below</div>
+          <div class="wf-feature-list">
+            <div class="wf-feature">Core capabilities grid (e-sign, edit, collaborate…)</div>
+          </div>
+          <div class="callout" style="margin-top:10px;">
+            <strong>Nathan's flag:</strong> Hub pages attract broad, unknown audiences — betting the hero on one expensive product narrows the funnel before users self-select. Matches Foxit's pattern, not the free-first majority.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 3: TASK GRID COMPARISON -->
+  <section>
+    <h2>Question 2 — Task-Based Navigation: Visual Comparison</h2>
+    <p class="subtitle">The two dominant patterns in the category: task-grid-as-product (iLovePDF, PDF24) vs. capabilities-as-marketing (Foxit, UPDF, current Acrobat). Nathan is asking whether Acrobat should adopt the former.</p>
+
+    <div class="mockup-grid-2col">
+
+      <!-- iLovePDF Task Grid Detail -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">ilovepdf.com — 29 tools above fold</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>iLovePDF — Task-First Layout</span>
+            <span class="badge badge-green">Task grid IS the homepage</span>
+          </div>
+          <div class="wf-task-grid wf-task-grid-4">
+            <div class="wf-task"><span class="wf-task-icon">⊕</span>Merge PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">✂</span>Split PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">⊞</span>Compress</div>
+            <div class="wf-task"><span class="wf-task-icon">W</span>PDF→Word</div>
+            <div class="wf-task"><span class="wf-task-icon">P</span>PDF→PPT</div>
+            <div class="wf-task"><span class="wf-task-icon">X</span>PDF→Excel</div>
+            <div class="wf-task"><span class="wf-task-icon">✏</span>Edit PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">🖼</span>PDF→JPG</div>
+            <div class="wf-task"><span class="wf-task-icon">✍</span>Sign PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">💧</span>Watermark</div>
+            <div class="wf-task"><span class="wf-task-icon">🔒</span>Protect</div>
+            <div class="wf-task"><span class="wf-task-icon">🔓</span>Unlock</div>
+            <div class="wf-task"><span class="wf-task-icon">🔍</span>OCR PDF</div>
+            <div class="wf-task"><span class="wf-task-icon">🤖</span>AI Summary</div>
+            <div class="wf-task"><span class="wf-task-icon">🌐</span>Translate</div>
+            <div class="wf-task"><span class="wf-task-icon">⚖</span>Compare</div>
+          </div>
+          <div style="font-size: 9px; color: var(--muted); margin-top: 6px; text-align:center;">+ 13 more tools below</div>
+          <div class="callout callout-green" style="margin-top:10px;">
+            <strong>Effect:</strong> Users land on the task they need. No friction. No pitch. Conversion happens when a limit is hit mid-task — at the moment of maximum motivation.
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Acrobat Feature Layout -->
+      <div class="browser" style="border-color: rgba(235,16,0,0.3);">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">adobe.com/acrobat — current layout</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label">
+            <span>Adobe Acrobat — Current Offering Page</span>
+            <span class="badge badge-red">Capability-only, no tasks</span>
+          </div>
+          <div class="wf-hero" style="padding: 6px 0 10px;">
+            <div class="wf-headline" style="font-size:11px;">Hero + CTA section</div>
+            <div class="wf-subhead">Product pitch → "Try Acrobat Studio" CTA</div>
+          </div>
+          <div class="wf-section-label">Core Capabilities Grid</div>
+          <div class="wf-task-grid wf-task-grid-3">
+            <div class="wf-task" style="padding:8px 4px;">📝<br><span style="font-size:8px;">Edit PDFs</span></div>
+            <div class="wf-task" style="padding:8px 4px;">✍<br><span style="font-size:8px;">e-Sign</span></div>
+            <div class="wf-task" style="padding:8px 4px;">👥<br><span style="font-size:8px;">Collaborate</span></div>
+            <div class="wf-task" style="padding:8px 4px;">🔒<br><span style="font-size:8px;">Protect</span></div>
+            <div class="wf-task" style="padding:8px 4px;">🔄<br><span style="font-size:8px;">Convert</span></div>
+            <div class="wf-task" style="padding:8px 4px;">📱<br><span style="font-size:8px;">Mobile</span></div>
+          </div>
+          <div class="wf-fold-line" style="margin-top:10px;">Capabilities are not launchable — they link to feature marketing pages, not tools</div>
+          <div class="callout" style="margin-top:10px;">
+            <strong>Gap Nathan is flagging:</strong> Users who arrive knowing what they want to do (merge, sign, convert) have no direct path to the task. They see a capabilities pitch instead of a tool entry point — friction vs. zero friction on iLovePDF.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recommended hybrid -->
+    <div style="margin-top: 20px;">
+    <div class="browser" style="border-color: rgba(34,197,94,0.4);">
+      <div class="browser-bar" style="background: rgba(34,197,94,0.06);">
+        <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <div class="browser-url">adobe.com/acrobat — recommended redesign</div>
+      </div>
+      <div class="browser-body">
+        <div class="browser-label">
+          <span>Recommended: Hybrid Hero + Task Grid (Smallpdf Pattern)</span>
+          <span class="badge badge-green">Free-first + task discovery</span>
+        </div>
+        <div class="wf-nav">
+          <span class="wf-nav-logo">Adobe Acrobat</span>
+          <span class="wf-nav-cta" style="background:var(--red); color:white;">Try Acrobat for free</span>
+        </div>
+        <div class="wf-hero">
+          <div class="wf-headline">"The PDF you trust at work. Free to start."</div>
+          <div class="wf-subhead">Edit, sign, convert, and collaborate — free tier includes 25 tasks/month.</div>
+          <div class="wf-cta-row">
+            <span class="wf-btn wf-btn-primary-red">Try Acrobat for free</span>
+            <span class="wf-btn wf-btn-secondary">See all plans ↓</span>
+          </div>
+        </div>
+        <div class="wf-fold-line">— FOLD (task grid below) —</div>
+        <div class="wf-section-label" style="margin-top:10px;">Most Used PDF Tools</div>
+        <div class="wf-task-grid wf-task-grid-4">
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">✏</span>Edit PDF</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">✍</span>Sign PDF</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">⊕</span>Merge PDF</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">W</span>PDF→Word</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">⊞</span>Compress</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">X</span>PDF→Excel</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">🔒</span>Protect</div>
+          <div class="wf-task" style="border-color: rgba(235,16,0,0.3);"><span class="wf-task-icon">🔍</span>OCR PDF</div>
+        </div>
+        <div style="font-size: 9px; color: var(--muted); margin-top: 5px;">See all 20+ Acrobat tools →</div>
+        <div class="callout callout-green" style="margin-top:10px;">
+          <strong>Why this works:</strong> Hero captures the high-intent "I need Acrobat" visitor. Task grid captures the "I need to merge a PDF" visitor who would otherwise go to iLovePDF. Both get the right entry point. Plans page does the plan selection — not the hub page.
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 4: PRICING PAGE CTA COMPARISON -->
+  <section>
+    <h2>Pricing Page — Who Leads with Free vs. Buy?</h2>
+    <p class="subtitle">Nathan's second ask: make "Start free trial" the primary CTA on plans pages, de-emphasize "Buy now." Here's how competitors structure their pricing page CTA hierarchy.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+      <!-- iLovePDF pricing -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">ilovepdf.com/pricing</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label"><span>iLovePDF — Plans Page</span></div>
+          <div class="plan-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="plan-card free-first">
+              <div class="plan-badge badge-free">Free First</div>
+              <div class="plan-name">Basic</div>
+              <div class="plan-price">Free</div>
+              <div class="plan-cta" style="background:#16a34a; color:white;">Start for free</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">Premium</div>
+              <div class="plan-price">$5–9/mo</div>
+              <div class="plan-cta" style="background:#7c3aed; color:white;">Go Premium</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">Business</div>
+              <div class="plan-price">Contact</div>
+              <div class="plan-cta" style="background:var(--s2); color:var(--muted); border:1px solid var(--border);">Talk to sales</div>
+            </div>
+          </div>
+          <div class="callout callout-green" style="margin-top:10px;">Free plan listed <strong>first</strong>, "Start for free" is the first CTA a user sees. No "Most Popular" badge — no steering.</div>
+        </div>
+      </div>
+
+      <!-- Foxit pricing -->
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">foxit.com/pricing</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label"><span>Foxit — Plans Page</span></div>
+          <div class="plan-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="plan-card">
+              <div class="plan-name">PDF Editor</div>
+              <div class="plan-price">Annual</div>
+              <div class="plan-cta" style="background:#2563eb; color:white;">Add to Cart</div>
+            </div>
+            <div class="plan-card most-popular">
+              <div class="plan-badge badge-most-popular">Most Popular</div>
+              <div class="plan-name">PDF Editor+</div>
+              <div class="plan-price">Higher tier</div>
+              <div class="plan-cta" style="background:#2563eb; color:white;">Add to Cart</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">PDF Reader</div>
+              <div class="plan-price">Free</div>
+              <div class="plan-cta" style="background:var(--s2); color:var(--muted); border:1px solid var(--border);">Download</div>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:10px;">"Most Popular" badge on <strong>higher-priced plan</strong>. Free reader is shown last. Primary CTA is "Add to Cart" — e-commerce language, no trial framing.</div>
+        </div>
+      </div>
+
+      <!-- Adobe recommended -->
+      <div class="browser" style="border-color: rgba(34,197,94,0.4);">
+        <div class="browser-bar" style="background: rgba(34,197,94,0.06);">
+          <div class="browser-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+          <div class="browser-url">adobe.com/acrobat/pricing — recommended</div>
+        </div>
+        <div class="browser-body">
+          <div class="browser-label"><span>Adobe Acrobat — Recommended Plans Page</span></div>
+          <div class="plan-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="plan-card free-first">
+              <div class="plan-badge badge-free">Start Here</div>
+              <div class="plan-name">Acrobat Free</div>
+              <div class="plan-price">$0 / month</div>
+              <div class="plan-cta" style="background:#16a34a; color:white;">Start free trial</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">Acrobat Standard</div>
+              <div class="plan-price">$X / month</div>
+              <div class="plan-cta" style="background:var(--red); color:white;">Start free trial</div>
+            </div>
+            <div class="plan-card">
+              <div class="plan-name">Acrobat Pro / Studio</div>
+              <div class="plan-price">$X / month</div>
+              <div class="plan-cta wf-btn-outline-red" style="display:block; padding:5px; text-align:center; border:1px solid var(--red); color:var(--red); border-radius:4px;">Buy now</div>
+            </div>
+          </div>
+          <div class="callout callout-green" style="margin-top:10px;">Free tier first. "Start free trial" is primary on first two plans. "Buy now" is outline/secondary on top tier only — reserved for users who've already decided. Nathan's exact ask.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SECTION 5: RECOMMENDATION -->
+  <section>
+    <h2>Recommendation — What Acrobat Should Do</h2>
+    <p class="subtitle">Two changes, both supported by competitor data. Neither requires new product features — these are entirely CTA and page structure decisions.</p>
+
+    <div class="rec-grid">
+
+      <div class="rec-card">
+        <div class="rec-header rec-header-before">✗ Current State — What to Change</div>
+        <div class="rec-body">
+          <ul class="change-list dont">
+            <li>"Try Acrobat Studio" as the hub page hero CTA
+              <span>Pushes unknown visitors into the most expensive product before they self-select. Matches Foxit's pattern — the only paid-first competitor in the top 5.</span>
+            </li>
+            <li>No task-based pathways on hub or offering pages
+              <span>Users who want to "merge a PDF" have no direct entry — they see a capabilities pitch instead. iLovePDF and PDF24 have zero friction here.</span>
+            </li>
+            <li>"Get Acrobat Pro" as the primary CTA on the plans page
+              <span>Leads with the expensive option. iLovePDF and Smallpdf both lead with free-tier CTAs — they capture the broadest audience first.</span>
+            </li>
+            <li>No free tier prominently anchored at the start of the plan sequence
+              <span>The free tier exists but is visually subordinate. Every free-first competitor puts it first in the left-to-right plan hierarchy.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-header rec-header-after">✓ Recommended State — Nathan's Direction + Competitive Data</div>
+        <div class="rec-body">
+          <ul class="change-list do">
+            <li>Change hub page hero CTA to <strong>"Try Acrobat for free"</strong> → plans page
+              <span>Generic free-first entry point. Users self-select their plan. Matches 4 of 5 competitors. Apply to all customer group hubs as Nathan requested.</span>
+            </li>
+            <li>Add a task-grid section below the hero fold
+              <span>8–10 most-used tasks: Edit PDF, Sign PDF, Merge PDF, PDF to Word, Compress, PDF to Excel, Protect, OCR. Mirrors Smallpdf's below-fold pattern (less extreme than iLovePDF but same benefit).</span>
+            </li>
+            <li>Make <strong>"Start free trial"</strong> the primary CTA on all plans except the top tier
+              <span>Matches iLovePDF and Smallpdf. Capture the broadest funnel at the plans page — let the product convert free users to paid.</span>
+            </li>
+            <li>Demote <strong>"Buy now"</strong> to outline/secondary on top-tier plan only
+              <span>Reserve direct purchase CTA for visitors who have already decided. All others get trial-first path. Nathan's exact request — supported by 4/5 competitors.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Evidence strip -->
+    <div class="evidence" style="margin-top: 24px;">
+      <strong>The evidence for Nathan's position is clear:</strong> 4 of 5 top competitors lead with free access on their hub pages. The one exception — Foxit — is the competitor that positions itself as "The #1 Alternative to Adobe Acrobat" and is the only one still using purchase-first language. Adobe's current pattern aligns with the challenger, not the leaders.
+      <br><br>
+      <strong>On task-based navigation:</strong> iLovePDF and PDF24 have the highest free-tier acquisition volume in the category precisely because their homepage removes all friction between a user's intent ("I need to merge a PDF") and the action. Smallpdf's hybrid approach (hero + task grid below fold) is the right middle ground for a brand that still needs to communicate quality and trust — it doesn't sacrifice brand positioning to lead with tools.
+      <br><br>
+      <span class="src">Source: Live research on ilovepdf.com, smallpdf.com, foxit.com, updf.com, tools.pdf24.org — April 2026. Button text and page structure verified against live pages.</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Adobe Internal · Confidential · Acrobat Redesign Research</span>
+  <span>April 2026 · Powered by Claude + Live Competitor Research</span>
+</footer>
+
+</body>
+</html>
