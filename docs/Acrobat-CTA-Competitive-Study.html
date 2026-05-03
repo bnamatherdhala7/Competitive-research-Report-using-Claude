@@ -171,6 +171,50 @@
   .summary-item::before { content: '→'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
 
   footer { max-width: 1080px; margin: 0 auto; padding: 16px 40px 32px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); }
+
+  /* ── ACTION SPEC BOX ── */
+  .action-spec {
+    grid-column: 1 / -1;
+    background: #f0f7ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .action-spec-label {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1d4ed8;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #dbeafe;
+  }
+  .action-spec-item {
+    font-size: 12px;
+    color: #374151;
+    padding: 5px 0;
+    border-bottom: 1px solid #eff6ff;
+    line-height: 1.5;
+  }
+  .action-spec-item:last-child { border-bottom: none; }
+  .action-spec-item strong { color: #1e3a5f; }
+  .copy-tag {
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+    background: #dbeafe;
+    border: 1px solid #93c5fd;
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 11px;
+    color: #1d4ed8;
+    display: inline-block;
+    margin-top: 3px;
+    white-space: nowrap;
+  }
 </style>
 </head>
 <body>
@@ -359,6 +403,24 @@
         <div class="rec-evidence">
           <strong>Evidence:</strong> 4 of 5 competitors (iLovePDF, Smallpdf, PDF24, UPDF) lead hub pages with free access. The one exception — Foxit — explicitly positions itself as a budget challenger to Adobe with "The #1 Alternative to Adobe Acrobat" as its headline. Adobe's current CTA pattern aligns with its strongest challenger, not the free-first majority that is winning top-of-funnel volume.
         </div>
+
+        <!-- ACTION SPEC: Rec 1 -->
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact copy to ship</div>
+            <div class="action-spec-item"><strong>Primary button:</strong><br><span class="copy-tag">Try Acrobat for free</span></div>
+            <div class="action-spec-item"><strong>Subtext (below button):</strong><br><span class="copy-tag">7 days free — no credit card needed</span></div>
+            <div class="action-spec-item"><strong>Secondary outline CTA:</strong><br><span class="copy-tag">See all plans →</span></div>
+            <div class="action-spec-item"><strong>Button destination:</strong> Plans page (not product checkout). Let visitors self-select their plan with full context.</div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> Web/CRO + Copywriter</div>
+            <div class="action-spec-item"><strong>Effort:</strong> 2-hour copy change — zero engineering required</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> Hub page hero CTA clickthrough rate (current est. ~1–2% → target 4%+)</div>
+            <div class="action-spec-item"><strong>A/B test:</strong> Control ("Try Acrobat Studio" → checkout) vs. Variant A ("Try Acrobat for free" → plans page) vs. Variant B ("Start for free" → web tool directly). Run for 2 weeks minimum; primary metric: CTA clickthrough rate.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -447,6 +509,31 @@
         </div>
         <div class="rec-evidence">
           <strong>Evidence:</strong> iLovePDF (29 tasks above fold) and PDF24 (24 tasks, no hero) have the highest free-tier acquisition volume in the category by removing all friction between visitor intent and tool use. Smallpdf's hybrid approach — hero above fold, task grid below — is the validated middle ground for a brand like Acrobat that needs to communicate quality and trust before driving to a task. Foxit and UPDF, which show only capabilities marketing with no task grid, require a download or purchase before any action — the highest friction of the five competitors studied.
+        </div>
+
+        <!-- ACTION SPEC: Rec 2 -->
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact task tiles — in order</div>
+            <div class="action-spec-item"><strong>Section header:</strong> <span class="copy-tag">Most used PDF tools</span></div>
+            <div class="action-spec-item"><strong>Tile 1:</strong> Edit PDF → /acrobat/online/pdf-editor.html</div>
+            <div class="action-spec-item"><strong>Tile 2:</strong> Sign PDF → /acrobat/online/sign-pdf.html</div>
+            <div class="action-spec-item"><strong>Tile 3:</strong> Merge PDF → /acrobat/online/merge-pdf.html</div>
+            <div class="action-spec-item"><strong>Tile 4:</strong> PDF to Word → /acrobat/online/pdf-to-word.html</div>
+            <div class="action-spec-item"><strong>Tile 5:</strong> Compress PDF → /acrobat/online/compress-pdf.html</div>
+            <div class="action-spec-item"><strong>Tile 6:</strong> PDF to Excel → /acrobat/online/pdf-to-excel.html</div>
+            <div class="action-spec-item"><strong>Tile 7:</strong> Protect PDF → /acrobat/online/protect-pdf.html</div>
+            <div class="action-spec-item"><strong>Tile 8:</strong> OCR PDF → /acrobat/online/ocr-pdf.html</div>
+            <div class="action-spec-item"><strong>Below grid link:</strong> <span class="copy-tag">See all PDF tools →</span></div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> Web team + Design</div>
+            <div class="action-spec-item"><strong>Effort:</strong> 1 sprint — new page section + direct tool link routing. Keep the hero section above fold intact.</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> Hub page → direct tool session starts; time-to-tool from hub (current: requires navigation → target: 1 click from hub)</div>
+            <div class="action-spec-item"><strong>A/B test:</strong> Control (current hero-only) vs. Variant A (hero + 8-tile grid below fold) vs. Variant B (hero + 16-tile grid). Primary: direct tool session rate per hub visit. Run 3 weeks.</div>
+            <div class="action-spec-item"><strong>Critical rule:</strong> Each tile must link to the live web tool directly — not to a feature marketing page. One extra click is where competitors capture the user instead.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -561,6 +648,28 @@
         <div class="rec-evidence">
           <strong>Evidence:</strong> iLovePDF leads with "Start for free" (free plan first). Smallpdf leads with "Try 7 Days Free" (no direct "Buy Now" anywhere on the pricing page). Both free-first competitors treat the pricing page as a funnel-widening tool, not a revenue-optimization page. Foxit's "Add to Cart" primary CTA and "Most Popular" badge on the higher-tier plan are deliberate challenger tactics designed to maximize revenue from a smaller, already-converted audience — the opposite problem from growing Acrobat's acquisition funnel.
         </div>
+
+        <!-- ACTION SPEC: Rec 3 -->
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact CTA copy per plan</div>
+            <div class="action-spec-item"><strong>Plan order (left → right):</strong> Free · Standard · Pro · Teams</div>
+            <div class="action-spec-item"><strong>Free plan CTA:</strong> <span class="copy-tag">Start for free</span></div>
+            <div class="action-spec-item"><strong>Standard plan CTA:</strong> <span class="copy-tag">Try 7 days free</span><br>Subtext: <span class="copy-tag">No credit card needed</span></div>
+            <div class="action-spec-item"><strong>Pro plan CTA:</strong> <span class="copy-tag">Try 7 days free</span> — remove "Most Popular" badge from Pro</div>
+            <div class="action-spec-item"><strong>Teams plan CTA:</strong> <span class="copy-tag">Get started</span> or <span class="copy-tag">Contact sales</span></div>
+            <div class="action-spec-item"><strong>Move "Most Popular" badge:</strong> Pro → Standard (positions Standard as the conversion target, not the premium plan)</div>
+            <div class="action-spec-item"><strong>Remove from all plans:</strong> <span class="copy-tag">Buy Now</span> and <span class="copy-tag">Get Acrobat Pro</span> as primary CTA language</div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> Web/CRO + Product</div>
+            <div class="action-spec-item"><strong>Effort:</strong> 2 days — CTA copy change + plan column reorder. No new features required.</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> Pricing page → free trial conversion rate (target: +15% vs. control)</div>
+            <div class="action-spec-item"><strong>A/B test:</strong> Control (current "Get Acrobat Pro" primary, Pro featured) vs. Variant A (free tier left, trial CTAs on all plans) vs. Variant B (Smallpdf pattern — no "Buy Now" anywhere). Primary metric: pricing page → trial start. Run 3 weeks minimum.</div>
+            <div class="action-spec-item"><strong>Secondary metric to watch:</strong> Trial → paid D30 conversion rate per variant — ensure trial-first language does not reduce paid conversion quality.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -583,30 +692,33 @@
       <div class="summary-grid">
 
         <div class="summary-card">
-          <div class="summary-card-num">Priority 1 · Hub Page CTA</div>
+          <div class="summary-card-num">Priority 1 · Hub Page CTA · Ship Week 1</div>
           <div class="summary-card-title">"Try Acrobat for free" → plans page as hero CTA</div>
-          <div class="summary-item">Replace "Try Acrobat Studio" with generic free entry</div>
-          <div class="summary-item">Add secondary "See all plans ↓" outline button</div>
-          <div class="summary-item">Apply across all customer group hubs</div>
-          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Effort: Low · Copy change only</div>
+          <div class="summary-item">Button copy: "Try Acrobat for free" + subtext "7 days free — no credit card"</div>
+          <div class="summary-item">Add secondary outline CTA: "See all plans →"</div>
+          <div class="summary-item">Apply across all customer group hubs (Acrobat, Express, Firefly)</div>
+          <div class="summary-item">Owner: Web/CRO · Effort: 2 hours · Zero engineering</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">A/B test: Control vs. "free" CTA vs. direct-to-tool · Metric: hero CTR</div>
         </div>
 
         <div class="summary-card">
-          <div class="summary-card-num">Priority 2 · Pricing Page CTA</div>
-          <div class="summary-card-title">Free tier first, "Start free trial" primary on all but top plan</div>
-          <div class="summary-item">Free plan listed left-most in plan sequence</div>
-          <div class="summary-item">"Start free trial" primary on Standard + mid plans</div>
-          <div class="summary-item">"Buy now" demoted to outline on top tier only</div>
-          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Effort: Low · CTA and plan order change</div>
+          <div class="summary-card-num">Priority 2 · Pricing Page CTA · Ship Week 3</div>
+          <div class="summary-card-title">Free tier first, "Try 7 days free" primary on Standard + Pro</div>
+          <div class="summary-item">Plan order: Free · Standard · Pro · Teams (left to right)</div>
+          <div class="summary-item">Standard + Pro CTAs: "Try 7 days free" + "No credit card needed"</div>
+          <div class="summary-item">Move "Most Popular" badge: Pro → Standard</div>
+          <div class="summary-item">Remove "Buy Now" / "Get Acrobat Pro" from all non-enterprise plans</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Owner: Web/CRO + Eng · Effort: 2 days · Metric: pricing page → trial +15%</div>
         </div>
 
         <div class="summary-card">
-          <div class="summary-card-num">Priority 3 · Task Navigation</div>
-          <div class="summary-card-title">Add "Most Used Tools" task grid below the hero fold</div>
-          <div class="summary-item">8–10 tiles: Edit, Sign, Merge, PDF→Word, Compress…</div>
-          <div class="summary-item">Each tile launches directly into the tool</div>
-          <div class="summary-item">Keep hero section above fold — hybrid pattern</div>
-          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Effort: Medium · New page section + routing</div>
+          <div class="summary-card-num">Priority 3 · Task Navigation · Ship Week 4–5</div>
+          <div class="summary-card-title">Add "Most used PDF tools" task grid below the hero fold</div>
+          <div class="summary-item">8 tiles: Edit · Sign · Merge · PDF→Word · Compress · PDF→Excel · Protect · OCR</div>
+          <div class="summary-item">Each tile links directly to the live web tool — not a feature page</div>
+          <div class="summary-item">Keep hero above fold — Smallpdf hybrid pattern</div>
+          <div class="summary-item">Section header: "Most used PDF tools" + "See all →" link</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Owner: Web + Design · Effort: 1 sprint · Metric: hub → tool session rate</div>
         </div>
 
       </div>

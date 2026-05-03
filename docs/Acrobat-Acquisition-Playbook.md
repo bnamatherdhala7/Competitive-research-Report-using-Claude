@@ -10,6 +10,39 @@
 
 ---
 
+## 30-Day Action Sprint
+
+Eight actions to start this week. The first four are copy changes only — no engineering, no tickets, no sprint planning needed.
+
+### Week 1 — No Engineering Required
+
+| # | Action | Exact Copy / Change | Owner | Effort |
+|---|---|---|---|---|
+| 1 | **Hub page hero CTA** — change primary button on Acrobat hub | From: `"Try Acrobat Studio"` → To: `"Try Acrobat for free"` · Subtext: `"7 days free — no credit card"` · Button destination: plans page, not product checkout | Web/CRO | 2 hrs |
+| 2 | **Pricing page CTAs** — swap primary button copy on Standard + Pro plans | From: `"Get Acrobat Pro"` → To: `"Start free trial"` · Subtext: `"Cancel anytime."` · Reorder plans left to right: Free · Standard · Pro · Teams | Web/CRO | 2 hrs |
+| 3 | **SEM — bid on cancellation and FTC-intent queries** | Keywords: `adobe acrobat cancel subscription`, `adobe acrobat ETF`, `is adobe acrobat worth it` · Ad headline: `"Acrobat's Terms, Explained Plainly"` · Ad description: `"See exactly what you're signing up for — no fine print."` · Destination: `/subscription-terms` (see #7) | SEM | 1 day |
+| 4 | **SEM — bid on competitor-comparison intent** | Keywords: `foxit alternative 2026`, `updf vs adobe acrobat`, `pdf editor no credit card`, `best pdf editor reddit` · Ad headline: `"More Powerful Than Foxit. Try Free."` · Ad description: `"Acrobat Sign, AI Assistant, real-time review — free for 7 days."` · Destination: dedicated comparison page | SEM | 1 day |
+
+### Days 8–30 — Light Engineering
+
+| # | Action | Build Spec | Owner | Effort | Target Metric |
+|---|---|---|---|---|---|
+| 5 | **Remove CC from free trial** | Remove the credit card field from trial signup. Show `"7 days free — no card needed"` above the form. Add UTM param `?source=free_trial_nc` for cohort tracking. Foxit, UPDF, Smallpdf, and iLovePDF all offer CC-free entry. Acrobat is the only major PDF tool that gates the trial with a card. | Product + Eng | 3 days | Trial starts: ~500/mo → 3,000/mo |
+| 6 | **Signer-to-subscriber CTA** | On Acrobat Sign document-signed confirmation screen (post-signature), below the checkmark: add `"Want to send documents for signature? → Try Acrobat free"` (plain text link, no modal). Link to trial start with `?source=signer_confirm`. | Acrobat Sign PM + Eng | 2 days | Signer → trial: 0% → 3% |
+| 7 | **Transparent subscription terms page** | Publish at `acrobat.adobe.com/subscription-terms` — plain-language ETF explanation (when it applies, when it doesn't), side-by-side comparison vs. Foxit (no ETF) and Smallpdf (no ETF), direct cancel link at the top. No legal boilerplate above the fold. This page also serves as the landing destination for SEM action #3. | Content + Legal | 3 days | FTC-adjacent search traffic landing on Adobe.com: <5% → 40% |
+| 8 | **Pricing page plan order + CTA redesign** | Reorder plans left to right: Free · Standard · Pro · Teams. Update CTAs per plan: Free → `"Start for free"`, Standard → `"Try 7 days free"`, Pro → `"Try 7 days free"`, Teams → `"Get started"`. Move "Most Popular" badge from Pro to Standard. Remove `"Buy Now"` language from all non-enterprise plans. | Web/CRO + Eng | 2 days | Pricing page → trial conversion rate +15% |
+
+### A/B Tests to Run in Parallel
+
+| Test | Control | Variant A | Variant B | Primary Metric |
+|---|---|---|---|---|
+| Hub hero CTA | Current: "Try Acrobat Studio" → checkout | "Try Acrobat for free" → plans page | "Start for free" → web tool directly | Hero CTA clickthrough rate |
+| Trial friction | Current: CC required on signup | No CC, 7-day trial | No CC, freemium (5 docs/mo free forever) | Trial starts per unique visitor |
+| Signer CTA | Current: No CTA on sign confirmation | Text link: `"Send docs free →"` | Feature preview card with CTA | Signer → trial conversion rate |
+| Pricing page CTAs | Current: "Get Acrobat Pro" primary | "Try 7 days free" primary, free tier left-most | No "Buy Now" anywhere (Smallpdf pattern) | Plans page → trial conversion |
+
+---
+
 ## What Customers Are Actually Saying
 
 Signals pulled from Reddit, Adobe Community forums, G2, and FTC complaint filings:
@@ -209,21 +242,29 @@ For prospects who cite the FTC case: acknowledge it directly. "You're right — 
 
 **1. Build a "PDF editor free trial" SEO landing page**
 - Adobe is invisible for "PDF editor free" (200K+ monthly searches) — the highest-volume entry keyword
-- Build: dedicated page at acrobat.adobe.com/free-trial with above-the-fold trial CTA, no credit card for first 7 days, and a direct pricing comparison vs Foxit and UPDF
-- Counter: Foxit's trial page requires no CC and ranks #1–2 for this keyword; Adobe's trial page requires CC upfront
+- Build: dedicated page at `acrobat.adobe.com/free-trial` with above-the-fold trial CTA, no CC required, and a direct comparison table vs Foxit and UPDF
+- Counter: Foxit's trial page requires no CC and ranks #1–2 for this keyword; Adobe's current trial page requires CC upfront
+- **Exact page headline:** `"The world's most trusted PDF editor — free for 7 days"`
+- **Exact CTA text:** `"Start free — no credit card"` (primary) · `"See what's included →"` (secondary)
+- **Above-fold comparison table:** Acrobat vs Foxit vs UPDF — 5 rows: eSign, AI Assistant, cloud sync, mobile app, collaboration. Highlight Acrobat ✅ where competitors show ❌.
 - Metric: organic trial starts from non-branded search 500/mo → 5,000/mo within 90 days
 
 **2. Signer-to-subscriber CTA on every Acrobat Sign email**
 - 200M+ free signers receive Acrobat-signed documents every month and see zero conversion prompt
-- Build: add "Want to send documents for signature?" CTA below every signer's confirmation screen, one-click Express trial
-- Counter: this is a warm acquisition surface — users are already in the Acrobat workflow at the moment of highest intent
+- Build: add CTA below every signer's document-signed confirmation screen. Plain text link — no modal, no interstitial.
+- **Exact CTA copy:** `"Want to send documents for signature? → Try Acrobat free"`
+- **Link destination:** `acrobat.adobe.com/free-trial?source=signer_confirm`
+- Counter: this is the warmest possible acquisition surface — users are in the Acrobat workflow at the moment of highest signing intent
+- **Do not** show a feature-heavy promotional card here. Single-line text link converts better than a modal for this post-action moment.
 - Metric: signer-to-trial conversion 0% → 3–5% (at 200M signers, 1% = 2M trial starts/month)
 
 **3. Address the FTC story in paid and organic acquisition**
 - Any prospect researching "Adobe Acrobat review" hits the FTC lawsuit story before hitting product content
-- Build: publish a transparent "Our subscription terms, explained plainly" page; run Google Ads bidding on "Adobe Acrobat ETF" and "Adobe Acrobat cancel" to own the narrative
-- Counter: Foxit runs ads on these keywords ("Switch to Foxit — no lock-in"); Adobe cedes this traffic entirely today
-- Metric: "Adobe Acrobat alternative" and "Adobe ETF" search traffic that lands on Adobe.com vs competitor sites
+- Build: (a) publish transparent subscription terms page at `acrobat.adobe.com/subscription-terms`; (b) run Google Ads on the keywords below; (c) publish a press/blog post — "How we updated our subscription terms" — to give AI systems a balanced source to cite
+- **Exact SEM keywords:** `adobe acrobat cancel subscription` · `adobe acrobat ETF` · `adobe acrobat cancel reddit` · `is adobe acrobat worth it 2026`
+- **Exact ad copy:** Headline: `"Acrobat's Terms, Explained Plainly"` · Description: `"No fine print. See exactly what you pay, when you pay it, and how to cancel — in plain English."`
+- Counter: Foxit runs ads on these exact keywords with "Switch to Foxit — no lock-in"; Adobe currently cedes all this traffic
+- Metric: share of FTC/ETF-adjacent search traffic landing on Adobe.com vs. competitor sites: <5% → 40%
 
 ---
 
