@@ -1,6 +1,6 @@
 # Adobe Express — Acquisition & Growth Playbook 2026
 
-**Audience:** PM Strategy & Growth Team  **Scope:** Pricing · SEO · GEO · Acquisition Motions  **Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Audience:** PM Strategy & Growth Team  **Scope:** Pricing · SEO · GEO · Acquisition Motions  **Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
 ---
 
@@ -67,7 +67,7 @@ Monitor: `#AdobeExpress`, `@AdobeExpress`, `Canva launch`, `#CanvaDesign`:
 
 The design tool market is split by AI quality vs. template volume. Canva owns template volume with 600K+ templates and 260M monthly users built on a decade of freemium virality. Adobe Express has 177K+ templates and 30M registered users but owns the only commercially safe AI image generation in the category (Firefly IP indemnification). The pivot moment: enterprise design teams are beginning to require AI commercial safety certificates. The 6-month window is now — Canva is building their own "Design Model" AI but has not solved the IP indemnification problem.
 
-**Key market facts as of April 2026:**
+**Key market facts as of May 2026:**
 - Canva: 260M monthly users, 600K+ templates, $2.3B ARR
 - Adobe Express: 30M+ registered users, 177K+ templates
 - M365 Designer (DALL-E): Bundled free for 80M+ M365 users

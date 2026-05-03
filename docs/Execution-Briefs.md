@@ -1,7 +1,7 @@
 # Adobe Competitive Intelligence — Execution Briefs
 
 **Scope:** PLG "Now" motions across Acrobat · Express · Remove Background  
-**Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
 > Each brief translates one PLG motion from the acquisition playbooks into a ready-to-ship execution package: landing page copy, in-product or email copy, A/B test hypothesis, and the single metric that confirms it's working. Hand directly to a copywriter, engineer, or PM sprint.
 

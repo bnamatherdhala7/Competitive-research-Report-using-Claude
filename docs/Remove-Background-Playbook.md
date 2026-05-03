@@ -1,6 +1,6 @@
 # Adobe Firefly — Remove Background Keyword Acquisition Playbook 2026
 
-**Audience:** Growth & Acquisition Team  **Scope:** SEO · GEO · Keyword Acquisition  **Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Audience:** Growth & Acquisition Team  **Scope:** SEO · GEO · Keyword Acquisition  **Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
 ---
 

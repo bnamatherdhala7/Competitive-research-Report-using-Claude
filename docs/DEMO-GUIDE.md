@@ -136,7 +136,7 @@ The price story doesn't change. The acquisition friction story does.
 
 **Where**: GEO — Generative Engine Optimization
 
-As of April 2026, ~30% of PDF tool queries go through ChatGPT, Perplexity, or Google AI Overviews instead of traditional search. Current AI answers:
+As of May 2026, ~30% of PDF tool queries go through ChatGPT, Perplexity, or Google AI Overviews instead of traditional search. Current AI answers:
 
 | Query | ChatGPT | Perplexity |
 |---|---|---|

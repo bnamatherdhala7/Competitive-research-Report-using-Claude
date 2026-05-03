@@ -1,7 +1,7 @@
 # Adobe Competitive Intelligence — Cross-Product Executive Synthesis
 
 **Audience:** VP / SVP Level · Strategy & Acquisition Leadership  
-**Scope:** Acrobat · Express · Firefly  **Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Scope:** Acrobat · Express · Firefly  **Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
 ---
 

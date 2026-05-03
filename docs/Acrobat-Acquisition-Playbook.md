@@ -1,6 +1,6 @@
 # Adobe Acrobat — Acquisition & Growth Playbook 2026
 
-**Audience:** Acquisition & Growth Team  **Scope:** Pricing · SEO · GEO · Acquisition Motions  **Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Audience:** Acquisition & Growth Team  **Scope:** Pricing · SEO · GEO · Acquisition Motions  **Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
 ---
 
@@ -100,7 +100,7 @@ Monitor: `@Adobe Acrobat`, `#AdobeAcrobat`, `FTC Adobe lawsuit`:
 
 ## Market Overview
 
-PDF software is bifurcating. Enterprise compliance buyers consolidate to Adobe for Acrobat Sign, AI Assistant, and IT standardization. SMB and prosumer buyers defect to one-time-purchase tools or treat PDF editing as "included" in M365. Adobe's April 2026 price increase to $239.88/yr sharpens this tension. The FTC lawsuit (filed June 2024) is the single biggest brand-trust liability in the acquisition funnel — prospects searching "Adobe Acrobat review" hit the lawsuit story before they hit product reviews.
+PDF software is bifurcating. Enterprise compliance buyers consolidate to Adobe for Acrobat Sign, AI Assistant, and IT standardization. SMB and prosumer buyers defect to one-time-purchase tools or treat PDF editing as "included" in M365. Adobe's May 2026 price increase to $239.88/yr sharpens this tension. The FTC lawsuit (filed June 2024) is the single biggest brand-trust liability in the acquisition funnel — prospects searching "Adobe Acrobat review" hit the lawsuit story before they hit product reviews.
 
 **SEO snapshot:**
 - Adobe ranks #1–2 for "Adobe Acrobat" (branded) — unchallenged
@@ -173,9 +173,9 @@ PDF software is bifurcating. Enterprise compliance buyers consolidate to Adobe f
 
 ## GEO — Generative Engine Optimization
 
-GEO is how Adobe appears in AI-generated answers from ChatGPT, Perplexity, Google AI Overviews, and Claude. As of April 2026, ~30% of informational PDF queries go through AI assistants instead of traditional search. This is a new, fast-growing acquisition surface.
+GEO is how Adobe appears in AI-generated answers from ChatGPT, Perplexity, Google AI Overviews, and Claude. As of May 2026, ~30% of informational PDF queries go through AI assistants instead of traditional search. This is a new, fast-growing acquisition surface.
 
-**Current GEO positions (tested April 2026):**
+**Current GEO positions (tested May 2026):**
 
 | Query | ChatGPT Answer | Perplexity Answer | Google AI Overview |
 |---|---|---|---|

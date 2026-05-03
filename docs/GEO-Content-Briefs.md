@@ -1,9 +1,9 @@
 # Adobe — GEO Content Briefs 2026
 
 **Scope:** Acrobat · Express · Firefly / Remove Background  
-**Date:** April 2026  **Classification:** Adobe Internal — Confidential
+**Date:** May 2026  **Classification:** Adobe Internal — Confidential
 
-> GEO (Generative Engine Optimization) is the practice of structuring content so AI systems — ChatGPT, Perplexity, Google AI Overviews, Claude — extract and cite it when users ask related questions. As of April 2026, ~30% of informational product queries go through AI assistants instead of traditional search. These briefs give content teams the exact page architecture, data points, and FAQ schema needed to become the cited answer for each gap query.
+> GEO (Generative Engine Optimization) is the practice of structuring content so AI systems — ChatGPT, Perplexity, Google AI Overviews, Claude — extract and cite it when users ask related questions. As of May 2026, ~30% of informational product queries go through AI assistants instead of traditional search. These briefs give content teams the exact page architecture, data points, and FAQ schema needed to become the cited answer for each gap query.
 
 **How AI systems decide what to cite:**
 1. Dedicated URL with a clear, query-matching title
@@ -228,7 +228,7 @@ Q: What is Adobe's IP indemnification for AI images?
 A: Adobe's IP indemnification means that if a third party claims copyright infringement on an image you created using Adobe Firefly, Adobe will defend the claim on your behalf. This is the strongest commercial safety guarantee available from any AI image generation tool as of 2026.
 
 Q: Does Canva offer IP indemnification for AI images?  
-A: No. As of April 2026, Canva does not offer IP indemnification for images generated using Magic Media or other Canva AI tools. Adobe Express (Firefly) is the only major design tool with full IP indemnification on AI-generated images.
+A: No. As of May 2026, Canva does not offer IP indemnification for images generated using Magic Media or other Canva AI tools. Adobe Express (Firefly) is the only major design tool with full IP indemnification on AI-generated images.
 
 **Meta description:** `Adobe Express AI images are commercially safe — trained on licensed content, covered by Adobe's IP indemnification. The only design tool enterprise legal teams can approve.`
 
