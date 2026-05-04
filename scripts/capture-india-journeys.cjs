@@ -59,6 +59,19 @@ const PAGES = [
         fallbackRect: { top: 960, left: 80, width: 1280, height: 72 },
         label: 'ADD → 8-task grid below fold: Edit · Sign · Merge · Compress · OCR · PDF→Word · Protect · Fill & Sign · each tile deep-links to live tool · iLovePDF shows 29 such tiles — Adobe shows 0',
       },
+      {
+        num: 4,
+        color: '#6F42C1',
+        borderStyle: 'dashed',
+        selectors: [
+          '[class*="footnote"]',
+          '[class*="legal"]',
+          '[class*="disclaimer"]',
+          'footer',
+        ],
+        fallbackRect: { top: 1100, left: 80, width: 900, height: 48 },
+        label: 'ADD → ETF transparency callout near CTA: "Cancel anytime — no fees after 14 days" · directly counters the ₹749 trap narrative before visitors leave for Foxit',
+      },
     ],
   },
   {
@@ -116,7 +129,32 @@ const PAGES = [
         borderStyle: 'dashed',
         selectors: [],
         fallbackRect: { top: 560, left: 480, width: 700, height: 60 },
-        label: 'ADD → Below CTA buttons: UPI badge + "GST invoice provided on request" · 300M+ UPI users in India · GST invoice is table-stakes for Indian business buyers',
+        label: 'ADD → Below CTA buttons: UPI badge + "GST invoice provided on request" · 300M+ UPI users vs. 3% credit card penetration · GST invoice is table-stakes for Indian B2B buyers',
+      },
+      {
+        num: 5,
+        color: '#E64646',
+        borderStyle: 'solid',
+        selectors: [
+          '[class*="plan-card"]:first-child',
+          '[class*="PricingCard"]:first-child',
+          '[class*="pricing-tier"]:first-child',
+          '.plan:first-child',
+          '[class*="card"]:first-child h2',
+        ],
+        fallbackRect: { top: 260, left: 160, width: 280, height: 380 },
+        label: 'CHANGE → Reorder plan columns left-to-right: Free/Student · Standard · Pro · Teams · Currently Free is absent or rightmost — Indian visitors scan left-first and never see ₹0 option',
+      },
+      {
+        num: 6,
+        color: '#6F42C1',
+        borderStyle: 'dashed',
+        selectors: [
+          '[class*="plan-card"]',
+          '[class*="PricingCard"]',
+        ],
+        fallbackRect: { top: 620, left: 480, width: 700, height: 44 },
+        label: 'ADD → "No cancellation fee after 12 months" trust badge on each paid plan card · Foxit uses this exact line as India conquest copy — Adobe needs to own it first',
       },
     ],
   },
@@ -159,7 +197,23 @@ const PAGES = [
           '[data-testid*="cancel" i]',
         ],
         fallbackRect: { top: 260, left: 160, width: 1120, height: 200 },
-        label: '🔴 RISK → This is the ₹749 trap origin: cancellation charges ₹749/mo with no clear warning · ADD: transparent billing explainer before cancel button · ADD: "What you\'ll be charged" modal · Root cause of Twitter trending & Quora India complaints',
+        label: '🔴 RISK → ₹749 trap origin: early termination fee charged with no upfront warning — root cause of Twitter trending & Quora India complaints',
+      },
+      {
+        num: 2,
+        color: '#138808',
+        borderStyle: 'dashed',
+        selectors: [],
+        fallbackRect: { top: 480, left: 160, width: 1120, height: 72 },
+        label: 'ADD → "What you\'ll be charged" explainer modal before any cancel action: shows remaining months × fee with a "No fee after 12 months" callout · also publish /in/acrobat/subscription-terms in EN + Hindi',
+      },
+      {
+        num: 3,
+        color: '#FF9933',
+        borderStyle: 'dashed',
+        selectors: [],
+        fallbackRect: { top: 580, left: 160, width: 1120, height: 52 },
+        label: 'ADD → SEM intercept: buy "acrobat cancel india", "adobe ₹749 charge", "adobe subscription cancel hindi" — capture users before they reach Foxit/WPS review pages',
       },
     ],
   },
@@ -548,7 +602,7 @@ function buildHTML(screenshots) {
     <div class="cover-subtitle">Live page captures with numbered callout overlays — shows exactly which element to change and what to change it to. Adobe pages are annotated; competitor pages are benchmarks.</div>
   </div>
   <div class="cover-meta">
-    <div class="cover-stat"><div class="cover-stat-num">11</div><div class="cover-stat-label">Callout annotations on Adobe pages</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">16</div><div class="cover-stat-label">Callout annotations on Adobe pages</div></div>
     <div class="cover-stat"><div class="cover-stat-num">₹749</div><div class="cover-stat-label">Trap driving Twitter &amp; Quora churn</div></div>
     <div class="cover-stat"><div class="cover-stat-num">3.5×</div><div class="cover-stat-label">Adobe vs. Foxit price gap</div></div>
     <div class="cover-stat"><div class="cover-stat-num">40M</div><div class="cover-stat-label">Students eligible, 0 hub touchpoints</div></div>
@@ -604,9 +658,11 @@ ${items.join('\n')}
       <h3>Days 8–30 — Engineering</h3>
       <ul>
         <li>8-task grid below hub fold (Edit · Sign · Merge · Compress · OCR · PDF→Word · Protect · Fill &amp; Sign)</li>
+        <li>Reorder pricing columns: Free/Student → Standard → Pro → Teams</li>
+        <li>"No cancellation fee after 12 months" badge on plan cards</li>
         <li>UPI badge + GST invoice callout on pricing page</li>
-        <li>Transparent billing explainer before cancel button</li>
-        <li>SEM: buy "acrobat cancel india" + "adobe ₹749 charge" keywords</li>
+        <li>"What you'll be charged" modal before cancel · /in/acrobat/subscription-terms in EN+Hindi</li>
+        <li>SEM: buy "acrobat cancel india" + "adobe ₹749 charge" + "adobe subscription cancel hindi"</li>
       </ul>
     </div>
     <div class="summary-card">
