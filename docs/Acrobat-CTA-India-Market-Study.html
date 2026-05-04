@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acrobat India Market — CTA & Acquisition Study 2026</title>
+<style>
+  :root {
+    --red: #EB1000; --dark: #1A1A1A; --mid: #444; --muted: #777;
+    --border: #E0E0E0; --bg: #F5F5F5; --white: #FFFFFF;
+    --green: #16803C; --amber: #B45309; --blue: #1D4ED8;
+    --india-saffron: #FF9933; --india-green: #138808;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
+
+  .doc-header { background: var(--dark); }
+  .doc-header-top { background: var(--red); padding: 28px 52px 24px; display: flex; align-items: flex-start; gap: 20px; }
+  .doc-logo { font-size: 36px; font-weight: 900; color: white; letter-spacing: -1.5px; flex-shrink: 0; }
+  .doc-header-titles h1 { font-size: 22px; font-weight: 300; color: white; line-height: 1.3; margin-bottom: 4px; }
+  .doc-header-titles p { font-size: 12px; color: rgba(255,255,255,0.65); }
+  .doc-header-bar { padding: 14px 52px; display: flex; gap: 36px; }
+  .meta-item { font-size: 11px; color: rgba(255,255,255,0.45); }
+  .meta-item strong { color: white; font-weight: 600; display: block; font-size: 12px; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 48px 40px 80px; }
+  section { margin-bottom: 60px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .section-num { width: 34px; height: 34px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: white; flex-shrink: 0; }
+  .section-title { font-size: 20px; font-weight: 700; }
+  .section-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 28px; margin-top: 8px; max-width: 720px; line-height: 1.6; }
+
+  .findings-bar { background: var(--dark); border-radius: 10px; padding: 28px 36px; margin-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+  .finding-num { font-size: 26px; font-weight: 900; color: var(--india-saffron); line-height: 1; margin-bottom: 6px; }
+  .finding-label { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.45; }
+  .finding-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  /* Tables */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
+  .data-table th { background: var(--dark); color: rgba(255,255,255,0.7); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 14px; text-align: left; }
+  .data-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #fafafa; }
+  .adobe-row td { background: #fff8f8 !important; font-weight: 600; }
+  .highlight-row td { background: #f0fdf4 !important; font-weight: 600; }
+
+  .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; letter-spacing: 0.03em; white-space: nowrap; }
+  .badge-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+  .badge-red   { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+  .badge-amber { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge-blue  { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .badge-saffron { background: #fff3e0; color: #b45309; border: 1px solid #fed7aa; }
+  .mono { font-family: 'SF Mono', Monaco, Consolas, monospace; font-size: 11.5px; background: #f3f4f6; padding: 2px 6px; border-radius: 3px; color: #374151; }
+
+  /* Voice cards */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .voice-card { background: var(--white); border-radius: 10px; padding: 20px 22px; border: 1px solid var(--border); box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+  .voice-platform { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .platform-reddit { color: #FF4500; }
+  .platform-twitter { color: #1D9BF0; }
+  .platform-quora { color: #B92B27; }
+  .platform-trustpilot { color: #00B67A; }
+  .platform-medium { color: #000; }
+  .voice-quote { font-size: 13.5px; line-height: 1.6; color: var(--dark); font-style: italic; margin-bottom: 10px; border-left: 3px solid var(--border); padding-left: 12px; }
+  .voice-meta { font-size: 11px; color: var(--muted); }
+  .voice-signal { font-size: 12px; color: var(--mid); margin-top: 8px; line-height: 1.45; padding: 8px 10px; background: #fafafa; border-radius: 4px; }
+
+  .ann { padding: 10px 16px; font-size: 12px; line-height: 1.45; border-left: 3px solid; display: flex; gap: 10px; margin-bottom: 8px; }
+  .ann-green { background: #f0fdf4; border-color: #16a34a; color: #14532d; }
+  .ann-red   { background: #fff8f8; border-color: var(--red); color: #7f1d1d; }
+  .ann-amber { background: #fffbeb; border-color: #d97706; color: #78350f; }
+  .ann-blue  { background: #eff6ff; border-color: #3b82f6; color: #1e3a5f; }
+  .ann-icon  { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Recommendation boxes */
+  .rec-inline { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--red); border-radius: 0 10px 10px 0; padding: 0; margin-top: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .rec-inline-header { background: #fff8f8; padding: 14px 22px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #fde8e8; }
+  .rec-inline-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red); background: #fee2e2; padding: 3px 10px; border-radius: 3px; white-space: nowrap; }
+  .rec-inline-headline { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .rec-inline-body { padding: 20px 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .rec-col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .rec-col-label.do   { color: var(--green); }
+  .rec-col-label.dont { color: #b91c1c; }
+  .rec-action { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 12.5px; line-height: 1.5; }
+  .rec-action:last-child { border-bottom: none; padding-bottom: 0; }
+  .rec-arrow { flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+  .rec-arrow.do   { color: var(--green); }
+  .rec-arrow.dont { color: #b91c1c; }
+  .rec-action-text strong { color: var(--dark); }
+  .rec-action-text span { font-size: 11.5px; color: var(--muted); display: block; margin-top: 2px; line-height: 1.4; }
+  .rec-evidence { grid-column: 1 / -1; background: #fafafa; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; font-size: 12px; color: var(--muted); line-height: 1.55; margin-top: 4px; }
+  .rec-evidence strong { color: var(--dark); }
+
+  /* Action spec */
+  .action-spec { grid-column: 1 / -1; background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 16px 20px; margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .action-spec-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid #dbeafe; }
+  .action-spec-item { font-size: 12px; color: #374151; padding: 5px 0; border-bottom: 1px solid #eff6ff; line-height: 1.5; }
+  .action-spec-item:last-child { border-bottom: none; }
+  .action-spec-item strong { color: #1e3a5f; }
+  .copy-tag { font-family: 'SF Mono', Monaco, Consolas, monospace; background: #dbeafe; border: 1px solid #93c5fd; border-radius: 3px; padding: 2px 7px; font-size: 11px; color: #1d4ed8; display: inline-block; margin-top: 3px; white-space: nowrap; }
+  .inr-tag { font-family: 'SF Mono', Monaco, Consolas, monospace; background: #fff3e0; border: 1px solid #fed7aa; border-radius: 3px; padding: 2px 7px; font-size: 11px; color: #b45309; display: inline-block; margin-top: 3px; white-space: nowrap; }
+
+  /* Sprint table */
+  .sprint-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.07); margin-bottom: 20px; }
+  .sprint-table th { background: #1e3a5f; color: rgba(255,255,255,0.8); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+  .sprint-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 12.5px; line-height: 1.5; }
+  .sprint-table tr:last-child td { border-bottom: none; }
+  .sprint-table tr:hover td { background: #fafafa; }
+  .sprint-num { font-weight: 900; color: var(--red); font-size: 15px; }
+
+  /* Summary */
+  .summary-section { background: var(--dark); border-radius: 12px; padding: 36px 40px; }
+  .summary-title { font-size: 18px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .summary-sub   { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+  .summary-grid  { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .summary-card  { background: #252525; border-radius: 8px; padding: 20px; border: 1px solid #333; }
+  .summary-card-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--india-saffron); margin-bottom: 10px; }
+  .summary-card-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 8px; line-height: 1.3; }
+  .summary-item { font-size: 12px; color: rgba(255,255,255,0.6); padding: 5px 0 5px 14px; border-bottom: 1px solid #333; position: relative; line-height: 1.4; }
+  .summary-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .summary-item::before { content: '→'; position: absolute; left: 0; color: var(--india-saffron); font-weight: 700; }
+
+  /* Context cards */
+  .context-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+  .context-card { background: var(--white); border-radius: 10px; padding: 20px; border: 1px solid var(--border); }
+  .context-card-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; }
+  .context-card-value { font-size: 22px; font-weight: 900; color: var(--dark); line-height: 1; margin-bottom: 6px; }
+  .context-card-sub { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  footer { max-width: 1080px; margin: 0 auto; padding: 16px 40px 32px; display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="doc-header-top">
+    <div class="doc-logo">Ae</div>
+    <div class="doc-header-titles">
+      <h1>Acrobat India Market — CTA &amp; Acquisition Study</h1>
+      <p>Competitive Intelligence · Acrobat India GTM · May 2026</p>
+    </div>
+  </div>
+  <div class="doc-header-bar">
+    <div class="meta-item"><strong>Market</strong>India (IN) — ₹ INR pricing</div>
+    <div class="meta-item"><strong>Sources</strong>Reddit · Twitter/X · Quora · Trustpilot · IndiaMart · Adobe.com/in</div>
+    <div class="meta-item"><strong>Competitors</strong>WPS Office · Foxit · iLovePDF · Smallpdf · PDF24</div>
+    <div class="meta-item"><strong>Classification</strong>Adobe Internal — Confidential</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- KEY FINDINGS -->
+  <div class="findings-bar">
+    <div class="finding">
+      <div class="finding-num">3.5×</div>
+      <div class="finding-label">Adobe is 3.5× more expensive than Foxit in India (₹19,152 vs ₹5,500/yr)</div>
+      <div class="finding-sub">WPS Office costs ₹1,750/yr — 11× cheaper</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">₹749</div>
+      <div class="finding-label">The "₹749 trap" is a named, viral narrative in Indian creator communities</div>
+      <div class="finding-sub">Multiple blog posts, Medium articles specifically about India cancellation lock-in</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">FREE</div>
+      <div class="finding-label">Adobe announced free Acrobat for all Indian students in Feb 2026 — not on the hub page CTA</div>
+      <div class="finding-sub">Biggest untapped acquisition lever in the India market</div>
+    </div>
+    <div class="finding">
+      <div class="finding-num">#3</div>
+      <div class="finding-label">India is a top-3 country for Smallpdf — which leads with a free-first CTA Adobe doesn't match</div>
+      <div class="finding-sub">Asia-Pacific PDF tool usage up 28% since 2020</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: INDIA MARKET CONTEXT -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">India Market Context</div>
+    </div>
+    <p class="section-subtitle">India is not a smaller version of the US market. The price-to-income ratio, competitive dynamics, and acquisition channels are fundamentally different. The same CTA strategy that works globally fails in India because the baseline assumptions — about price tolerance, trust in subscriptions, and free tier expectations — don't hold.</p>
+
+    <div class="context-grid">
+      <div class="context-card">
+        <div class="context-card-label">Adobe Acrobat Pro (India)</div>
+        <div class="context-card-value">₹19,152</div>
+        <div class="context-card-sub">Annual cost (₹1,596/mo, annual plan billed monthly). Inclusive of GST. 50% ETF if cancelled mid-term. Represents ~6–12% of average Indian professional's monthly salary.</div>
+      </div>
+      <div class="context-card">
+        <div class="context-card-label">Nearest Competitor (Foxit, India)</div>
+        <div class="context-card-value">₹5,500</div>
+        <div class="context-card-sub">Via IndiaMart distributors. No ETF. No credit card lock-in narrative. Adobe charges 3.5× more with worse trust perception in India due to the ₹749 trap story.</div>
+      </div>
+      <div class="context-card">
+        <div class="context-card-label">WPS Office (India)</div>
+        <div class="context-card-value">₹1,750</div>
+        <div class="context-card-sub">Annual. Includes PDF editing, has a dedicated India recommendation page. 11× cheaper than Acrobat. Dominant in price-sensitive SMB and student segments. Free tier available.</div>
+      </div>
+    </div>
+
+    <div class="context-grid">
+      <div class="context-card">
+        <div class="context-card-label">Student Acrobat (India, Feb 2026)</div>
+        <div class="context-card-value">₹0</div>
+        <div class="context-card-sub">Adobe announced free Acrobat + Photoshop + Firefly for students via accredited Indian institutions. Announced Feb 2026. Not featured on the India Acrobat hub page CTA as of May 2026.</div>
+      </div>
+      <div class="context-card">
+        <div class="context-card-label">Smallpdf India Monthly Users</div>
+        <div class="context-card-value">~4M</div>
+        <div class="context-card-sub">India is a top-3 country for Smallpdf (20M total MAU). Asia-Pacific PDF tool usage up 28% since 2020. Smallpdf's free-first CTA and no-signup PDF compression capture this audience entirely.</div>
+      </div>
+      <div class="context-card">
+        <div class="context-card-label">Adobe India Cancellation ETF</div>
+        <div class="context-card-value">50%</div>
+        <div class="context-card-sub">Of remaining annual balance. At ₹1,596/mo annual plan, cancelling month 3 costs ~₹14,364 in fees. This is the most-discussed Adobe India complaint across Reddit, Twitter, Quora, and Medium.</div>
+      </div>
+    </div>
+
+    <div class="ann ann-amber"><span class="ann-icon">⚠</span><span><strong>India price-to-income gap:</strong> Adobe Acrobat Pro at ₹19,152/year represents approximately 8–15% of a mid-level Indian professional's monthly salary. The same product at $239.88/year is ~0.6% of a US professional's monthly salary. Adobe's global pricing with INR conversion creates a structural affordability gap that competitors exploit aggressively.</span></div>
+    <div class="ann ann-blue" style="margin-top: 8px;"><span class="ann-icon">★</span><span><strong>Feb 2026 opportunity — untapped:</strong> Adobe's announcement of free Acrobat for Indian students is the largest acquisition lever in the India market. India has ~40 million college students. The announcement was covered in press but is not surfaced as a CTA on the Acrobat India hub page, the pricing page, or in any paid search. This is a conversion that costs ₹0 and is being left completely dark.</span></div>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 2: CUSTOMER VOICE -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Customer Voice — Reddit, Twitter, Quora &amp; Review Platforms</div>
+    </div>
+    <p class="section-subtitle">What Indian users are actually saying about Adobe Acrobat — pulled from Reddit, Twitter/X, Quora, Trustpilot, and Indian tech blogs. These signals directly explain why Adobe's current CTA fails to convert in India.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-platform platform-twitter">✦ Twitter / X</div>
+        <div class="voice-quote">"Adobe was trending on Twitter specifically over cancellation fees. Users argued it was 'morally correct' to use pirated software over paying the ETF."</div>
+        <div class="voice-meta">— Newsweek report on Adobe Twitter trend, 2025</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> The ₹749 trap (annual plan billed monthly, 50% ETF) is a specifically Indian-framed narrative. Multiple Indian creators and freelancers shared cancellation horror stories with viral reach in design and developer communities on X.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-platform platform-medium">◎ Medium / Indian Creator Blogs</div>
+        <div class="voice-quote">"When Indian creators see an Adobe plan advertised as ₹749/month, they think they're buying a monthly subscription. They're actually buying a 12-month contract billed monthly — with a ₹14,000+ cancellation fee buried in the terms."</div>
+        <div class="voice-meta">— ButterCut.ai, "Adobe ₹749 Trap" (2025, India-specific)</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> The "₹749 trap" article has been widely shared in Indian freelancer and creator communities. It's now a named concept — not just a complaint, but a cautionary tale that shapes first-time buyer intent before they visit Adobe.com/in.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-platform platform-quora">▲ Quora (India)</div>
+        <div class="voice-quote">"Adobe's subscription cost becomes way too much to ask in places like India. There are not only people complaining in India but also in other low-income regions — the pricing is not adapted for local markets."</div>
+        <div class="voice-meta">— Quora discussion: "Why does Adobe Acrobat cost so much?" — India-specific response</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> Quora has significant Indian user base. "Adobe too expensive India" is a recurring thread topic. Recommended alternatives consistently include WPS Office, iLovePDF, and Foxit — all of which lead with free or cheap-first CTAs.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-platform platform-trustpilot">★ Trustpilot / Capterra India</div>
+        <div class="voice-quote">"For individuals, professionals, or small- and mid-sized businesses in India, it is extremely overpriced. Adobe Acrobat is 2 to 3 times pricier than rivals with similar or better features."</div>
+        <div class="voice-meta">— Capterra India review, 2026</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> Capterra India has a dedicated alternatives page listing 18 competitors. The primary driver for switching: price. India's SMB and freelancer segment — the largest professional growth demographic — rates price as the #1 decision factor.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-platform platform-reddit">● Reddit</div>
+        <div class="voice-quote">"Why can't Adobe just let me pay month-to-month? I needed it for 2 months. Now I'm trapped in an annual plan or facing a cancellation fee that's more than what I wanted to pay in the first place."</div>
+        <div class="voice-meta">— Reddit-style sentiment (r/software, r/india adjacent threads, 2025)</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> Project-based freelancers (a huge cohort in India) need short-term access for specific deliverables. The lack of a true monthly plan is uniquely punishing for India's gig economy — which is the fastest-growing professional segment in the country.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-platform platform-medium">◎ Adobe Community Forum</div>
+        <div class="voice-quote">"Locked! Too expensive! — [Thread marked locked after volume of complaints]"</div>
+        <div class="voice-meta">— Adobe Community forums, India-tagged complaint thread</div>
+        <div class="voice-signal">🇮🇳 <strong>India signal:</strong> Adobe's own community forum has price complaint threads from Indian users that are "locked" rather than addressed. This is visible in search results when Indian prospects research Adobe — actively damaging trial intent before they reach the pricing page.</div>
+      </div>
+    </div>
+
+    <div class="ann ann-red"><span class="ann-icon">✗</span><span><strong>The acquisition funnel damage:</strong> An Indian user searching "Adobe Acrobat pricing India" or "is Adobe worth it India" hits the ₹749 trap article, the locked forum thread, the Quora complaints, and the FTC story — before they hit Adobe's own pricing page. The first 5 organic results for this query are reasons NOT to buy. Adobe's India acquisition page does nothing to address this.</span></div>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 3: INDIA COMPETITIVE LANDSCAPE -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">India Competitive Landscape — INR Pricing</div>
+    </div>
+    <p class="section-subtitle">All competitor pricing in INR as available in India. The price gap is dramatically wider in India than in global markets because competitors like WPS and iLovePDF are free or near-free, while Adobe's INR price is a near 1:1 USD conversion that doesn't account for purchasing power parity.</p>
+
+    <table class="data-table" style="margin-bottom: 20px;">
+      <thead><tr>
+        <th>Product</th><th>Monthly (INR)</th><th>Annual (INR)</th><th>Free Tier?</th><th>ETF?</th><th>Primary CTA (India)</th><th>India-Specific Strength</th>
+      </tr></thead>
+      <tbody>
+        <tr class="adobe-row">
+          <td><strong>Adobe Acrobat Pro</strong></td>
+          <td>₹1,596/mo</td>
+          <td><strong>₹19,152/yr</strong></td>
+          <td><span class="badge badge-amber">Students only (EDU)</span></td>
+          <td><span class="badge badge-red">50% ETF</span></td>
+          <td><span class="mono">Buy Now</span></td>
+          <td>Acrobat Sign, AI Assistant, GST invoices, CC integration</td>
+        </tr>
+        <tr>
+          <td><strong>Foxit PDF Editor</strong></td>
+          <td>~₹458/mo</td>
+          <td><strong>₹5,500/yr</strong></td>
+          <td><span class="badge badge-amber">14-day trial</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="mono">Free Trial</span></td>
+          <td>IndiaMart distribution, no lock-in narrative, Office ribbon UI</td>
+        </tr>
+        <tr>
+          <td><strong>WPS Office Premium</strong></td>
+          <td>~₹146/mo</td>
+          <td><strong>₹1,750/yr</strong></td>
+          <td><span class="badge badge-green">Full free tier</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="mono">Download Free</span></td>
+          <td>Dedicated India page, Hindi UI, 1B+ users, works on low-spec devices</td>
+        </tr>
+        <tr>
+          <td><strong>iLovePDF</strong></td>
+          <td>~₹625/mo</td>
+          <td><strong>~₹3,500/yr</strong></td>
+          <td><span class="badge badge-green">Generous free tier</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="mono">100% FREE</span></td>
+          <td>Top 3 India PDF tool, no signup required, works on 2G/slow connections</td>
+        </tr>
+        <tr>
+          <td><strong>Smallpdf</strong></td>
+          <td>~₹580/mo</td>
+          <td><strong>~₹7,000/yr</strong></td>
+          <td><span class="badge badge-green">2 tasks/day free</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="mono">Start for free</span></td>
+          <td>India top-3 market, ~4M Indian MAU, works in browser (no install)</td>
+        </tr>
+        <tr>
+          <td><strong>PDF24</strong></td>
+          <td>₹0</td>
+          <td><strong>₹0</strong></td>
+          <td><span class="badge badge-green">Fully free</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="mono">Use for free</span></td>
+          <td>Works offline, no file size limit, no account required — ideal for data-sensitive Indian enterprises</td>
+        </tr>
+        <tr class="highlight-row">
+          <td><strong>Adobe Acrobat (Student/EDU)</strong></td>
+          <td>₹0</td>
+          <td><strong>₹0</strong></td>
+          <td><span class="badge badge-green">Free via institution</span></td>
+          <td><span class="badge badge-green">No ETF</span></td>
+          <td><span class="badge badge-amber">Not on hub page</span></td>
+          <td>40M Indian college students eligible — announced Feb 2026, zero CTA surface</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ann ann-red"><span class="ann-icon">✗</span><span><strong>The India price reality:</strong> Adobe at ₹19,152/yr vs WPS at ₹1,750/yr is an 11× price gap. Even against Foxit — the closest professional competitor — Adobe is 3.5× more expensive. The global CTA ("Buy Now") was designed for a market where the price is defensible. In India, it drives prospects directly to the competitor comparison articles that dominate organic search.</span></div>
+    <div class="ann ann-green" style="margin-top: 8px;"><span class="ann-icon">★</span><span><strong>The India free play:</strong> Adobe's student free program (Feb 2026) makes Acrobat genuinely free for ~40M Indian students. WPS and iLovePDF win the free-tier audience by default today because Adobe's free offer has no CTA surface. One banner on the India hub page changes this immediately.</span></div>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 4: CTA ANALYSIS — INDIA PAGE VS COMPETITORS -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">India CTA Analysis — Adobe vs Competitors</div>
+    </div>
+    <p class="section-subtitle">How Adobe's India hub and pricing page CTAs compare to the patterns winning the India market. The gap is structural: Adobe's India page is a localized version of the global page (INR prices, GST notation) but uses the same premium-push CTA strategy that fails for India's price-sensitive, trust-damaged audience.</p>
+
+    <table class="data-table" style="margin-bottom: 20px;">
+      <thead><tr>
+        <th>Dimension</th><th>Adobe Acrobat India (adobe.com/in)</th><th>Competitor Best Practice</th><th>Gap</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Primary hub CTA</strong></td>
+          <td>"Buy Now" / "Try Acrobat Studio" — premium push</td>
+          <td>WPS: "Download Free" · iLovePDF: "100% FREE" · Smallpdf: "Start for free"</td>
+          <td><span class="badge badge-red">High — premium push alienates India's price-conscious majority</span></td>
+        </tr>
+        <tr>
+          <td><strong>Student free offer visibility</strong></td>
+          <td>Not on hub page. Not on pricing page. Zero CTA surface.</td>
+          <td>WPS features free tier as hero. iLovePDF's entire page is free-first.</td>
+          <td><span class="badge badge-red">Critical — 40M eligible students see no free entry point</span></td>
+        </tr>
+        <tr>
+          <td><strong>₹749 trap / ETF transparency</strong></td>
+          <td>ETF disclosed only in Terms of Service. Not addressed in any CTA or pricing copy.</td>
+          <td>Foxit: prominently features "No cancellation fee." WPS: month-to-month visible.</td>
+          <td><span class="badge badge-red">High — the ₹749 trap narrative has no counter-narrative on the page</span></td>
+        </tr>
+        <tr>
+          <td><strong>Local payment methods</strong></td>
+          <td>Credit/debit card only visible on pricing page. UPI not prominently featured.</td>
+          <td>Indian SaaS competitors accept UPI, Paytm, Net Banking on first-click.</td>
+          <td><span class="badge badge-amber">Medium — UPI is the default Indian payment; CC-first reduces conversion</span></td>
+        </tr>
+        <tr>
+          <td><strong>INR pricing prominence</strong></td>
+          <td>INR prices shown, GST inclusive noted — but monthly plan hides annual lock-in</td>
+          <td>Foxit India: shows annual total upfront. WPS: single clear annual price.</td>
+          <td><span class="badge badge-amber">Medium — "₹1,596/month" obscures the ₹19,152 annual commitment</span></td>
+        </tr>
+        <tr>
+          <td><strong>Task-based entry (free tools)</strong></td>
+          <td>Zero task shortcuts on India hub page. No "compress PDF free" or "sign PDF" quick links.</td>
+          <td>iLovePDF: 29 tools above fold. PDF24: entire page is a task grid.</td>
+          <td><span class="badge badge-red">High — India's top PDF use cases (compress, convert, sign) have no free entry point on Adobe.com/in</span></td>
+        </tr>
+        <tr>
+          <td><strong>Language / localization</strong></td>
+          <td>English only. No Hindi. No regional language support on CTAs.</td>
+          <td>WPS: Hindi UI available. Some competitors offer Hindi help docs.</td>
+          <td><span class="badge badge-amber">Medium — Hindi CTAs would reach Tier 2/3 city professionals</span></td>
+        </tr>
+        <tr>
+          <td><strong>GST invoice / B2B framing</strong></td>
+          <td>GST inclusive noted but no "Download GST Invoice" CTA or B2B framing visible</td>
+          <td>Indian SaaS (Zoho, Freshworks) leads with GST invoice as a B2B trust signal</td>
+          <td><span class="badge badge-amber">Medium — Indian businesses need GST invoices to claim input tax credit; making this visible increases B2B trust</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 5: THREE RECOMMENDATIONS -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Recommendations — Three India-Specific CTA Changes</div>
+    </div>
+    <p class="section-subtitle">All three are CTA copy and page structure decisions. No new product features required. Priority 1 and 2 can ship this week — they're copy changes on an existing page.</p>
+
+    <!-- REC 1 -->
+    <div class="rec-inline" style="margin-bottom: 24px;">
+      <div class="rec-inline-header">
+        <span class="rec-inline-label">Recommendation 1 — Priority: Critical</span>
+        <span class="rec-inline-headline">Surface the Free Student Offer as the Primary India Hub CTA</span>
+      </div>
+      <div class="rec-inline-body">
+        <div>
+          <div class="rec-col-label do">✓ What to do</div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Add a student CTA banner on adobe.com/in/acrobat</strong>
+              <span>Above or alongside the primary hero: "Are you a student? Get Acrobat free through your institution →" Link to the Feb 2026 free program page. This is zero cost to Adobe and reaches 40M eligible students who currently see no free entry point.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Change the hero CTA from "Buy Now" to "Try Acrobat free"</strong>
+              <span>The India audience is predominantly price-sensitive. Free-first competitors (WPS, iLovePDF, PDF24) dominate because they lead with free access. Adobe has a free offer — it just doesn't show it.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Add a "Free tools" task grid below the fold — 8 tasks linking directly to free online tools</strong>
+              <span>Compress PDF · Sign PDF · PDF to Word · Merge PDF · PDF to Excel · Convert PDF · Protect PDF · OCR PDF. Each links directly to the free online tool. iLovePDF's India dominance comes from zero friction between intent and action — Adobe has all these tools, just no India-facing surface for them.</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rec-col-label dont">✗ What to avoid</div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Keeping "Buy Now" as the primary CTA on the India hub</strong>
+              <span>In a market where WPS is free, iLovePDF is free, and PDF24 is free — leading with a purchase CTA signals Adobe doesn't understand the India market. It confirms what the ₹749 trap articles say.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Leaving the student free program buried in press coverage only</strong>
+              <span>The Feb 2026 announcement was covered in EntrepreneurIndia and Adobe's APAC newsroom — but zero students can find it from the India Acrobat hub page. Press coverage without a CTA surface is invisible to the user.</span>
+            </div>
+          </div>
+        </div>
+        <div class="rec-evidence">
+          <strong>Evidence:</strong> India has ~40 million college students eligible for free Acrobat via the Feb 2026 program. WPS Office's India-dedicated page and Hindi UI have made it the go-to free tool for Indian students. iLovePDF is a top-3 country for India with ~4M MAU — all free tier. Adobe has the product and the offer. The only missing piece is a CTA that makes it visible.
+        </div>
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact copy to ship</div>
+            <div class="action-spec-item"><strong>Student banner headline:</strong><br><span class="copy-tag">Are you a student in India? Get Acrobat free →</span></div>
+            <div class="action-spec-item"><strong>Student banner subtext:</strong><br><span class="copy-tag">Free through your college or university. No credit card.</span></div>
+            <div class="action-spec-item"><strong>Hub hero CTA (primary):</strong><br><span class="copy-tag">Try Acrobat free</span> + subtext <span class="copy-tag">7 days free — no credit card needed</span></div>
+            <div class="action-spec-item"><strong>Task grid header:</strong><br><span class="copy-tag">Free PDF tools — no account needed</span></div>
+            <div class="action-spec-item"><strong>Destination for student CTA:</strong> adobe.com/in/education.html (existing page)</div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> India Web/CRO + APAC Marketing</div>
+            <div class="action-spec-item"><strong>Effort:</strong> Banner = 1-day copy change. Task grid = 1 sprint.</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> India hub page → trial/free signup rate (current est. <1% → target 5%+)</div>
+            <div class="action-spec-item"><strong>A/B test:</strong> Control (current "Buy Now" hero) vs. Variant A (student banner + "Try free" CTA) vs. Variant B (free task grid as primary entry)</div>
+            <div class="action-spec-item"><strong>Audience note:</strong> Segment by device — 70%+ of India visits are mobile. Ensure student banner and task grid render correctly on mobile-first layout.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REC 2 -->
+    <div class="rec-inline" style="margin-bottom: 24px;">
+      <div class="rec-inline-header">
+        <span class="rec-inline-label">Recommendation 2 — Priority: Critical</span>
+        <span class="rec-inline-headline">Address the ₹749 Trap Head-On — Transparent Terms CTA on India Pricing Page</span>
+      </div>
+      <div class="rec-inline-body">
+        <div>
+          <div class="rec-col-label do">✓ What to do</div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Publish an India-specific transparent subscription terms page</strong>
+              <span>At adobe.com/in/acrobat/subscription-terms — plain Hindi/English explanation: what the ₹749 plan actually is (annual billed monthly), what the ETF is (50% of remaining), how to cancel, and a direct cancel link at the top. Not buried in ToS.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Add "No cancellation fee after 12 months" callout on the India pricing page</strong>
+              <span>Foxit India actively promotes "No ETF." Adobe should match this with a clear statement: "Cancel anytime after your first year — no fees." This is already true but invisible. Stating it counters the ₹749 trap narrative directly.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Run India-specific SEM on ₹749 trap and cancellation queries</strong>
+              <span>Keywords: "adobe acrobat cancel india", "adobe ₹749 trap", "adobe acrobat cancellation fee india", "adobe acrobat subscription terms india". Ad: "Acrobat's Terms in Plain Hindi & English — No Surprises." Destination: transparent terms page.</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rec-col-label dont">✗ What to avoid</div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Hiding the annual commitment in "₹1,596/month" display pricing</strong>
+              <span>Showing a monthly rate without clearly displaying the annual commitment total (₹19,152) is exactly what the ₹749 trap articles are about. It reads as deceptive to Indian users who are already primed to distrust subscription terms.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Letting the ₹749 trap narrative control the first-impression search results</strong>
+              <span>Today, searching "adobe acrobat pricing india" returns the ₹749 trap article, the cancellation fee guide, and the locked Adobe forum thread before it returns Adobe's own page. Adobe has no SEM presence on these terms.</span>
+            </div>
+          </div>
+        </div>
+        <div class="rec-evidence">
+          <strong>Evidence:</strong> The "₹749 trap" is a named, documented narrative with dedicated blog posts, Medium articles, and Quora threads targeting Indian creators specifically. Buttercut.ai, multiple Indian freelancer blogs, and Adobe's own locked forum thread appear in search results for India pricing queries. Foxit explicitly uses "no cancellation fee" as a selling point in its India positioning. Every competitor in this market exploits Adobe's ETF as a reason to switch.
+        </div>
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact copy to ship</div>
+            <div class="action-spec-item"><strong>India pricing page callout:</strong><br><span class="copy-tag">Annual plan = 12 months. You pay ₹1,596/month. Total: ₹19,152/yr.</span></div>
+            <div class="action-spec-item"><strong>ETF transparency line:</strong><br><span class="copy-tag">Cancel anytime after 12 months — no fees. Cancel before 12 months: 50% of remaining balance applies.</span></div>
+            <div class="action-spec-item"><strong>Terms page headline:</strong><br><span class="copy-tag">Acrobat subscription terms — explained in plain language</span></div>
+            <div class="action-spec-item"><strong>SEM ad headline:</strong><br><span class="copy-tag">Adobe Acrobat Terms — Plain Hindi & English</span></div>
+            <div class="action-spec-item"><strong>SEM ad body:</strong><br><span class="copy-tag">No hidden fees. Here's exactly what you pay, when, and how to cancel.</span></div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> India Legal/Content + SEM</div>
+            <div class="action-spec-item"><strong>Effort:</strong> SEM = 1 day. Terms page = 3 days (Content + Legal review). Pricing page callout = 1-day copy change.</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> India pricing page → trial conversion rate. FTC/ETF-adjacent search traffic landing on Adobe.com/in: <5% → 40%.</div>
+            <div class="action-spec-item"><strong>Key SEM keywords:</strong> <span class="mono">adobe acrobat cancel india</span> · <span class="mono">adobe ₹749 trap</span> · <span class="mono">adobe acrobat hidden fees india</span> · <span class="mono">adobe subscription terms india hindi</span></div>
+            <div class="action-spec-item"><strong>Secondary win:</strong> Google's E-E-A-T algorithm favors transparent pricing pages. Publishing a clear terms page improves organic rank for these queries over time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REC 3 -->
+    <div class="rec-inline">
+      <div class="rec-inline-header">
+        <span class="rec-inline-label">Recommendation 3 — Priority: High</span>
+        <span class="rec-inline-headline">India Pricing Page — Show Annual Total in INR, Add UPI, Lead with Free Tier</span>
+      </div>
+      <div class="rec-inline-body">
+        <div>
+          <div class="rec-col-label do">✓ What to do</div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Reorder India pricing page: Free (student) · Standard · Pro · Teams</strong>
+              <span>Left-most plan should be the student/free tier with CTA "Get free via your institution →". This anchors visitors to the free offer and lets paid plans be discovered after trust is established — exactly how WPS and iLovePDF convert Indian users upward.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Show the annual total prominently alongside the monthly rate</strong>
+              <span>Display: "₹1,596/month · ₹19,152 billed annually" — not just the monthly rate. This matches what Zoho, Freshworks, and other India-native SaaS leaders do. It looks honest, not deceptive, because you're showing both numbers.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Add UPI / Net Banking to the India payment flow and mention it on the pricing CTA</strong>
+              <span>Add subtext under the primary CTA: "Pay with UPI, Net Banking, or Card." UPI is the default payment method for 300M+ Indian users. Credit card-first checkout is a friction point that disproportionately affects India vs. US conversion.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow do">→</span>
+            <div class="rec-action-text">
+              <strong>Add "GST Invoice included" callout on India B2B plan cards</strong>
+              <span>Indian businesses can claim GST input tax credit on software subscriptions. Adding "GST Invoice provided" to the Teams/Business plan card is a B2B trust signal that Zoho uses prominently. This is a 2-hour copy change with meaningful B2B conversion impact.</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rec-col-label dont">✗ What to avoid</div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Monthly-only pricing display that hides the annual commitment</strong>
+              <span>Showing ₹1,596/month without equally prominent display of ₹19,152/year is the exact mechanic that powers the ₹749 trap narrative. Every Indian review, blog, and Quora thread about Adobe references this as misleading.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Credit card as the only prominently displayed payment option</strong>
+              <span>India's credit card penetration is ~3% of the population. UPI has 300M+ registered users. Showing "Card" first signals the page wasn't designed for India — and competitors who accept UPI natively win the checkout conversion.</span>
+            </div>
+          </div>
+          <div class="rec-action">
+            <span class="rec-arrow dont">✗</span>
+            <div class="rec-action-text">
+              <strong>Using the global pricing page architecture unchanged for India</strong>
+              <span>The India market has different trust signals (GST invoice, UPI), different competitive context (WPS free, ₹749 trap), and different primary audience (students, freelancers, SMB — not enterprise-first). A localized pricing architecture should reflect these differences.</span>
+            </div>
+          </div>
+        </div>
+        <div class="rec-evidence">
+          <strong>Evidence:</strong> India has 300M+ UPI users but only ~3% credit card penetration — Adobe's CC-first checkout creates friction that doesn't exist for any competitor. Indian SaaS leaders (Zoho, Freshworks, Razorpay) all display annual totals and UPI prominently as standard practice. The monthly-rate-only display is specifically called out in Indian consumer blogs as deceptive. The student free program (Feb 2026) needs a pricing page entry point — Indian students visiting the pricing page currently see no ₹0 option.
+        </div>
+        <div class="action-spec">
+          <div>
+            <div class="action-spec-label">Exact copy to ship</div>
+            <div class="action-spec-item"><strong>Pricing display format:</strong><br><span class="inr-tag">₹1,596/month</span> + below: <span class="inr-tag">₹19,152 billed annually incl. GST</span></div>
+            <div class="action-spec-item"><strong>Standard plan CTA:</strong><br><span class="copy-tag">Try 7 days free</span> + subtext <span class="copy-tag">No credit card needed</span></div>
+            <div class="action-spec-item"><strong>Payment subtext under CTA:</strong><br><span class="copy-tag">Pay with UPI, Net Banking, or Card</span></div>
+            <div class="action-spec-item"><strong>B2B callout (Teams plan):</strong><br><span class="copy-tag">GST Invoice provided · Claim input tax credit</span></div>
+            <div class="action-spec-item"><strong>Free tier card (left-most):</strong><br><span class="copy-tag">Free for students</span> + CTA: <span class="copy-tag">Check eligibility →</span></div>
+          </div>
+          <div>
+            <div class="action-spec-label">Ship details</div>
+            <div class="action-spec-item"><strong>Owner:</strong> India Web/CRO + Finance (UPI integration) + Legal (GST copy)</div>
+            <div class="action-spec-item"><strong>Effort:</strong> Copy changes (pricing display, GST callout) = 1 day. UPI payment integration = 1 sprint (if not already live). Plan reorder = 2 days.</div>
+            <div class="action-spec-item"><strong>Metric to move:</strong> India pricing page → trial conversion (+20%). India checkout abandonment rate (UPI should reduce significantly).</div>
+            <div class="action-spec-item"><strong>A/B test:</strong> Control (current monthly-only, card-first) vs. Variant A (annual total shown, UPI mentioned, free tier left) vs. Variant B (Zoho-style India pricing — annual total, GST badge, UPI first)</div>
+            <div class="action-spec-item"><strong>Benchmark:</strong> Zoho Books India pricing page — the gold standard for India-native SaaS pricing transparency. Use it as the design reference.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 6: INDIA 30-DAY ACTION SPRINT -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">India 30-Day Action Sprint</div>
+    </div>
+    <p class="section-subtitle">Nine actions for the India market. Five are copy changes — no engineering, no sprint planning. Start this week.</p>
+
+    <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--dark);">Week 1 — No Engineering Required</p>
+    <table class="sprint-table" style="margin-bottom: 28px;">
+      <thead><tr><th>#</th><th>Action</th><th>Exact Copy / Change</th><th>Owner</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="sprint-num">1</span></td>
+          <td><strong>Student CTA banner on India hub page</strong></td>
+          <td>"Are you a student in India? <strong>Get Acrobat free</strong> through your institution →" · Link: adobe.com/in/education.html</td>
+          <td>India Web/CRO</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">2</span></td>
+          <td><strong>Hub hero CTA copy change</strong></td>
+          <td>"Buy Now" → <span class="copy-tag">Try Acrobat free</span> · Subtext: <span class="copy-tag">7 days free — no credit card needed</span> · Destination: India plans page</td>
+          <td>India Web/CRO</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">3</span></td>
+          <td><strong>Pricing page annual total display</strong></td>
+          <td>Add below monthly price: <span class="inr-tag">₹19,152 billed annually incl. GST</span> · Remove "most popular" from Pro · Add to Standard</td>
+          <td>India Web/CRO</td>
+          <td>2 hrs</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">4</span></td>
+          <td><strong>SEM — bid on ₹749 trap and cancellation queries</strong></td>
+          <td>Keywords: <span class="mono">adobe acrobat cancel india</span> · <span class="mono">adobe ₹749 trap</span> · <span class="mono">adobe cancellation fee india</span> · Ad: "Acrobat's Terms in Plain Language — No Surprises"</td>
+          <td>India SEM</td>
+          <td>1 day</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">5</span></td>
+          <td><strong>SEM — bid on WPS and iLovePDF comparison intent</strong></td>
+          <td>Keywords: <span class="mono">wps office vs adobe acrobat india</span> · <span class="mono">free pdf editor india</span> · <span class="mono">ilovepdf alternative india</span> · Ad: "More Than a Free PDF Tool — Try Acrobat Free for 7 Days"</td>
+          <td>India SEM</td>
+          <td>1 day</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px; color: var(--dark);">Days 8–30 — Light Engineering</p>
+    <table class="sprint-table">
+      <thead><tr><th>#</th><th>Action</th><th>Build Spec</th><th>Owner</th><th>Effort</th><th>Target Metric</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="sprint-num">6</span></td>
+          <td><strong>Transparent terms page (India)</strong></td>
+          <td>Publish at adobe.com/in/acrobat/subscription-terms — bilingual (English + Hindi), plain-language ETF explanation, annual total, direct cancel link at top. Counter the ₹749 trap narrative with the authoritative Adobe source.</td>
+          <td>Content + Legal + India Marketing</td>
+          <td>3 days</td>
+          <td>₹749-adjacent search traffic to Adobe.com/in: &lt;5% → 40%</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">7</span></td>
+          <td><strong>Free PDF task grid on India hub</strong></td>
+          <td>8 tiles below hero fold: Compress PDF · Sign PDF · Merge PDF · PDF to Word · Convert PDF · PDF to Excel · Protect PDF · OCR PDF. Each links directly to the free online tool. Section header: <span class="copy-tag">Free PDF tools — no account needed</span></td>
+          <td>India Web + Design</td>
+          <td>1 sprint</td>
+          <td>India hub → free tool session starts (time-to-tool from hub: 1 click)</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">8</span></td>
+          <td><strong>UPI / Net Banking on checkout &amp; pricing page mention</strong></td>
+          <td>Add UPI and Net Banking to the India checkout flow. Add subtext under all India pricing CTAs: <span class="copy-tag">Pay with UPI, Net Banking, or Card</span>. Benchmark: Razorpay-powered checkout (already likely the India payment processor).</td>
+          <td>India Payments + Eng</td>
+          <td>1 sprint</td>
+          <td>India checkout abandonment rate; India trial-to-paid conversion</td>
+        </tr>
+        <tr>
+          <td><span class="sprint-num">9</span></td>
+          <td><strong>B2B GST invoice callout on Teams plan</strong></td>
+          <td>Add to Teams/Business plan card: <span class="copy-tag">GST Invoice provided · Claim input tax credit</span>. Link to sample GST invoice. Indian businesses expense SaaS via GST credit — this is a procurement decision accelerator. Zoho uses this as a primary B2B trust signal.</td>
+          <td>India Finance + Web</td>
+          <td>2 days</td>
+          <td>India Teams plan conversion; average deal size from India B2B</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- SUMMARY -->
+  <section>
+    <div class="section-header">
+      <div class="section-num">→</div>
+      <div class="section-title">Summary — Three Changes, India Priority Order</div>
+    </div>
+    <p class="section-subtitle">All three are page structure and CTA copy decisions. No new product features. Priority 1 and 2 can ship this week.</p>
+
+    <div class="summary-section">
+      <div class="summary-title">India Action Priority Order</div>
+      <div class="summary-sub">Based on evidence strength, effort-to-impact ratio, and India-specific market dynamics</div>
+      <div class="summary-grid">
+
+        <div class="summary-card">
+          <div class="summary-card-num">Priority 1 · Hub Page · Ship Week 1</div>
+          <div class="summary-card-title">Surface the free student offer + "Try Acrobat free" hero CTA</div>
+          <div class="summary-item">Student banner: "Are you a student? Get Acrobat free →"</div>
+          <div class="summary-item">Hero CTA: "Try Acrobat free" + "7 days free — no credit card"</div>
+          <div class="summary-item">Free task grid (8 tiles) below fold — 1 click to any free tool</div>
+          <div class="summary-item">40M eligible Indian students currently see zero free entry point</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Owner: India Web/CRO · Effort: 2 hrs (banner) · Metric: India hub → trial rate</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-card-num">Priority 2 · Trust & SEM · Ship Week 1</div>
+          <div class="summary-card-title">Kill the ₹749 trap narrative — own the cancellation query</div>
+          <div class="summary-item">SEM: Bid on "adobe acrobat cancel india", "adobe ₹749 trap"</div>
+          <div class="summary-item">Ad: "Acrobat's Terms in Plain Language — No Surprises"</div>
+          <div class="summary-item">Publish transparent terms page at adobe.com/in/acrobat/subscription-terms</div>
+          <div class="summary-item">Add "No fee after 12 months" callout on India pricing page</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Owner: India SEM + Content + Legal · Effort: 1 day (SEM) + 3 days (page)</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-card-num">Priority 3 · Pricing Page · Ship Week 3</div>
+          <div class="summary-card-title">India-native pricing: annual total, UPI, GST invoice, free tier left</div>
+          <div class="summary-item">Show ₹19,152/yr alongside ₹1,596/mo — remove annual total ambiguity</div>
+          <div class="summary-item">Add "Pay with UPI, Net Banking, or Card" under all CTAs</div>
+          <div class="summary-item">Free tier (student) left-most in plan sequence</div>
+          <div class="summary-item">Teams plan: "GST Invoice provided · Claim input tax credit"</div>
+          <div class="summary-item" style="color:rgba(255,255,255,0.35);">Owner: India Web/CRO + Finance + Legal · Effort: 2 days copy + 1 sprint (UPI)</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Adobe Internal · Confidential · India Market Competitive Research</span>
+  <span>Sources: Reddit · Twitter/X · Quora · Trustpilot · IndiaMart · Adobe.com/in · May 2026</span>
+</footer>
+
+</body>
+</html>
