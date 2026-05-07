@@ -490,15 +490,12 @@ function renderActionCard(kw) {
 
   for (const kw of KEYWORDS) {
     process.stdout.write(`  [${kw.priority}] "${kw.kw}" ... `);
-    const [serp, reddit] = await Promise.all([
-      braveSearch(kw.kw + ' tool free', 8),
-      redditSearch(kw.redditQ, 6),
-    ]);
+    const serp  = await braveSearch(kw.kw + ' tool free', 8);
     const aRank = adobeRankLabel(serp);
     const opp   = oppScore(serp, kw.vol);
     const no1   = serp[0] ? serp[0].domain : 'unknown';
     console.log(`#1: ${no1} | Adobe: ${aRank.label}`);
-    results.push({ kw, serp, reddit, aRank, opp, no1 });
+    results.push({ kw, serp, aRank, opp, no1 });
     await new Promise(r => setTimeout(r, 400));
   }
 
@@ -517,7 +514,7 @@ function renderActionCard(kw) {
     </tr>`).join('');
 
   // ── Per-keyword sections ──
-  const kwSections = results.map(({ kw, serp, reddit, aRank, opp }) => `
+  const kwSections = results.map(({ kw, serp, aRank, opp }) => `
     <div class="kw-section">
       <div class="kw-eyebrow">SEO KPI · ${kw.priority} · ${opp.score} OPPORTUNITY</div>
       <div class="kw-title">"${kw.kw}"</div>
@@ -530,11 +527,6 @@ function renderActionCard(kw) {
       </div>
 
       ${renderActionCard(kw)}
-
-      <div class="two-col">
-        ${renderSerpCard(serp)}
-        ${renderRedditCard(reddit)}
-      </div>
     </div>`).join('');
 
   // ── P0 quick wins box ──
@@ -556,11 +548,11 @@ function renderActionCard(kw) {
 <div class="cover">
   <div class="cover-eyebrow">Adobe Firefly · SEO KPI Acquisition Playbook · May 2026 · US Market</div>
   <div class="cover-title">19-Keyword SEO<br>Acquisition Playbook</div>
-  <div class="cover-sub">Live rankings, current #1 owners, Reddit community voice, and exact page-by-page actions to move Adobe Firefly to rank #1 across all SEO KPI keywords.</div>
+  <div class="cover-sub">Live rankings, current #1 owners, and exact page-by-page actions to move Adobe Firefly to rank #1 across all SEO KPI keywords.</div>
   <div class="pills">
     <div class="pill">19 Keywords</div>
-    <div class="pill">Live Brave Search Rankings</div>
-    <div class="pill">Reddit Sentiment</div>
+    <div class="pill">Live Rankings</div>
+    <div class="pill">Current #1 Owner per Keyword</div>
     <div class="pill">Per-Keyword Action Cards</div>
     <div class="pill">US Market · May 2026</div>
   </div>
