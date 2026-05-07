@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adobe Firefly — SEO KPI Acquisition Playbook</title>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #f8f9fc; color: #1a1a2e; }
+
+.cover {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%);
+  color: #fff; min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; padding: 80px; page-break-after: always;
+}
+.cover-eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 40px; }
+.cover-title   { font-size: 52px; font-weight: 900; line-height: 1.08; max-width: 820px; margin-bottom: 28px; }
+.cover-sub     { font-size: 18px; opacity: 0.7; max-width: 640px; line-height: 1.65; margin-bottom: 48px; }
+.pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 700; }
+.cover-foot { font-size: 11px; opacity: 0.4; letter-spacing: 1px; }
+
+/* Summary table section */
+.summary-section { padding: 64px 72px; page-break-after: always; }
+.section-h2 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+.section-sub { font-size: 15px; color: #666; margin-bottom: 32px; }
+
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table thead tr { background: #1a1a2e; color: #fff; }
+.summary-table th { padding: 12px 14px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; }
+.summary-table td { padding: 10px 14px; border-bottom: 1px solid #eef0f6; vertical-align: middle; }
+.summary-table tr:nth-child(even) td { background: #f5f6fb; }
+.summary-table tr:hover td { background: #eef3ff; }
+.priority-badge { display: inline-block; border-radius: 4px; padding: 3px 8px;
+                   font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #fff; }
+.opp-badge { display: inline-block; border-radius: 4px; padding: 3px 8px;
+              font-size: 10px; font-weight: 800; letter-spacing: 0.5px; color: #fff; }
+
+/* Keyword section */
+.kw-section { padding: 56px 72px; page-break-before: always; border-top: 4px solid #f0f0fa; }
+.kw-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+               color: #888; margin-bottom: 10px; }
+.kw-title { font-size: 28px; font-weight: 800; color: #1a1a2e; margin-bottom: 16px; line-height: 1.2; }
+.kw-meta-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+.kw-chip { background: #f0f1f8; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: #555; }
+.kw-chip b { color: #1a1a2e; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+
+.card { background: #fff; border-radius: 12px; padding: 24px 28px; border: 1px solid #e8eaf4; }
+.card-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+               color: #999; margin-bottom: 14px; }
+
+/* SERP results */
+.serp-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+              border-bottom: 1px solid #f3f4f9; }
+.serp-item:last-child { border-bottom: none; }
+.serp-rank { min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center;
+              justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0;
+              margin-top: 2px; }
+.serp-rank.top1 { background: #1a1a2e; color: #fff; }
+.serp-rank.adobe { background: #fa0f00; color: #fff; }
+.serp-rank.other { background: #e8eaf4; color: #555; }
+.serp-domain { font-size: 13px; font-weight: 700; color: #222; }
+.serp-title  { font-size: 12px; color: #555; line-height: 1.4; }
+
+/* Action card */
+.action-card { background: #fff; border: 2px solid #1a1a2e; border-radius: 14px;
+                padding: 32px; margin-bottom: 24px; }
+.action-urgency { display: inline-block; border-radius: 6px; padding: 5px 14px;
+                   font-size: 11px; font-weight: 800; letter-spacing: 1px; color: #fff;
+                   text-transform: uppercase; margin-bottom: 18px; }
+.action-url { font-family: monospace; font-size: 14px; font-weight: 700; color: #0055cc;
+               background: #eef3ff; border-radius: 6px; padding: 8px 14px; display: inline-block;
+               margin-bottom: 14px; }
+.action-h1 { font-size: 20px; font-weight: 800; color: #1a1a2e; margin-bottom: 14px; line-height: 1.3; }
+.action-why { font-size: 14px; color: #444; line-height: 1.7; background: #f8f9fc;
+               border-left: 4px solid #0055cc; padding: 14px 18px; border-radius: 0 8px 8px 0;
+               margin-bottom: 20px; }
+.action-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+                 color: #888; margin-bottom: 8px; margin-top: 18px; }
+.action-do { font-size: 14px; color: #1a1a2e; line-height: 1.7; background: #fff8e1;
+              border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 0 8px 8px 0; }
+.metrics-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.metric-box { background: #f0f4ff; border: 1px solid #c7d7ff; border-radius: 8px; padding: 10px 16px; }
+.metric-box strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #7791cc; margin-bottom: 4px; }
+.metric-box span { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+
+/* Reddit */
+.reddit-item { padding: 8px 0; border-bottom: 1px solid #f3f4f9; }
+.reddit-item:last-child { border-bottom: none; }
+.reddit-title { font-size: 12px; font-weight: 600; color: #222; line-height: 1.4; }
+.reddit-meta  { font-size: 11px; color: #888; margin-top: 2px; }
+.sentiment-badge { display: inline-block; border-radius: 100px; padding: 3px 10px;
+                    font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+
+.divider { border: none; border-top: 1px solid #eef0f6; margin: 28px 0; }
+
+@media print {
+  .kw-section { page-break-before: always; }
+  .action-card, .card { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-eyebrow">Adobe Firefly · SEO KPI Acquisition Playbook · May 2026 · US Market</div>
+  <div class="cover-title">19-Keyword SEO<br>Acquisition Playbook</div>
+  <div class="cover-sub">Live rankings, current #1 owners, Reddit community voice, and exact page-by-page actions to move Adobe Firefly to rank #1 across all SEO KPI keywords.</div>
+  <div class="pills">
+    <div class="pill">19 Keywords</div>
+    <div class="pill">Live Brave Search Rankings</div>
+    <div class="pill">Reddit Sentiment</div>
+    <div class="pill">Per-Keyword Action Cards</div>
+    <div class="pill">US Market · May 2026</div>
+  </div>
+  <div class="cover-foot">INTERNAL · FOR: Growth PM · SEO · Content · Acquisition</div>
+</div>
+
+<div class="summary-section">
+  <div class="section-h2">All 19 Keywords — Rankings Overview</div>
+  <div class="section-sub">Who owns each keyword today, where Adobe ranks, and the opportunity score.</div>
+
+  <div style="background:#fff8e1;border:1px solid #ffc107;border-radius:12px;padding:22px 28px;margin-bottom:32px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#b7791f;margin-bottom:12px;">⚡ P0 — Do These First (Highest Volume, Not Ranking)</div>
+    <ul style="list-style:none;"><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"remove object"</strong> (~450K/mo) — #1 today: cleanup.pictures — Adobe: <span style="color:#c0392b">Not ranking</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/features/remove-object</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"expand image"</strong> (~180K/mo) — #1 today: pixelcut.ai — Adobe: <span style="color:#c0392b">Not ranking</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/features/expand-image</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"upscale image"</strong> (~400K/mo) — #1 today: topazlabs.com — Adobe: <span style="color:#c0392b">Not ranking</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/features/upscale-image</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"background generator"</strong> (~200K/mo) — #1 today: canva.com — Adobe: <span style="color:#c0392b">#2 — adobe.com</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/features/background-generator</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"AI video generator"</strong> (~600K/mo) — #1 today: invideo.io — Adobe: <span style="color:#c0392b">#8 — adobe.com</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/features/ai-video-generator</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"AI photo editor"</strong> (~800K/mo) — #1 today: photoeditorai.io — Adobe: <span style="color:#c0392b">Not ranking</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/ai-photo-editor</span>
+  </li><li style="padding:7px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;">
+    <strong>"AI art generator"</strong> (~900K/mo) — #1 today: magicstudio.com — Adobe: <span style="color:#c0392b">Not ranking</span> →
+    <span style="font-family:monospace;font-size:12px;color:#0055cc">/products/firefly/ai-art-generator</span>
+  </li></ul>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Volume</th>
+        <th>Priority</th>
+        <th>Current #1</th>
+        <th>Adobe Rank Today</th>
+        <th>Opportunity</th>
+        <th>Recommended URL</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><strong>remove object</strong></td>
+      <td>~450K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>cleanup.pictures</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#c0392b">HIGH</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/remove-object</td>
+    </tr>
+    <tr>
+      <td><strong>expand image</strong></td>
+      <td>~180K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>pixelcut.ai</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/expand-image</td>
+    </tr>
+    <tr>
+      <td><strong>upscale image</strong></td>
+      <td>~400K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>topazlabs.com</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#c0392b">HIGH</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/upscale-image</td>
+    </tr>
+    <tr>
+      <td><strong>sticker generator</strong></td>
+      <td>~150K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>stickerit.co</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/express/feature/image/sticker-maker</td>
+    </tr>
+    <tr>
+      <td><strong>background generator</strong></td>
+      <td>~200K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>canva.com</strong></td>
+      <td style="color:#138808;font-weight:700">#2 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#138808">HOLD</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/background-generator</td>
+    </tr>
+    <tr>
+      <td><strong>AI video generator</strong></td>
+      <td>~600K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>invideo.io</strong></td>
+      <td style="color:#c0392b;font-weight:700">#8 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/ai-video-generator</td>
+    </tr>
+    <tr>
+      <td><strong>AI photo editor</strong></td>
+      <td>~800K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>photoeditorai.io</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#c0392b">HIGH</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/ai-photo-editor</td>
+    </tr>
+    <tr>
+      <td><strong>character generator</strong></td>
+      <td>~120K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>perchance.org</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/character-generator</td>
+    </tr>
+    <tr>
+      <td><strong>headshot generator</strong></td>
+      <td>~200K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>canva.com</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/ai-headshot-generator</td>
+    </tr>
+    <tr>
+      <td><strong>image to image generator</strong></td>
+      <td>~80K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>imgtoimg.ai</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/image-to-image</td>
+    </tr>
+    <tr>
+      <td><strong>remove people</strong></td>
+      <td>~100K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>cleanup.pictures</strong></td>
+      <td style="color:#d97706;font-weight:700">#4 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/remove-people</td>
+    </tr>
+    <tr>
+      <td><strong>cartoonize</strong></td>
+      <td>~300K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>cartoonize.net</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#c0392b">HIGH</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/cartoonize</td>
+    </tr>
+    <tr>
+      <td><strong>AI art generator</strong></td>
+      <td>~900K/mo</td>
+      <td><span class="priority-badge" style="background:#c0392b">P0</span></td>
+      <td><strong>magicstudio.com</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#c0392b">HIGH</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/ai-art-generator</td>
+    </tr>
+    <tr>
+      <td><strong>AI anime art generator</strong></td>
+      <td>~250K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>komiko.app</strong></td>
+      <td style="color:#c0392b;font-weight:700">#8 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/anime-art-generator</td>
+    </tr>
+    <tr>
+      <td><strong>AI drawing generator</strong></td>
+      <td>~150K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>canva.com</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/ai-drawing-generator</td>
+    </tr>
+    <tr>
+      <td><strong>design generator</strong></td>
+      <td>~100K/mo</td>
+      <td><span class="priority-badge" style="background:#d97706">P1</span></td>
+      <td><strong>canva.com</strong></td>
+      <td style="color:#138808;font-weight:700">#3 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#138808">HOLD</span></td>
+      <td style="font-size:12px;font-family:monospace;">/express/features/ai-design-generator</td>
+    </tr>
+    <tr>
+      <td><strong>face generator</strong></td>
+      <td>~80K/mo</td>
+      <td><span class="priority-badge" style="background:#6366f1">P2</span></td>
+      <td><strong>adobe.com</strong></td>
+      <td style="color:#138808;font-weight:700">#1 — adobe.com</td>
+      <td><span class="opp-badge" style="background:#138808">HOLD</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/face-generator</td>
+    </tr>
+    <tr>
+      <td><strong>pixel art maker</strong></td>
+      <td>~120K/mo</td>
+      <td><span class="priority-badge" style="background:#6366f1">P2</span></td>
+      <td><strong>pixilart.com</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/pixel-art-maker</td>
+    </tr>
+    <tr>
+      <td><strong>human generator</strong></td>
+      <td>~40K/mo</td>
+      <td><span class="priority-badge" style="background:#6366f1">P2</span></td>
+      <td><strong>generated.photos</strong></td>
+      <td style="color:#c0392b;font-weight:700">Not ranking</td>
+      <td><span class="opp-badge" style="background:#d97706">MEDIUM</span></td>
+      <td style="font-size:12px;font-family:monospace;">/products/firefly/features/human-generator</td>
+    </tr></tbody>
+  </table>
+</div>
+
+
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · HIGH OPPORTUNITY</div>
+      <div class="kw-title">"remove object"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~450K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>cleanup.pictures</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#c0392b">HIGH</b></div>
+        <div class="kw-chip">Key competitors: <b>Adobe Express (ranked lower), Fotor, Canva Magic Eraser</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/remove-object</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Remove Any Object from a Photo — Adobe Firefly AI</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Photoshop Remove Tool + Firefly Generative Remove fills with context-aware AI. No competitor matches the quality of content-aware fill with AI.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Dedicated "remove object" landing page on adobe.com with free demo (no login). Currently all traffic goes to generic Photoshop pages that don't rank for this query.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly Generative Remove / Photoshop Remove Tool</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~450K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop/generative-fill</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">cleanup.pictures</div>
+          <div class="serp-title">Cleanup.pictures - Remove objects, people, text and defects from any pictur…</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">airbrush.com</div>
+          <div class="serp-title">Free AI Object Remover From Photo | Remove Unwanted Object in One Click</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">magiceraser.org</div>
+          <div class="serp-title">Magic Eraser — Free AI Watermark & Object Remover (No Login)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">theinpaint.com</div>
+          <div class="serp-title">Remove Unwanted Objects & Fix Imperfections with Inpaint Online!</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">picwish.com</div>
+          <div class="serp-title">Remove Object from Photo Online for Free | PicWish</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Object Remover - Remove Objects From Photos Online Free | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">objectremover.com</div>
+          <div class="serp-title">ObjectRemover | AI-Powered Object Removal Tool - Remove Unwanted Objects fr…</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">notegpt.io</div>
+          <div class="serp-title">AI Object Remover from Images - Free Online, No Sign-up</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,316 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I mapped every connection in the Epstein files. It started with 6,000 documents. It's…</div>
+      <div class="reddit-meta">r/Epstein · 34,886 pts · 1426 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Thinking Like a Dissident</div>
+      <div class="reddit-meta">r/illinois · 29,900 pts · 417 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Epstein and Trump: 20 years of sex trafficking and pedophilia</div>
+      <div class="reddit-meta">r/NoFilterNews · 26,946 pts · 517 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">More than 10,000 hours in this franchise, here's what's gotta change before launch (a…</div>
+      <div class="reddit-meta">r/Battlefield · 23,296 pts · 2695 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">After 147 failed ChatGPT prompts, I had a breakdown and accidentally discovered somet…</div>
+      <div class="reddit-meta">r/ChatGPT · 22,928 pts · 2415 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"expand image"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~180K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>pixelcut.ai</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>DALL-E outpainting, Canva Uncrop, Stability AI Outpaint</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/expand-image</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Expand Any Image with AI — Photoshop Generative Expand</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Photoshop Generative Expand is the industry-leading AI image extension tool. No competitor matches the quality — this is a pure Adobe win waiting for the right page.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Create a standalone "expand image" landing page with before/after demo, free trial CTA. Current Generative Expand page ranks poorly because H1 doesn't match the query.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Photoshop Generative Expand</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~180K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop/generative-expand</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">pixelcut.ai</div>
+          <div class="serp-title">Uncrop & AI Expand Images | Free Online Image Extender</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">picsart.com</div>
+          <div class="serp-title">AI Image Extender - Uncrop and Expand Images for Free | Picsart</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">pxbee.com</div>
+          <div class="serp-title">AI Image Extender Free - Uncrop & Expand Images (No sign up) | PxBee</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">magnific.com</div>
+          <div class="serp-title">AI image extender - Expand photos for free | Magnific (formerly Freepik)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">monica.im</div>
+          <div class="serp-title">Expand Images Online with Our Free AI Image Extender!</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">pixextender.com</div>
+          <div class="serp-title">PixExtender: Free AI Image Extender - Expand Images Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">aiimageextender.org</div>
+          <div class="serp-title">AI Image Extender | Free Online Tool to Expand Images & Photos</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">visualgpt.io</div>
+          <div class="serp-title">AI Image Extender - Free Uncrop & Expand Images Online</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">The audacity</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 100,759 pts · 3991 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Me_irl</div>
+      <div class="reddit-meta">r/me_irl · 87,931 pts · 638 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Zohran Mamdani speaks on AI images being spread by right-wing accounts that show him …</div>
+      <div class="reddit-meta">r/Fauxmoi · 46,966 pts · 1005 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">LEGO mosaic built by our wedding guests</div>
+      <div class="reddit-meta">r/lego · 45,103 pts · 522 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I updated the old graphic.</div>
+      <div class="reddit-meta">r/funny · 38,341 pts · 233 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">DuckDuckGo now lets you hide AI-generated images in search results</div>
+      <div class="reddit-meta">r/technology · 36,762 pts · 539 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · HIGH OPPORTUNITY</div>
+      <div class="kw-title">"upscale image"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~400K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>topazlabs.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#c0392b">HIGH</b></div>
+        <div class="kw-chip">Key competitors: <b>Topaz Gigapixel AI, Let's Enhance, Upscale.media</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/upscale-image</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Image Upscaler — Upscale Photos Without Losing Quality</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Adobe's 4x upscaling with AI (Super Resolution) outperforms standalone upscalers. The gap is that adobe.com has no dedicated "upscale image" page — it's buried in Photoshop docs.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Free online upscale tool page — must work without Photoshop install. Topaz Gigapixel and Let's Enhance dominate this because they have a single-page free tool. Adobe needs the same.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Photoshop Super Resolution / Firefly Generative Upscale</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~400K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop/super-resolution</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">topazlabs.com</div>
+          <div class="serp-title">Free AI Image Upscaler – Instantly Upscale Images by 8x</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">cloudinary.com</div>
+          <div class="serp-title">Upscale image: 100% for free with AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">upscayl.org</div>
+          <div class="serp-title">Upscayl - AI Image Upscaler</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">iloveimg.com</div>
+          <div class="serp-title">Free AI Image Upscaling Tool - Increase resolution of your images</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">upscale.media</div>
+          <div class="serp-title">AI Image Upscaler - Enlarge & Enhance Your Photos for Free - Upscale.media</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">pixelcut.ai</div>
+          <div class="serp-title">Free AI Image Upscaler | Enhance Photo Quality to 4k & 16K</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">picsart.com</div>
+          <div class="serp-title">Free Image Upscaler - AI Photo Upscale | Picsart</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">imgupscaler.ai</div>
+          <div class="serp-title">AI Image Upscaler: Upscale Image to 16K Online for Free</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">Texas public school teachers are now required to post the 10 Commadments in their cla…</div>
+      <div class="reddit-meta">r/BeAmazed · 89,055 pts · 2929 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,315 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I believe I just took the only documented/openly available image of this ultra-rare M…</div>
+      <div class="reddit-meta">r/GrandmasPantry · 31,830 pts · 910 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I fear the ones who need this most, will not care enough to take advantage of the opp…</div>
+      <div class="reddit-meta">r/BlueskySkeets · 30,682 pts · 495 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">[OTHER] Fired from Warhorse Studios and replaced with AI</div>
+      <div class="reddit-meta">r/kingdomcome · 22,315 pts · 2762 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Walked 15 mins to a 24/7 seven11 because it’s the only place open. It’s 9.07pm.</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 22,184 pts · 756 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"sticker generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~150K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>stickerit.co</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>StickerMule (paid), Adobe Express (not ranking), Canva Sticker Maker</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/express/feature/image/sticker-maker</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Free Sticker Generator — Create Custom AI Stickers Online</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Adobe Express already has a sticker maker. Gap is SEO: the page doesn't rank for "sticker generator" because it's optimized for "sticker maker" not the higher-volume query.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Update Express sticker page H1 and meta to match "sticker generator" query. Add Firefly AI generation + transparent PNG export. Remove login gate for first sticker.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Adobe Express Sticker Maker / Firefly with transparent background</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~150K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/express/feature/image/sticker-maker</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">stickerit.co</div>
+          <div class="serp-title">Free Online Sticker Maker - 1000s of Free Templates | Sticker it</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Sticker Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">bing.com</div>
+          <div class="serp-title">AI Tools - Sticker Generator | Free AI Sticker Maker by Microsoft | Create …</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">AI Sticker Generator - Create Stickers With AI for Free | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">pixelbin.io</div>
+          <div class="serp-title">Free online AI sticker generator (no login no signup)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">recraft.ai</div>
+          <div class="serp-title">Free Online AI Sticker Generator for Custom Sticker Designs</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">visualgpt.io</div>
+          <div class="serp-title">AI Sticker Generator - Free Sticker Maker Online, No Sign-up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">icoloring.ai</div>
+          <div class="serp-title">Free Online AI Sticker Generator (No Sign up)</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#138808">Positive</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">meirl</div>
+      <div class="reddit-meta">r/meirl · 79,240 pts · 428 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Joe Kent has resigned as Director of the U.S. National Counterterrorism Center: “[Ira…</div>
+      <div class="reddit-meta">r/Fauxmoi · 65,182 pts · 1125 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Andy Byron, Astronomer CEO, cheater, and Coldplay fan, is now out of a job.</div>
+      <div class="reddit-meta">r/interestingasfuck · 57,752 pts · 5275 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">phased out</div>
+      <div class="reddit-meta">r/comics · 45,801 pts · 298 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,372 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Hey! I was born with perfect polydactyly. AMA</div>
+      <div class="reddit-meta">r/IAmA · 33,713 pts · 4492 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · HOLD OPPORTUNITY</div>
+      <div class="kw-title">"background generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~200K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#138808">#2 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>canva.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#138808">HOLD</b></div>
+        <div class="kw-chip">Key competitors: <b>Canva AI Background, Fotor, Picsart</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/background-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Background Generator — Create Any Background from Text</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly can generate photorealistic backgrounds from text. This directly addresses a top SEO KPI but there's no dedicated page for the query. Canva and Fotor dominate this.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Dedicated background generator page with free demo. Show e-commerce use case (product photography backgrounds). Add "generate background" entry point to Express and Firefly free tools.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly Background Generator / Express Background</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~200K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free Online AI Background Generator | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank adobe">2</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Free Background Maker: Design Backgrounds Online | Adobe Express</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">bggenerator.com</div>
+          <div class="serp-title">Background Generator - Create Unique and Random Background Images Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">pacdora.com</div>
+          <div class="serp-title">Free AI Background Generator: Realistic & Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">quillbot.com</div>
+          <div class="serp-title">Free AI Background Generator | Create Custom Backgrounds</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">bgjar.com</div>
+          <div class="serp-title">BGJar | Free svg background image generator for your websites</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">pixelcut.ai</div>
+          <div class="serp-title">Free AI Background Generator | Instant Backgrounds Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">AI Background Generator Online Free for Small Businesses | Fotor</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#138808">Positive</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">Meirl</div>
+      <div class="reddit-meta">r/meirl · 97,523 pts · 2928 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Me_irl</div>
+      <div class="reddit-meta">r/me_irl · 87,932 pts · 638 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">phased out</div>
+      <div class="reddit-meta">r/comics · 45,799 pts · 298 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,365 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Someone took my art and fed it to an AI and then bragged to me about it</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 39,191 pts · 1531 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">We love Arrowhead</div>
+      <div class="reddit-meta">r/Helldivers · 35,352 pts · 851 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"AI video generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~600K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">#8 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>invideo.io</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Sora (OpenAI), Runway ML, Kling AI</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/ai-video-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Video Generator — Create Videos from Text or Images</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly Video is a direct competitor to Sora and Runway. The gap: adobe.com has almost no SEO presence on "AI video generator" despite having the product.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Standalone "AI video generator" page with demo video, free trial CTA, comparison vs Sora/Runway. Firefly Video's commercial safety angle is the enterprise differentiator here too.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Adobe Firefly Video (text-to-video, image-to-video)</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~600K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly/features/video</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">invideo.io</div>
+          <div class="serp-title">Free AI Video Generator | Invideo AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">pixelbin.io</div>
+          <div class="serp-title">Free AI video generator - No login, no signup text to video AI tool</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">synthesia.io</div>
+          <div class="serp-title">Synthesia: #1 AI Video Platform for Business</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">steve.ai</div>
+          <div class="serp-title">Free AI Video Generator - Steve AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">heygen.com</div>
+          <div class="serp-title">Free AI Video Generator: Create Stunning Videos with AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">simplified.com</div>
+          <div class="serp-title">Free AI Video Generator: Create Videos with AI in Seconds</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">videogen.io</div>
+          <div class="serp-title">VideoGen - AI Video Generator - Create Videos in Minutes</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank adobe">8</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Free AI Video Generator: Text to Video online - Adobe Firefly</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">Texting dude</div>
+      <div class="reddit-meta">r/SipsTea · 92,861 pts · 897 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">This is Angel 🪽</div>
+      <div class="reddit-meta">r/cats · 90,502 pts · 1347 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Someone kept track of all the axle configurations of the semi truck seen in this year…</div>
+      <div class="reddit-meta">r/regularcarreviews · 85,146 pts · 208 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">My boss paid me a full 40 hours after I missed half the week due to my dad’s death</div>
+      <div class="reddit-meta">r/MadeMeSmile · 71,588 pts · 1111 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">female uzi fan</div>
+      <div class="reddit-meta">r/comedyheaven · 65,715 pts · 246 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Joe Kent has resigned as Director of the U.S. National Counterterrorism Center: “[Ira…</div>
+      <div class="reddit-meta">r/Fauxmoi · 65,185 pts · 1125 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · HIGH OPPORTUNITY</div>
+      <div class="kw-title">"AI photo editor"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~800K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>photoeditorai.io</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#c0392b">HIGH</b></div>
+        <div class="kw-chip">Key competitors: <b>Luminar Neo, Canva Photo Editor, Fotor AI</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/ai-photo-editor</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Photo Editor — Edit Photos with Adobe AI Tools</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Adobe owns AI photo editing (Photoshop Generative Fill, Lightroom AI Masking, Denoise). The gap is that search users typing "AI photo editor" land on competitors because Adobe's pages lead with brand names, not the query.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Create an "AI photo editor" hub page that unifies Photoshop AI, Lightroom AI, and Firefly features under one SEO-optimized URL. This is the highest-volume keyword on the list.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Photoshop AI / Lightroom AI / Adobe Express AI</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~800K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">photoeditorai.io</div>
+          <div class="serp-title">Free AI Photo Editor Online—Edit Images Online, No Sign-Up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">ezremove.ai</div>
+          <div class="serp-title">Free AI Photo Editor – Edit Photos Online, No Sign-Up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">deepai.org</div>
+          <div class="serp-title">AI Photo Editor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">AI Photo Editor - Instant Photo Editing with AI | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">notegpt.io</div>
+          <div class="serp-title">AI Image Editor – Edit Photo with Prompt Online Free</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">pixlr.com</div>
+          <div class="serp-title">Free Online AI Photo Editor, Image Generator & Design tool</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">pixelcut.ai</div>
+          <div class="serp-title">Pixelcut | Free AI Photo Editor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">picsman.ai</div>
+          <div class="serp-title">Free AI Photo Editor: Online Image Editing Tools｜Picsman</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#138808">Positive</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">JD “JUST DANCE” VANCE TROLL</div>
+      <div class="reddit-meta">r/BlueskySkeets · 73,248 pts · 1559 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I Captured By Far my Sharpest ISS Photo This Morning in the Twilight Colors. This is …</div>
+      <div class="reddit-meta">r/spaceporn · 55,630 pts · 490 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">4 months ago I lost all respect for local contractors. 4 months later I've gained a t…</div>
+      <div class="reddit-meta">r/DIY · 39,641 pts · 1980 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,315 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I mapped every connection in the Epstein files. It started with 6,000 documents. It's…</div>
+      <div class="reddit-meta">r/Epstein · 34,882 pts · 1426 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Hey! I was born with perfect polydactyly. AMA</div>
+      <div class="reddit-meta">r/IAmA · 33,718 pts · 4492 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"character generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~120K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>perchance.org</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Midjourney, Character.ai (different use), Artbreeder</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/character-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Character Generator — Create Custom Characters with Adobe Firefly</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly can generate consistent characters, especially with Custom Models trained on a character style. No competitor matches consistent character generation across images.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Dedicated character generator page showcasing consistent character generation across multiple images (the #1 user pain point with Midjourney). Demo: same character in 5 different scenes.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly Character / Custom Model character generation</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~120K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">perchance.org</div>
+          <div class="serp-title">AI Character Generator (free, no sign-up, unlimited)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Character Generator - Create characters with AI | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">character-generator.org.uk</div>
+          <div class="serp-title">Character Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">facewow.ai</div>
+          <div class="serp-title">Free AI Character Generator - Create a Character No Signup | Facewow</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">squibler.io</div>
+          <div class="serp-title">Free AI Character Generator (No Sign-Up, Unlimited) | Squibler</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Free AI Character Generator: Create Consistent Characters Online | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">toolbaz.com</div>
+          <div class="serp-title">[FREE] Story Character Generator - (No Login & Unlimited)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">media.io</div>
+          <div class="serp-title">AI Character Generator - Create Consistent AI Characters Online Free | Medi…</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#c0392b">Negative</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">I lied to my pick-me “friend” and she got a tattoo based off of it</div>
+      <div class="reddit-meta">r/confession · 32,478 pts · 1507 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">In Black Panther: Wakanda Forever (2022) Shuri says AI only goes bad in movies, despi…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 26,798 pts · 400 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">"White House Slams 'Fake Outrage' Over Trump's Obama Post" l Mediaite</div>
+      <div class="reddit-meta">r/UnderReportedNews · 20,780 pts · 1663 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Jon Lewis: "NBA will be better off without Stephen A. Smith"</div>
+      <div class="reddit-meta">r/nba · 20,540 pts · 1364 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">BREAKING: Oracle Sent 6AM “Today Is Your Last Working Day” Emails To Thousands Of Emp…</div>
+      <div class="reddit-meta">r/InterstellarKinetics · 17,908 pts · 844 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">[Loved Trope] An adaptation makes significant changes, and it's for the better.</div>
+      <div class="reddit-meta">r/TopCharacterTropes · 17,101 pts · 1908 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"headshot generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~200K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>canva.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Aragon AI, HeadshotPro, Canva AI</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/ai-headshot-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Headshot Generator — Professional Headshots in Minutes</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">This is a high-commercial-intent query — LinkedIn headshots, professional photos. Adobe Firefly can generate photorealistic headshots. Gap: no dedicated page, no free demo.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Headshot generator landing page with free trial (5 headshots free, no account). This is a direct revenue driver: headshot users are likely to convert to paid plans for the quality Adobe offers.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly AI headshot generation / Photoshop AI</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~200K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Headshot Generator: Create AI Headshots | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">notegpt.io</div>
+          <div class="serp-title">Free AI Headshot Generator – Fast, Unlimited, No Sign-Up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Free AI Headshot Generator: Create Professional Headshots | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">headshotpro.com</div>
+          <div class="serp-title">100% Free AI Headshot Generator | HeadshotPro</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">aragon.ai</div>
+          <div class="serp-title">Free AI Professional Headshot Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">visualgpt.io</div>
+          <div class="serp-title">AI Headshot Generator – Free Online, No Sign-up & No Ads</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">lockedinai.com</div>
+          <div class="serp-title">Free Professional AI Headshot Generator | LockedIn AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">magichour.ai</div>
+          <div class="serp-title">Free AI Headshot Generator - No Sign Up, Professional Headshots Online | Ma…</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,379 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,315 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Karoline Leavitt's entire job is lying, and she can't even do THAT properly!</div>
+      <div class="reddit-meta">r/clevercomebacks · 33,802 pts · 422 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">They graded her threat</div>
+      <div class="reddit-meta">r/clevercomebacks · 27,173 pts · 653 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Former HR here - subtle signs your company is preparing for layoffs</div>
+      <div class="reddit-meta">r/careeradvice · 24,201 pts · 1131 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">[OTHER] Fired from Warhorse Studios and replaced with AI</div>
+      <div class="reddit-meta">r/kingdomcome · 22,321 pts · 2762 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"image to image generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~80K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>imgtoimg.ai</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Stable Diffusion img2img, Midjourney vary, Adobe Firefly (not ranking)</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/image-to-image</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Image to Image AI Generator — Transform Any Photo with Adobe Firefly</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly's Style Reference and Structure Reference features are direct image-to-image generators. No dedicated page exists for this query — Stable Diffusion and Midjourney img2img dominate it.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Image-to-image generator page showing Style Reference and Structure Reference features. Before/after demo. Key message: commercially safe image transformation — no copyright risk.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly Reference Image / Style Reference feature</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~80K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">imgtoimg.ai</div>
+          <div class="serp-title">Image to Image AI - Free AI Image Generator From Image</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">aiimagetoimage.io</div>
+          <div class="serp-title">FREE AI Image to Image Generator: Pro Edits via Text Prompt</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">notegpt.io</div>
+          <div class="serp-title">Image to Image AI – Free Online Image Generator, No Prompt</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">imgupscaler.ai</div>
+          <div class="serp-title">Image to Image AI Generator - Best Free Image to Image Tool Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">pollo.ai</div>
+          <div class="serp-title">Image to Image AI: Free AI Image Generator from Image | Pollo AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">ezremove.ai</div>
+          <div class="serp-title">Image to Image AI - Free AI Image Generator From Image</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">deepimg.io</div>
+          <div class="serp-title">Free Image to Image AI Generator: Convert Images Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">easemate.ai</div>
+          <div class="serp-title">Image to Image AI Generator: Create Images from Images for Free Online, No …</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">The audacity</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 100,753 pts · 3991 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Texas public school teachers are now required to post the 10 Commadments in their cla…</div>
+      <div class="reddit-meta">r/BeAmazed · 89,055 pts · 2929 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Me_irl</div>
+      <div class="reddit-meta">r/me_irl · 87,942 pts · 638 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Joe Kent has resigned as Director of the U.S. National Counterterrorism Center: “[Ira…</div>
+      <div class="reddit-meta">r/Fauxmoi · 65,188 pts · 1125 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Remove Google ai</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 65,025 pts · 930 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No Kings</div>
+      <div class="reddit-meta">r/oregon · 64,811 pts · 824 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"remove people"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~100K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#d97706">#4 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>cleanup.pictures</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Canva Magic Eraser, Fotor, Remove.bg</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/remove-people</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Remove People from Photos with AI — Adobe Firefly</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Same underlying feature as "remove object" but for people specifically. Photoshop's content-aware fill + Firefly AI is the best-in-class solution. No dedicated page exists.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Separate "remove people" page (distinct from remove object — captures different intent). Show crowd/background removal use cases. Add to the free tools section with no-login demo.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly Generative Remove / Photoshop Remove Tool</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~100K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop/generative-fill</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">cleanup.pictures</div>
+          <div class="serp-title">Cleanup.pictures - Remove objects, people, text and defects from any pictur…</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">beautyplus.com</div>
+          <div class="serp-title">Remove People from Photo Online Free with AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">pixelcut.ai</div>
+          <div class="serp-title">Remove people from photos for free with AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank adobe">4</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Remove Person from Photo Online – AI People Remover – Firefly</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">notegpt.io</div>
+          <div class="serp-title">AI Object Remover from Images - Free Online, No Sign-up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Remove Person From Photo Online for Free With AI | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">magiceraser.org</div>
+          <div class="serp-title">Remove People from Photos Free, Online, No Sign-up, No Ads</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">cyberlink.com</div>
+          <div class="serp-title">Remove Unwanted People from Photos Online for Free with AI</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">I got uninvited to a friend’s holiday potluck, while I was on my way to it.</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 110,793 pts · 9075 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Since it’s going viral on other platforms, I figured Reddit may enjoy my girl too. Th…</div>
+      <div class="reddit-meta">r/cats · 54,806 pts · 408 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">My client sat though 3 straight days of tattooing for this 🫠</div>
+      <div class="reddit-meta">r/woahdude · 51,283 pts · 1478 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Alex Pretti memorial, Minneapolis</div>
+      <div class="reddit-meta">r/pics · 49,925 pts · 183 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Fuck every conservative</div>
+      <div class="reddit-meta">r/complaints · 48,292 pts · 8948 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Luigi Mangione shares 27 things he’s grateful for ahead of federal murder trial</div>
+      <div class="reddit-meta">r/popculturechat · 47,092 pts · 1154 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · HIGH OPPORTUNITY</div>
+      <div class="kw-title">"cartoonize"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~300K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>cartoonize.net</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#c0392b">HIGH</b></div>
+        <div class="kw-chip">Key competitors: <b>ToonMe, Canva Cartoon Effect, Fotor Cartoonize</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/cartoonize</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">Cartoonize Your Photo — AI Cartoon Photo Generator</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">This is a fun, high-volume query with viral loop potential. Firefly can apply cartoon styles to any photo. Adobe Express has filters but no dedicated "cartoonize" page.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Free cartoonize tool — no login, instant generation. Add "Created with Adobe Firefly" watermark on free exports. This is a direct viral loop driver with mass consumer appeal. Upload photo → get cartoon → share.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly style generation / Express filters</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~300K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/express</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">cartoonize.net</div>
+          <div class="serp-title">Photo to Cartoon – Cartoonize Yourself &amp; Create Avatar Characters for F…</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Cartoon Generator: Photo to Cartoon Online | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">cartoonize.ai</div>
+          <div class="serp-title">Photo To Cartoon AI Generator ｜ Cartoonize AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">visualgpt.io</div>
+          <div class="serp-title">Photo to Cartoon: Free AI Cartoonize Photo Online, No Sign-up</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">edit.cartoonize.net</div>
+          <div class="serp-title">Colorcinch – The #1 Photo Editor & Cartoonizer – Simple, Beautiful & Free</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">befunky.com</div>
+          <div class="serp-title">Photo to Cartoon: BeFunky - Turn Any Photo Into a Cartoon</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">ai.nero.com</div>
+          <div class="serp-title">Photo to Cartoon Converter Online for Free | Nero AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Photo to Cartoon: Cartoonize Photos Online for Free | Fotor</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#138808">Positive</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">JD “JUST DANCE” VANCE TROLL</div>
+      <div class="reddit-meta">r/BlueskySkeets · 73,244 pts · 1559 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I Captured By Far my Sharpest ISS Photo This Morning in the Twilight Colors. This is …</div>
+      <div class="reddit-meta">r/spaceporn · 55,622 pts · 490 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">4 months ago I lost all respect for local contractors. 4 months later I've gained a t…</div>
+      <div class="reddit-meta">r/DIY · 39,638 pts · 1980 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,310 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I mapped every connection in the Epstein files. It started with 6,000 documents. It's…</div>
+      <div class="reddit-meta">r/Epstein · 34,883 pts · 1426 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Hey! I was born with perfect polydactyly. AMA</div>
+      <div class="reddit-meta">r/IAmA · 33,711 pts · 4492 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P0 · HIGH OPPORTUNITY</div>
+      <div class="kw-title">"AI art generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~900K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>magicstudio.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#c0392b">HIGH</b></div>
+        <div class="kw-chip">Key competitors: <b>Midjourney, DALL-E / ChatGPT, Canva AI</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#c0392b">P0 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/ai-art-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Art Generator — Create Stunning Art for Free with Adobe Firefly</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">This is the highest-volume keyword in the category. Adobe Firefly IS an AI art generator but the main Firefly page doesn't rank for it because the H1 doesn't use this language.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Create /products/firefly/ai-art-generator as the free-tier entry page. No login for first 5 generations. H1 must match the query exactly. This single page could drive more traffic than any other action on this list.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Adobe Firefly — core product</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~900K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P0</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">magicstudio.com</div>
+          <div class="serp-title">AI Art Generator: Free Text-to-Art Creation by Magic Studio</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Art Generator - Online Text to Artwork App | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">openart.ai</div>
+          <div class="serp-title">AI Art Generator: Free AI Image, Video & Audio Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">craiyon.com</div>
+          <div class="serp-title">Craiyon - Your FREE AI image generator tool: Create AI art!</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">creator.nightcafe.studio</div>
+          <div class="serp-title">Free AI Art Generator: All the best AI models in one place - NightCafe</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">img2go.com</div>
+          <div class="serp-title">Free AI Art Generator - Create Art from Words</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Image Generator: Online Text to Image App | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">starryai.com</div>
+          <div class="serp-title">Free AI Image Generator - Create Images & Video</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,377 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">NPR IS REPORTING THAT DOJ HAS BEEN WITHOLDING FILES RELATED TO TRUMP SEXUALLY ASSAULT…</div>
+      <div class="reddit-meta">r/Epstein · 36,315 pts · 1395 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Epstein and Trump: 20 years of sex trafficking and pedophilia</div>
+      <div class="reddit-meta">r/NoFilterNews · 26,938 pts · 517 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">[OTHER] Fired from Warhorse Studios and replaced with AI</div>
+      <div class="reddit-meta">r/kingdomcome · 22,318 pts · 2762 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I FINALLY DID IT!!!</div>
+      <div class="reddit-meta">r/bald · 22,298 pts · 1140 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">AITA, asked the neighbor to move their ‘little farm stand’ because people are stealin…</div>
+      <div class="reddit-meta">r/AmItheAsshole · 19,564 pts · 2550 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"AI anime art generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~250K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">#8 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>komiko.app</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>NovelAI, Midjourney, Stable Diffusion anime models</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/anime-art-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Anime Art Generator — Create Anime-Style Art with Adobe Firefly</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly can generate anime-style art through style prompting. This is a high-volume niche with strong community appetite. No Adobe page exists for it — leaving 250K/mo to Midjourney and NovelAI.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Dedicated anime style landing page with anime-specific prompt examples and style reference demos. Key message: commercially safe anime art (many anime-style models are trained on unlicensed anime images — Firefly is not).</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly with anime style prompting / style reference</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~250K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">komiko.app</div>
+          <div class="serp-title">AI Anime Art Generator | Best AI Anime Generator (Free, Unlimited)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">pixai.art</div>
+          <div class="serp-title">PixAI - Free AI Anime Art Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">animegenius.live3d.io</div>
+          <div class="serp-title">AnimeGenius - #1 Anime AI Generator For Free</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">perchance.org</div>
+          <div class="serp-title">AI Anime Generator (free, no sign-up, unlimited)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free Anime AI Generator - Online Text to Anime Art App - Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">novelai.net</div>
+          <div class="serp-title">NovelAI - AI Anime Image Generator & Storyteller</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">Free AI Anime Generator - Turn Text & Photos into Anime Art | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank adobe">8</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Free AI Anime Generator: Create Anime art online | Adobe Firefly</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#c0392b">Negative</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">Joe Kent has resigned as Director of the U.S. National Counterterrorism Center: “[Ira…</div>
+      <div class="reddit-meta">r/Fauxmoi · 65,185 pts · 1125 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,365 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Animal shelter gave my cat to someone else, and I feel terrible.</div>
+      <div class="reddit-meta">r/cats · 27,216 pts · 1162 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I’ve been accused of not painting my work and using AI to print imagery on canvas.</div>
+      <div class="reddit-meta">r/painting · 25,157 pts · 460 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">My teacher called me Katherine instead of learning how to pronounce my name, so I cal…</div>
+      <div class="reddit-meta">r/traumatizeThemBack · 23,817 pts · 1175 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">[OTHER] Fired from Warhorse Studios and replaced with AI</div>
+      <div class="reddit-meta">r/kingdomcome · 22,322 pts · 2762 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"AI drawing generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~150K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>canva.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Adobe Firefly (not ranking), Midjourney, Canva AI</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/ai-drawing-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Drawing Generator — Generate Illustrations & Drawings from Text</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly's illustration styles and Text to Vector are natural fits for "drawing generator." The vector output is uniquely Adobe — all competitors generate rasters. Editable drawings from text is a strong differentiator.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Drawing generator page leading with the vector angle ("generate editable drawings, not just images"). Show illustration → Illustrator workflow. This page can also serve the "text to vector" cluster.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly illustration style / Text to Vector</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~150K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Art Generator - Online Text to Artwork App | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">magicstudio.com</div>
+          <div class="serp-title">AI Art Generator: Free Text-to-Art Creation by Magic Studio</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">craiyon.com</div>
+          <div class="serp-title">Craiyon - Your FREE AI image generator tool: Create AI art!</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">openart.ai</div>
+          <div class="serp-title">AI Art Generator: Free AI Image, Video & Audio Generator</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">creator.nightcafe.studio</div>
+          <div class="serp-title">Free AI Art Generator: All the best AI models in one place - NightCafe</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">perchance.org</div>
+          <div class="serp-title">AI Drawing Generator (free, no sign-up, no limits)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">starryai.com</div>
+          <div class="serp-title">Free AI Image Generator - Create Images & Video</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">lovart.ai</div>
+          <div class="serp-title">Free AI Illustrations Generator - Create Professional Digital Art Online</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">The audacity</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 100,751 pts · 3991 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Joe Kent has resigned as Director of the U.S. National Counterterrorism Center: “[Ira…</div>
+      <div class="reddit-meta">r/Fauxmoi · 65,188 pts · 1125 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">phased out</div>
+      <div class="reddit-meta">r/comics · 45,794 pts · 298 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,378 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Someone took my art and fed it to an AI and then bragged to me about it</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 39,199 pts · 1531 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Thinking Like a Dissident</div>
+      <div class="reddit-meta">r/illinois · 29,906 pts · 417 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P1 · HOLD OPPORTUNITY</div>
+      <div class="kw-title">"design generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~100K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#138808">#3 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>canva.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#138808">HOLD</b></div>
+        <div class="kw-chip">Key competitors: <b>Canva AI Design, Adobe Express (not ranking), Looka</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#d97706">P1 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/express/features/ai-design-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Design Generator — Create Complete Designs from Text with Adobe Express</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Adobe Express with Firefly AI is the most complete "design generator" product — templates + AI generation + brand kits + custom fonts. Canva is winning this keyword despite Adobe having a superior product.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Adobe Express "design generator" landing page showing text-to-design workflow. Prompt → full social post / flyer / presentation. Free trial, no login for first design. This is Express's acquisition page.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Adobe Express AI / Firefly + Express templates</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~100K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P1</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/express</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Magic Design™: Free Online AI Design Tool | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">figma.com</div>
+          <div class="serp-title">Free AI Design Generator - Design Using AI | Figma</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank adobe">3</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Free AI Design Generator: Fast designs - Adobe Firefly</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">designgenerator.com</div>
+          <div class="serp-title">Design Generator | Free AI Design Tool - Create Logos, Posters & More</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">quillbot.com</div>
+          <div class="serp-title">Free AI Design Generator | Create Logos, Posters, & More</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">designs.ai</div>
+          <div class="serp-title">DesignsAI - AI-Powered Design Platform</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">starryai.com</div>
+          <div class="serp-title">Free AI Design Generator: Effortless, Professional Creations - starryai</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">template.net</div>
+          <div class="serp-title">Free AI Design Generator, Free Design Maker [ No Signup ]</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">"The following is REAL footage from Portland, 2025. Viewer discretion is advised." (D…</div>
+      <div class="reddit-meta">r/DailyShow · 103,276 pts · 2068 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Meirl</div>
+      <div class="reddit-meta">r/meirl · 97,524 pts · 2928 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Nailed it</div>
+      <div class="reddit-meta">r/BlueskySkeets · 90,857 pts · 2420 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">"Hot take"</div>
+      <div class="reddit-meta">r/comics · 84,615 pts · 1779 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">His worst mistake</div>
+      <div class="reddit-meta">r/memes · 81,071 pts · 810 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Election Interference? France isn’t happy with Musk!</div>
+      <div class="reddit-meta">r/circled · 80,961 pts · 1766 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P2 · HOLD OPPORTUNITY</div>
+      <div class="kw-title">"face generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~80K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#138808">#1 — adobe.com</b></div>
+        <div class="kw-chip">Current #1: <b>adobe.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#138808">HOLD</b></div>
+        <div class="kw-chip">Key competitors: <b>ThisPersonDoesNotExist.com, Generated.photos, Midjourney</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#6366f1">P2 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/face-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Face Generator — Create Realistic AI-Generated Faces</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly can generate photorealistic faces. Use cases: stock photography alternatives, character creation, diversity testing. Key message: Firefly faces are commercially licensed — no model release required.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Face generator page emphasizing commercial licensing of generated faces (no model releases, no stock photo fees). Target stock photo buyers as ICP — they already pay for licensed imagery.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly person/face generation</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~80K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P2</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">adobe.com 🔴 ADOBE</div>
+          <div class="serp-title">Free AI Face Generator: Create human faces | Adobe Firefly</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">perchance.org</div>
+          <div class="serp-title">AI Face Generator (free, no sign-up, no limits)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">template.net</div>
+          <div class="serp-title">Free AI Face Generator, Create Face Images Online [ No Signup ]</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free AI Face Generator: Create human faces using AI | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">fotor.com</div>
+          <div class="serp-title">AI Face Generator: Create Unique Human Faces Using AI | Fotor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">facewow.ai</div>
+          <div class="serp-title">Generate Real Human Faces from Text or Photo - Free & No Sign-up | Facewow</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">playform.io</div>
+          <div class="serp-title">Free Face Mix AI Generator - Playform</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">generated.photos</div>
+          <div class="serp-title">Face Generator – Generate Faces Online Using AI</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#c0392b">Negative</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,365 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Employed, Sober, Functioning, and Homeless Experience</div>
+      <div class="reddit-meta">r/SeattleWA · 29,714 pts · 2058 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">BREAKING: Oracle Sent 6AM “Today Is Your Last Working Day” Emails To Thousands Of Emp…</div>
+      <div class="reddit-meta">r/InterstellarKinetics · 17,903 pts · 844 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">If you're over 30, get ready. Things have changed once again</div>
+      <div class="reddit-meta">r/ChatGPT · 17,398 pts · 2198 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">An update 7 years later: For years, my [35F] husband [37M] said that if I want stabil…</div>
+      <div class="reddit-meta">r/BestofRedditorUpdates · 16,044 pts · 817 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">New Report: Employers in the USA Have Stolen Over $50 Trillion From Workers Since 197…</div>
+      <div class="reddit-meta">r/antiwork · 15,856 pts · 73 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P2 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"pixel art maker"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~120K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>pixilart.com</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Pixelfy.ai, PixelMe, Midjourney pixel style</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#6366f1">P2 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/pixel-art-maker</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Pixel Art Maker — Generate Pixel Art from Text or Photos</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Firefly can generate pixel art through style prompting. This is a niche but high-intent query with game dev and indie creator appeal. Adobe has no page for it.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Pixel art generator page with game dev use cases (sprite sheets, game backgrounds, character sprites). Emphasize exportable SVG/PNG formats. Connect to Illustrator for editable pixel-art vectors.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly pixel art style / Photoshop pixel art filters</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~120K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P2</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/photoshop</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">pixilart.com</div>
+          <div class="serp-title">Pixilart - Free online pixel art drawing tool</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">piskelapp.com</div>
+          <div class="serp-title">Piskel - Free online sprite editor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">pixilart.com</div>
+          <div class="serp-title">Pixilart - Free Online Art Community and Pixel Art Tool</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">lospec.com</div>
+          <div class="serp-title">Lospec Pixel Editor</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">dinopixel.com</div>
+          <div class="serp-title">Pixel Art Maker Online | Free Drawing Tool - Dinopixel</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">canva.com</div>
+          <div class="serp-title">Free Pixel Art Generator: Turn photos into pixel art | Canva</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">pixelartmaker.com</div>
+          <div class="serp-title">Pixel Art Maker</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">makepixelart.com</div>
+          <div class="serp-title">Make Pixel Art - The Original FREE Online Pixel Art Drawing App!</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#d97706">Mixed sentiment</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">The audacity</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 100,749 pts · 3991 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Meirl</div>
+      <div class="reddit-meta">r/meirl · 97,514 pts · 2928 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">phased out</div>
+      <div class="reddit-meta">r/comics · 45,797 pts · 298 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">LEGO mosaic built by our wedding guests</div>
+      <div class="reddit-meta">r/lego · 45,109 pts · 522 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,371 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">standProud</div>
+      <div class="reddit-meta">r/ProgrammerHumor · 41,151 pts · 351 comments</div>
+    </div></div>
+      </div>
+    </div>
+    <div class="kw-section">
+      <div class="kw-eyebrow">SEO KPI · P2 · MEDIUM OPPORTUNITY</div>
+      <div class="kw-title">"human generator"</div>
+      <div class="kw-meta-row">
+        <div class="kw-chip">Volume: <b>~40K/mo</b></div>
+        <div class="kw-chip">Adobe today: <b style="color:#c0392b">Not ranking</b></div>
+        <div class="kw-chip">Current #1: <b>generated.photos</b></div>
+        <div class="kw-chip">Opportunity: <b style="color:#d97706">MEDIUM</b></div>
+        <div class="kw-chip">Key competitors: <b>Generated.photos, ThisPersonDoesNotExist, Midjourney</b></div>
+      </div>
+
+      
+    <div class="action-card">
+      <div class="action-urgency" style="background:#6366f1">P2 — Action Required</div>
+      <div class="action-label">Target URL (create or optimise)</div>
+      <div class="action-url">/products/firefly/features/human-generator</div>
+      <div class="action-label">Page H1</div>
+      <div class="action-h1">AI Human Generator — Create Realistic AI People for Commercial Use</div>
+      <div class="action-label">Why Adobe Wins This Keyword</div>
+      <div class="action-why">Users searching "human generator" want stock photography alternatives — diverse, realistic AI-generated people they can use commercially. Firefly is perfect for this: no model releases, full IP indemnification.</div>
+      <div class="action-label">Exact Action to Take</div>
+      <div class="action-do">Human generator page targeting stock photography buyers. Lead with: "Replace expensive stock photo licenses with Firefly AI people — commercially safe, fully licensed, infinitely diverse." This is a direct Shutterstock/Getty displacement play.</div>
+      <div class="action-label">Adobe Feature to Surface</div>
+      <div style="font-size:14px;color:#333;padding:10px 0;">Firefly person generation / Generated.photos alternative</div>
+      <div class="metrics-row">
+        <div class="metric-box"><strong>Monthly Volume</strong><span>~40K/mo</span></div>
+        <div class="metric-box"><strong>Priority</strong><span>P2</span></div>
+        <div class="metric-box"><strong>Landing Page</strong><span>/products/firefly</span></div>
+      </div>
+    </div>
+
+      <div class="two-col">
+        <div class="card"><div class="card-label">Google SERP — Top Results (via Brave)</div>
+      <div class="serp-item">
+        <div class="serp-rank top1">1</div>
+        <div>
+          <div class="serp-domain">generated.photos</div>
+          <div class="serp-title">AI Human Generator – Generate and Modify People Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">2</div>
+        <div>
+          <div class="serp-domain">perchance.org</div>
+          <div class="serp-title">AI Human Generator (free, no sign-up, no limits)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">3</div>
+        <div>
+          <div class="serp-domain">artguru.ai</div>
+          <div class="serp-title">Free Online AI Human Generator (No sign-up)</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">4</div>
+        <div>
+          <div class="serp-domain">facewow.ai</div>
+          <div class="serp-title">AI human generator free online: no sign-up or watermark | Facewow</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">5</div>
+        <div>
+          <div class="serp-domain">humanizeai.pro</div>
+          <div class="serp-title">Humanize AI</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">6</div>
+        <div>
+          <div class="serp-domain">lipsync.video</div>
+          <div class="serp-title">Free AI Human Generator – Turn Scripts into Lip-Synced Videos</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">7</div>
+        <div>
+          <div class="serp-domain">piclumen.com</div>
+          <div class="serp-title">Free AI Human Generator | Instantly Create Lifelike Realistic People Online</div>
+        </div>
+      </div>
+      <div class="serp-item">
+        <div class="serp-rank other">8</div>
+        <div>
+          <div class="serp-domain">github.com</div>
+          <div class="serp-title">GitHub - makehumancommunity/mpfb2: MPFB2 is a free and open source human ge…</div>
+        </div>
+      </div></div>
+        <div class="card"><div class="card-label">Reddit — Community Voice</div>
+    <div class="sentiment-badge" style="background:#138808">Positive</div>
+    
+    <div class="reddit-item">
+      <div class="reddit-title">Family friend sent me AI generated response to news of my father passing away.</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 81,958 pts · 4847 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Indisputably Human</div>
+      <div class="reddit-meta">r/comics · 57,929 pts · 398 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">I Captured By Far my Sharpest ISS Photo This Morning in the Twilight Colors. This is …</div>
+      <div class="reddit-meta">r/spaceporn · 55,620 pts · 490 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">No coyotes were directly harmed in the making of Coyotes (2025). But a lake did dry u…</div>
+      <div class="reddit-meta">r/shittymoviedetails · 41,373 pts · 523 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Someone took my art and fed it to an AI and then bragged to me about it</div>
+      <div class="reddit-meta">r/mildlyinfuriating · 39,198 pts · 1531 comments</div>
+    </div>
+    <div class="reddit-item">
+      <div class="reddit-title">Hey! I was born with perfect polydactyly. AMA</div>
+      <div class="reddit-meta">r/IAmA · 33,711 pts · 4492 comments</div>
+    </div></div>
+      </div>
+    </div>
+
+</body>
+</html>
